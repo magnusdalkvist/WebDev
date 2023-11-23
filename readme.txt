@@ -1,13 +1,27 @@
-Run tailwindcss
-cd into the tailwindcss folder
-> npx tailwindcss -i ./input.css -o ../app.css --watch
+
+##############################
+##############################
+
+Tailwindcss
+- move to the tailwindcss folder from htdocs
+  cd tailwindcss
+
+- If you git clone or git pull, make sure you have 
+- the node_modules in the tailwindcss folder. If the node_modules
+- is not there, then run this command
+
+  npm install -D tailwindcss
+  npx tailwindcss -i ./input.css -o ../app.css --watch
+
+##############################
+##############################
 
 Faker
 https://github.com/fzaninotto/Faker
 
 ##############################
 ##############################
-##############################
+
 Snippet for PHP
 Ctrl+Shit+P
 > PHP 
@@ -42,11 +56,10 @@ Insert the snippet
 }
 ##############################
 ##############################
-##############################
+
 
 Compound key
 2 or more foreign keys
-
 
 
 Composite key

@@ -3,8 +3,8 @@ require_once __DIR__.'/_header.php';
 if(!_is_admin()){ header('Location: /login'); exit(); };
 
 $db = _db();
-$q = $db->prepare(' SELECT user_id, user_name, user_last_name, user_email, user_tag_color
-                    FROM users WHERE user_role_name = "customer" LIMIT 10');
+$q = $db->prepare(' SELECT user_id, user_name, user_last_name, user_email
+                    FROM users WHERE user_role = "user" LIMIT 10');
 $q->execute();
 $users = $q->fetchAll();                  
 ?>

@@ -16,6 +16,7 @@ RewriteRule ^logout$            views/logout.php [NC,L]
 RewriteRule ^customers$         views/customers.php [NC,L]
 RewriteRule ^employees$         views/employees.php [NC,L]
 RewriteRule ^partners$          views/partners.php [NC,L]
+RewriteRule ^account$          views/account.php [NC,L]
 RewriteRule ^search-results$    views/search_results.php [NC,L]
 
 

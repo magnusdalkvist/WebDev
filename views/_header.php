@@ -45,6 +45,12 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
           </span>
           Partners
         </a>
+        <a href="/account" class="flex items-center">
+          <span class="material-symbols-outlined mr-2 font-thin">
+            Person
+          </span>
+          Account
+        </a>
       </div>
     <?php endif ?>
 

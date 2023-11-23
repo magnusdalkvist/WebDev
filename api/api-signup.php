@@ -48,10 +48,10 @@ try{
 
 }catch(Exception $e){
   try{
-    // if( ! ctype_digit($e->getCode())){
-    //   throw new Exception();
-    // }
-    // http_response_code($e->getCode());
+    if( ! ctype_digit($e->getCode())){
+      throw new Exception();
+    }
+    http_response_code($e->getCode());
     echo json_encode(['info'=>$e->getMessage()]);
   }catch(Exception $ex){
     // echo $ex;

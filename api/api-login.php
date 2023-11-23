@@ -29,8 +29,6 @@ try{
     'user_email' => $user['user_email']
   ];
 
-  echo json_encode($_SESSION['user']);
-
 }catch(Exception $e){
   try{
     if( ! $e->getCode() || ! $e->getMessage()){ throw new Exception(); }

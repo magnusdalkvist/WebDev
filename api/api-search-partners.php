@@ -5,12 +5,11 @@ try {
   // TODO: validate $_POST['query']
   $db = _db();
   $q = $db->prepare('
-    SELECT user_name, user_last_name, employee_salaray
+    SELECT user_name, user_last_name, user_email
     FROM users
-    JOIN employees 
-    ON user_id = user_employee_fk
     WHERE user_name LIKE :user_name
     OR user_last_name LIKE :user_last_name
+    AND user_role = "partner"
   ');
   $q->bindValue(':user_name', '%' . $_POST['query'] . '%');
   $q->bindValue(':user_last_name', '%' . $_POST['query'] . '%');

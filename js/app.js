@@ -5,6 +5,7 @@ function search_users() {
     const frm = document.querySelector("#frm_search");
     const url = frm.getAttribute("data-url");
     console.log("URL: ", url);
+    console.log("form: ", frm);
     const conn = await fetch(`/api/${url}`, {
       method: "POST",
       body: new FormData(frm),
@@ -17,7 +18,7 @@ function search_users() {
         <div class="grid grid-cols-[100fr,100fr,50fr] p-2">
           <div class="">${user.user_name}</div>
           <div class="">${user.user_last_name}</div>
-          <div class="">${user.employee_salary}</div>
+          <div class="">${user.employee_salaray}</div>
         </div>
       `;
       document

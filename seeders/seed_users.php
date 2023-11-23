@@ -8,6 +8,25 @@ $faker = Faker\Factory::create();
 
 $db = _db();
 
+$q = $db->prepare('DROP TABLE IF EXISTS roles');
+$q->execute();
+
+$q = $db->prepare('
+CREATE TABLE users(
+  user_id          VARCHAR(255),
+  user_name        TEXT,
+  user_last_name  TEXT,
+  user_email  TEXT,
+  user_address TEXT,
+  user_password TEXT,
+  user_role TEXT,
+  user_created_at TEXT,
+  user_updated_at TEXT,
+  user_deleted_at TEXT,
+  user_is_blocked TEXT
+  PRIMARY KEY (user_id)
+)
+');
 
 $q = $db->prepare('INSERT INTO users VALUES (  :user_id, :user_name, :user_last_name, 
                                   :user_email, :user_address, :user_password, :user_role, 

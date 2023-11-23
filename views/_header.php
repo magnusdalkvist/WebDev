@@ -16,7 +16,7 @@ require_once __DIR__ . '/../_.php';
 
   <link rel="stylesheet" href="/app.css">
 
-  <title>Document</title>
+  <title>YumHub</title>
 </head>
 
 <body class="w-full h-screen text-base font-roboto font-light bg-slate-200
@@ -81,7 +81,7 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
       <span class="material-symbols-outlined font-thin">
         dashboard
       </span>
-      Home
+      YumHub
     </a>
 
     <form action="/search-results" method="GET" class="relative flex items-center">

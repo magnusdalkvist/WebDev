@@ -11,6 +11,7 @@ RewriteRule ^signup$          views/signup.php [NC,L]
 RewriteRule ^login$           views/login.php [NC,L]
 RewriteRule ^users$           views/users.php [NC,L]
 RewriteRule ^user$            views/user.php [NC,L]
+RewriteRule ^search-results$    views/search_results.php [NC,L]
 
 
 

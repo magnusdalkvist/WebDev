@@ -122,7 +122,7 @@ function _validate_user_confirm_password()
 // ##############################
 function _is_admin()
 {
-  return (!isset($_SESSION['user']) || $_SESSION['user']['user_role_name'] != 'admin') ? false : true;
+  return (!isset($_SESSION['user']) || $_SESSION['user']['user_role'] != 'admin') ? false : true;
 }
 
 // ##############################

@@ -1,94 +1,73 @@
 <?php
-
-require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/Faker/src/autoload.php';
-
+require_once __DIR__.'/../_.php';
+require_once __DIR__ . '/Faker/autoload.php';
 $faker = Faker\Factory::create();
 
-$db = _db();
+try{
+  $db = _db();
 
-$q = $db->prepare('DROP TABLE IF EXISTS users');
-$q->execute();
+  // Drop the users table if it exists
+  $q = $db->prepare('DROP TABLE IF EXISTS users');
+  $q->execute();
 
-$q = $db->prepare('
-CREATE TABLE users(
-  user_id          VARCHAR(255),
-  user_name        TEXT,
-  user_last_name  TEXT,
-  user_email  TEXT,
-  user_address TEXT,
-  user_password TEXT,
-  user_role TEXT,
-  user_created_at TEXT,
-  user_updated_at TEXT,
-  user_deleted_at TEXT,
-  user_is_blocked TEXT,
-  PRIMARY KEY (user_id)
-)
-');
+  // Now create the users table
+  $q = $db->prepare('
+    CREATE TABLE users(
+      user_id           TEXT,
+      user_name         TEXT,
+      user_last_name    TEXT,
+      user_email        TEXT UNIQUE,
+      user_address      TEXT,
+      user_password     TEXT,
+      user_role_name    TEXT,
+      user_created_at   TEXT,
+      user_updated_at   TEXT,
+      user_deleted_at   TEXT,
+      PRIMARY KEY (user_id)
+    )
+  ');
+  $q->execute();
 
-$q->execute();
 
-$q = $db->prepare('INSERT INTO users VALUES (  :user_id, :user_name, :user_last_name, 
-                                  :user_email, :user_address, :user_password, :user_role, 
-                                  :user_created_at, :user_updated_at, :user_deleted_at, :user_is_blocked)');
+  $values = '';
+  // Admin roles
 
-for ($i = 0; $i < 1; $i++) {
+  $admin_password = password_hash('password', PASSWORD_DEFAULT);
+  $admin_created_at = time();
+  $admin_updated_at = 0;
+  $admin_deleted_at = 0;  
+  $values .= "('64474be79ad54b2b8f62164d97ff7ef1', 'Admin', 'Admin', 'admin@company.com', 
+  '$admin_password', 'Admin address', 'admin', '#0ea5e9', $admin_created_at, $admin_updated_at, $admin_deleted_at),";
 
-  $user_role = 'user';
-  $user_updated_at = 0;
-  $user_deleted_at = 0;
-  $user_is_blocked = rand(0, 1);
 
-  $user_id = null;
-  $firstName = $faker->firstName;
-  $lastName = $faker->lastName;
-  $email = $faker->email;
-  $address = $faker->address;
-  $password = password_hash($faker->password, PASSWORD_DEFAULT);
-  $created_at = time();
+  $user_password = password_hash('password', PASSWORD_DEFAULT); // too long time in loop
+  for($i = 0; $i < 100; $i++){
+    $user_id = bin2hex(random_bytes(16));
+    $user_name = str_replace("'", "''", $faker->firstName);
+    $user_last_name = str_replace("'", "''", $faker->lastName);
+    $user_email = $faker->unique->email;
+    $user_address = str_replace("'", "''", $faker->address);
+    $user_role_name = $roles[array_rand($roles)];
+    $user_created_at = time();
+    $user_updated_at = 0;
+    $user_deleted_at = 0;
+    $values .= "('$user_id', '$user_name', '$user_last_name', '$user_email', '$user_password', 
+    '$user_address', '$user_role_name', '$user_tag_color', $user_created_at, $user_updated_at, $user_deleted_at),";
+  }
+  $values = rtrim($values, ',');  
+  $q = $db->prepare("INSERT INTO users VALUES $values");
+  $q->execute();
 
-  $q->bindParam(':user_id', $user_id);
-  $q->bindParam(':user_name', $firstName);
-  $q->bindParam(':user_last_name', $lastName);
-  $q->bindParam(':user_email', $email);
-  $q->bindParam(':user_address', $address);
-  $q->bindParam(':user_password', $password);
-  $q->bindParam(':user_role', $user_role);
-  $q->bindParam(':user_created_at', $created_at);
-  $q->bindParam(':user_updated_at', $user_updated_at);
-  $q->bindParam(':user_deleted_at', $user_deleted_at);
-  $q->bindParam(':user_is_blocked', $user_is_blocked);
+  echo "+ users".PHP_EOL;
+}catch(Exception $e){
+  echo $e;
 }
-$q->execute();
 
 
 
-//   $q = 'INSERT INTO users VALUES ';
-//   $values = '';
-//   for($i = 0; $i < 10; $i++){
-//     // $user_id = bin2hex(random_bytes(16));
-//     $password = password_hash($faker->password, PASSWORD_DEFAULT);
-//     $blocked  = rand(0,1);
-//     $created_at = time();
-//     $deleted_at = time();
-//     $updated_at = time();
-//     $values .= "(null,
-//                 '$faker->firstName', 
-//                 '$faker->lastName', 
-//                 '$faker->email',
-//                 '$faker->address',
-//                 'user', 
-//                 '$password', 
-//                 $created_at, 0, 0, 
-//                 $updated_at, 0, 0,
-//                 $deleted_at, 0, 0,
-//                 $blocked
-//               ),"; 
-//   }
-//   $values = rtrim($values, ",");
-//   $q .= $values;
 
-// $db = _db();
-// $sql = $db->prepare($q);
-// $sql->execute();
+
+
+
+
+

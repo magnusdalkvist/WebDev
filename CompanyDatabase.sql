@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 05, 2023 at 10:35 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:8889
+-- Generation Time: Nov 23, 2023 at 11:43 AM
+-- Server version: 5.7.39
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,28 @@ DELIMITER ;
 CREATE TABLE `employees` (
   `user_employee_fk` bigint(20) UNSIGNED NOT NULL,
   `employee_salaray` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`user_employee_fk`, `employee_salaray`) VALUES
+(91, 36973),
+(118, 61339);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `order_user_fk` bigint(20) UNSIGNED NOT NULL,
+  `order_product_fk` bigint(20) UNSIGNED NOT NULL,
+  `order_amount_paid` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +74,27 @@ CREATE TABLE `employees` (
 CREATE TABLE `partners` (
   `user_partner_fk` bigint(20) UNSIGNED NOT NULL,
   `partner_geo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `partners`
+--
+
+INSERT INTO `partners` (`user_partner_fk`, `partner_geo`) VALUES
+(102, '-64.918024,-77.116891'),
+(109, '-43.377922,27.600859');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `product_price` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,7 +105,7 @@ CREATE TABLE `partners` (
 CREATE TABLE `roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL,
   `role_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `roles`
@@ -86,7 +127,11 @@ INSERT INTO `roles` (`role_id`, `role_name`) VALUES
 (17, 'user'),
 (18, 'partner'),
 (19, 'employee'),
-(20, 'admin');
+(20, 'admin'),
+(21, 'user'),
+(22, 'partner'),
+(23, 'employee'),
+(24, 'admin');
 
 -- --------------------------------------------------------
 
@@ -96,14 +141,14 @@ INSERT INTO `roles` (`role_id`, `role_name`) VALUES
 
 CREATE TABLE `stats` (
   `total_users` int(4) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stats`
 --
 
 INSERT INTO `stats` (`total_users`) VALUES
-(4);
+(14);
 
 -- --------------------------------------------------------
 
@@ -123,7 +168,7 @@ CREATE TABLE `users` (
   `user_updated_at` char(10) NOT NULL,
   `user_deleted_at` char(10) NOT NULL,
   `user_is_blocked` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -145,7 +190,17 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_last_name`, `user_email`, `us
 (103, 'Loyce', 'Turcotte', 'hschowalter@yahoo.com', '10855 Emard Passage\nPort Kade, NH 41610', '$2y$10$zyZT228OjQQXkkKl3p7weuvzE4tEQowLt6hItoiP5ruMTPloBgbpu', 'user', '1696417442', '0', '0', 1),
 (104, 'Josianne', 'Conroy', 'toby.jenkins@littel.net', '7171 Tanner Key\nBalistreritown, VT 24891-0736', '$2y$10$9rI2KNlaCQ6OiFtQmMmp5uKhYPOAEJEM1P5B3LmOhhS8raXQIdeFS', 'user', '1696417465', '0', '0', 1),
 (105, 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 0),
-(108, 'SantiagoDonoso', 'Schiller', 'sand@kea.dk', '213 Quigley Wall Suite 985\nAdelbertmouth, PA 38055-4023', '$2y$10$FPEcWrryYmy/ToWn.W9no.tsuy7EjyIWcBM/.2A9RQsIvRNOERY7u', 'user', '1696494384', '0', '0', 1);
+(108, 'SantiagoDonoso', 'Schiller', 'sand@kea.dk', '213 Quigley Wall Suite 985\nAdelbertmouth, PA 38055-4023', '$2y$10$FPEcWrryYmy/ToWn.W9no.tsuy7EjyIWcBM/.2A9RQsIvRNOERY7u', 'user', '1696494384', '0', '0', 1),
+(109, 'Maureen', 'Parker', 'ydickinson@jenkins.net', '69546 Janessa Keys Apt. 122\nSamantaville, KY 82518', '$2y$10$lL9agYYnVVO2TFMnISu/PedFik8gcgPxJWL1ds5.56NBgKlOsMtv.', 'user', '1698920580', '0', '0', 0),
+(110, 'Torrance', 'Gislason', 'rowe.magnus@gmail.com', '34073 Joel Extension\nGaylordfurt, AZ 16874', '$2y$10$65Wh7g8/1VPZrYYWfXBqf.SOGazRnJ2TAQ8P9aFeSUEnysEi40egi', 'user', '1698920580', '0', '0', 1),
+(111, 'Christiana', 'Bailey', 'owalsh@yahoo.com', '649 Regan Highway\nSouth Tituschester, OR 51429-8183', '$2y$10$CkD3/z.sv7W8JyXKWYeKF.gdRg3GUnHZ6PTCZJahb3sFsk.YsZ5Z.', 'user', '1698920580', '0', '0', 0),
+(112, 'Angela', 'Zboncak', 'mcglynn.makenna@hotmail.com', '59259 McLaughlin Road Apt. 497\nHarberville, SC 05345', '$2y$10$8Fkwc86XLBEcgwEzNrqUYuS7bNbxwIjrEnWrPQcVoB.43LzNrpPJO', 'user', '1698920580', '0', '0', 0),
+(113, 'Kameron', 'Doyle', 'hsauer@bogisich.org', '39469 Cheyanne Gardens\nAnneview, IN 32480-9394', '$2y$10$dMR5AHFkGGv.ABOXzY8Gp.91weTFx85dOXxbjG8G0MD.eR1PKaOBy', 'user', '1698920580', '0', '0', 0),
+(114, 'Lyla', 'Ratke', 'qroob@hotmail.com', '6790 Kenton Pine\nCassinchester, VA 00728-9872', '$2y$10$Hp500b8h1nI/lydkEmSNsenaVlrGHNBmT9ViSUNoC/Gh0xxkl7tHe', 'user', '1698920580', '0', '0', 1),
+(115, 'Gerardo', 'Okuneva', 'nglover@yahoo.com', '538 Rozella Brook Suite 876\nPort Rachelle, ME 02282', '$2y$10$QN/tZqI.es8F19aweRjtw.SHezPaAiPNMjtg2SkkziLKd/eayTRT.', 'user', '1698920580', '0', '0', 0),
+(116, 'Mariah', 'Jerde', 'ziemann.luz@tromp.com', '55589 Olson Loop\nNew Brando, LA 07922-8493', '$2y$10$et4UPaIzGV5ug/DtTRfp3eX7D.zd3UIVzs8oY416BUPbrX3gG.Sce', 'user', '1698920580', '0', '0', 0),
+(117, 'Damion', 'Olson', 'duncan.bauch@gmail.com', '3297 Keira Loop\nMajorton, OK 09790', '$2y$10$hh9v2GS5zgqX.FTt7.PYq.Z98JoHj.e3AbJQEau2uBGr.zCIOdrbW', 'user', '1698920580', '0', '0', 0),
+(118, 'Esta', 'Schneider', 'phyllis.barrows@bradtke.com', '56502 Borer Ranch\nSouth Dashawn, OR 48842', '$2y$10$Inir9KFkd7JWJh0lj6/Zjuod5dj28ywG7nEyhykj/7ON/wUhoIbyO', 'user', '1698920580', '0', '0', 0);
 
 --
 -- Triggers `users`
@@ -168,10 +223,24 @@ ALTER TABLE `employees`
   ADD UNIQUE KEY `user_employee_fk` (`user_employee_fk`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD UNIQUE KEY `order_id` (`order_id`),
+  ADD KEY `user_ibfk_1` (`order_user_fk`),
+  ADD KEY `product_ibfk_1` (`order_product_fk`);
+
+--
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
   ADD UNIQUE KEY `user_partner_fk` (`user_partner_fk`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `roles`
@@ -194,16 +263,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- Constraints for dumped tables
@@ -214,6 +295,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`user_employee_fk`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`order_product_fk`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`order_user_fk`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `partners`

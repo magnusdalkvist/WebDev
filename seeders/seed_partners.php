@@ -6,6 +6,10 @@ require_once __DIR__ . '/Faker/src/autoload.php';
 $faker = Faker\Factory::create();
 
 $db = _db();
+
+$q = $db->prepare('DELETE FROM partners');
+$q->execute();
+
 $q = $db->prepare('SELECT user_id FROM users ORDER BY RAND() LIMIT 2');
 $q->execute();
 $ids = $q->fetchAll(PDO::FETCH_COLUMN); // [5,10]

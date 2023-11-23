@@ -1,38 +1,51 @@
 <?php
 
-require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/Faker/src/autoload.php';
-
+require_once __DIR__.'/../_.php';
+require_once __DIR__ . '/Faker/autoload.php';
 $faker = Faker\Factory::create();
 
-$db = _db();
-$q = $db->prepare('SELECT user_id FROM users ORDER BY RAND() LIMIT 2');
-$q->execute();
-$ids = $q->fetchAll(PDO::FETCH_COLUMN); // [5,10]
+try{
 
-$db = _db();
-$q = "CREATE TABLE IF NOT EXISTS employees (
-   user_id INT PRIMARY KEY,
-   salary INT
-)";
-$db->exec($q);
+  $db = _db();
 
+  // Delete existing data in the employees table
+  $q = $db->prepare('DELETE FROM employees');
+  $q->execute();
 
-$q = 'INSERT INTO employees VALUES ';
-$values = '';
-$array_length = count($ids);
-for ($i = 0; $i < $array_length; $i++) {
-  $salary = rand(10000, 99999);
-  $index = array_rand($ids);
-  $user_employee_fk = $ids[$index];
-  unset($ids[$index]);
-  $values .= "($user_employee_fk, $salary),";
+  // Get users whom are employees to assign a salary to them
+  $user_role_name = 'employee';
+  $q = $db->prepare("SELECT user_id FROM users WHERE user_role_name == '$user_role_name'");
+  $q->execute();
+  $employees_ids = $q->fetchAll(PDO::FETCH_COLUMN); // ["a523cde0aa01318439aff66bf776d7e6","3ab2b29dbee4c17c843884647584ad4c"]
+  // echo json_encode($users_ids); exit();
+  
+  $q = $db->prepare('
+    CREATE TABLE employees(
+      employee_id                       TEXT,
+      employee_salary                   TEXT,
+      employee_created_at               TEXT,
+      employee_updated_at               TEXT,
+      employee_deleted_at               TEXT,
+      PRIMARY KEY (employee_id)
+    )
+  ');
+  $q->execute();
+
+  $employee_updated_at = 0; 
+  $employee_deleted_at = 0; 
+  
+  $values = '';
+  foreach($employees_ids as $employee_id){
+    $employee_salary = rand(3500000, 25000000);
+    $employee_created_at = rand(time()-1602343484, time());
+    $values .= "('$employee_id', $employee_salary, $employee_created_at, 
+    $employee_updated_at, $employee_deleted_at),";
+  }
+  $values = rtrim($values, ',');  
+  $q = $db->prepare("INSERT INTO employees VALUES $values");
+  $q->execute();
+
+  echo "+ employees".PHP_EOL;
+}catch(Exception $e){
+  echo $e;
 }
-$values = rtrim($values, ",");
-$q .= $values;
-
-echo $q;
-$db = _db();
-$sql = $db->prepare($q);
-$sql->execute();
-

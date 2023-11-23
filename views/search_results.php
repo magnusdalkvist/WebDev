@@ -12,17 +12,27 @@ $users = $q->fetchAll();
 
 
 
-<main class="px-4">
+<main class="mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
   <?php foreach ($users as $user) : ?>
-    <div class="flex">
+    <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
       <div class="hidden"><?= $user['user_id'] ?></div>
-      <div class="w-1/5"><?php out($user['user_name']) ?></div>
-      <div class="w-1/5"><?php out($user['user_last_name']) ?></div>
-      <div class="w-1/5"><?php out($user['user_email']) ?></div>
-      <div class="w-1/5"><?php out($user['user_role']) ?></div>
-      <button class="w-1/5">🗑️</button>
+      <div class="w-1/4"><?php out($user['user_name']) ?></div>
+      <div class="w-1/4"><?php out($user['user_last_name']) ?></div>
+      <div class="w-2/5"><?php out($user['user_email']) ?></div>
+      <button class="ml-auto">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          visibility
+        </span>
+      </button>
+      <button class="">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          delete
+        </span>
+      </button>
     </div>
   <?php endforeach ?>
+
+
 </main>
 
 <?php

@@ -143,18 +143,19 @@ async function signup() {
   }
 
   // TODO: redirect to the login page
-  // location.href = "/login";
+  location.href = "/login";
 }
 
 async function login() {
   const frm = event.target;
+  event.preventDefault();
   console.log(frm);
   const conn = await fetch("/api/api-login.php", {
     method: "POST",
     body: new FormData(frm),
   });
 
-  const data = await conn.text();
+  const data = await conn.json();
   console.log(data);
 
   if (!conn.ok) {
@@ -167,6 +168,10 @@ async function login() {
     return;
   }
 
-  // TODO: redirect to the login page
+  if (data.user_role == "admin") {
+    location.href = "/admin";
+    return;
+  }
+
   location.href = "/";
 }

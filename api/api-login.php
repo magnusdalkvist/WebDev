@@ -22,12 +22,8 @@ try{
     throw new Exception('invalid credentials', 400);
   }
 
-  session_start();
-  $_SESSION['user'] = [
-    'user_id' => $user['user_id'],
-    'user_name' => $user['user_name'],
-    'user_email' => $user['user_email']
-  ];
+  $_SESSION['user'] = $user;
+  echo json_encode($_SESSION['user']);
 
 }catch(Exception $e){
   try{

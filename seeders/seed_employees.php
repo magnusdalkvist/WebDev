@@ -10,6 +10,14 @@ $q = $db->prepare('SELECT user_id FROM users ORDER BY RAND() LIMIT 2');
 $q->execute();
 $ids = $q->fetchAll(PDO::FETCH_COLUMN); // [5,10]
 
+$db = _db();
+$q = "CREATE TABLE IF NOT EXISTS employees (
+   user_id INT PRIMARY KEY,
+   salary INT
+)";
+$db->exec($q);
+
+
 $q = 'INSERT INTO employees VALUES ';
 $values = '';
 $array_length = count($ids);

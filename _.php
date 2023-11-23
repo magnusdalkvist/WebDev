@@ -8,7 +8,7 @@ function _db()
 {
   try {
     $user_name = "root";
-    $user_password = "root";
+    $user_password = "";
     // $db_connection = 'sqlite:' . __DIR__ . '/database/data.sqlite';
     $db_connection = "mysql:host=localhost; dbname=company; charset=utf8mb4";
 

@@ -7,7 +7,7 @@ $faker = Faker\Factory::create();
 
 $db = _db();
 
-$q = $db->prepare('DROP TABLE IF EXISTS roles');
+$q = $db->prepare('DROP TABLE IF EXISTS users');
 $q->execute();
 
 $q = $db->prepare('

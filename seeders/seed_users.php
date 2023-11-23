@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../_.php';
 require_once __DIR__ . '/Faker/src/autoload.php';
 
-// use the factory to create a Faker\Generator instance
 $faker = Faker\Factory::create();
 
 $db = _db();
@@ -23,17 +22,18 @@ CREATE TABLE users(
   user_created_at TEXT,
   user_updated_at TEXT,
   user_deleted_at TEXT,
-  user_is_blocked TEXT
+  user_is_blocked TEXT,
   PRIMARY KEY (user_id)
 )
 ');
+
+$q->execute();
 
 $q = $db->prepare('INSERT INTO users VALUES (  :user_id, :user_name, :user_last_name, 
                                   :user_email, :user_address, :user_password, :user_role, 
                                   :user_created_at, :user_updated_at, :user_deleted_at, :user_is_blocked)');
 
 for ($i = 0; $i < 1; $i++) {
-
 
   $user_role = 'user';
   $user_updated_at = 0;

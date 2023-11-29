@@ -45,97 +45,30 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
           </span>
           All data
         </a>
-        <a href="/account" class="flex items-center">
-          <span class="material-symbols-outlined mr-2 font-thin">
-            Person
-          </span>
-          Account
-        </a>
       </div>
     <?php endif ?>
 
-
-    <?php if (!isset($_SESSION['user'])) : ?>
-      <a href="/user_orders" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          receipt_long
-        </span>
-        Orders
-      </a>
-      <a href="/account" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          Person
-        </span>
-        Account
-      </a>
-      <a href="/login" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          key
-        </span>
-        Login
-      </a>
-      <a href="/signup" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          key
-        </span>
-        Signup
-      </a>
-    <?php else : ?>
-      <a href="/logout" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          lock
-        </span>
-        Logout
-      </a>
-    <?php endif ?>
-
     <?php if (_is_partner()) : ?>
-      <a href="/user_orders" class="flex items-center">
+      <!-- <a href="/user_orders" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           receipt_long
         </span>
         Orders
-      </a>
-      <a href="/account" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          Person
-        </span>
-        Account
-      </a>
-      <a href="/login" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          key
-        </span>
-        Login
-      </a>
-      <a href="/signup" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          key
-        </span>
-        Signup
-      </a>
-    <?php else : ?>
-      <a href="/logout" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          lock
-        </span>
-        Logout
-      </a>
+      </a> -->
+      <!-- TODO: Orders made for partner store -->
     <?php endif ?>
 
     <?php if (_is_employee()) : ?>
-      <a href="/user_orders" class="flex items-center">
+      <!-- <a href="/user_orders" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           receipt_long
         </span>
         Orders
-      </a>
-      <a href="/account" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          Person
-        </span>
-        Account
-      </a>
+      </a> -->
+      <!-- TODO: Orders made for related partner store to employee -->
+    <?php endif ?>
+
+    <?php if (!isset($_SESSION['user'])) : ?>
       <a href="/login" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           key
@@ -149,6 +82,12 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
         Signup
       </a>
     <?php else : ?>
+      <a href="/account" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          Person
+        </span>
+        Account
+      </a>
       <a href="/logout" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           lock
@@ -156,8 +95,6 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
         Logout
       </a>
     <?php endif ?>
-
-
   </nav>
 
 

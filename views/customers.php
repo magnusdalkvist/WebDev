@@ -7,7 +7,7 @@ if (!_is_admin()) {
 
 $db = _db();
 $q = $db->prepare(' SELECT user_id, user_name, user_last_name, user_email, user_tag_color
-                    FROM users WHERE user_role_name = "customer" LIMIT 10');
+                    FROM users WHERE user_role_name = "customer" ');
 $q->execute();
 $users = $q->fetchAll();
 ?>

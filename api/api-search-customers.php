@@ -7,9 +7,9 @@ try {
   $q = $db->prepare('
     SELECT user_name, user_last_name, user_email
     FROM users
-    WHERE user_name LIKE :user_name
+    WHERE user_role_name = "customer"
+    AND user_name LIKE :user_name
     OR user_last_name LIKE :user_last_name
-    AND user_role_name = "customer"
   ');
   $q->bindValue(':user_name', '%' . $_POST['query'] . '%');
   $q->bindValue(':user_last_name', '%' . $_POST['query'] . '%');

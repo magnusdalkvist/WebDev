@@ -21,9 +21,7 @@ function search_users() {
           <div class="">${user.employee_salaray}</div>
         </div>
       `;
-      document
-        .querySelector("#query_results")
-        .insertAdjacentHTML("afterbegin", div_user);
+      document.querySelector("#query_results").insertAdjacentHTML("afterbegin", div_user);
     });
   }, 500);
 }
@@ -38,9 +36,7 @@ async function is_email_available() {
   if (!conn.ok) {
     // everything that is not a 2xx
     console.log("email not available");
-    document
-      .querySelector("#msg_email_not_available")
-      .classList.remove("hidden");
+    document.querySelector("#msg_email_not_available").classList.remove("hidden");
     return;
   }
   console.log("email available");
@@ -157,7 +153,7 @@ async function login() {
     return;
   }
 
-  if (data.user_role == "admin") {
+  if (data.user_role_name == "admin") {
     location.href = "/admin";
     return;
   }

@@ -9,8 +9,7 @@ try {
     $q = $db->prepare('
         CREATE DEFINER=`root`@`localhost` 
         PROCEDURE `login`(IN `the_users_email` VARCHAR(100) CHARSET utf8mb4) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
-        SELECT user_password, user_id, user_name, user_email, user_role_name 
-        FROM users WHERE user_email = the_users_email
+        SELECT * FROM users WHERE user_email = the_users_email
     ');
     $q->execute();
 

@@ -16,7 +16,7 @@ try {
 
   $q = $db->prepare('
     CREATE TABLE users(
-      user_id           TEXT,
+      user_id           int NOT NULL AUTO_INCREMENT,
       user_name         TEXT,
       user_last_name    TEXT,
       user_email        TEXT,
@@ -27,26 +27,17 @@ try {
       user_created_at   TEXT,
       user_updated_at   TEXT,
       user_deleted_at   TEXT,
-      PRIMARY KEY (user_id(255)),
+      PRIMARY KEY (user_id),
       UNIQUE (user_email(255))
     )
   ');
   $q->execute();
 
   $values = '';
-  // Admin roles
-
-  $admin_password = password_hash('password', PASSWORD_DEFAULT);
-  $admin_created_at = time();
-  $admin_updated_at = 0;
-  $admin_deleted_at = 0;
-  $values .= "('64474be79ad54b2b8f62164d97ff7ef1', 'Admin', 'Admin', 'admin@company.com', 
-  '$admin_password', 'Admin address', 'admin', '#0ea5e9', $admin_created_at, $admin_updated_at, $admin_deleted_at),";
-
 
   $user_password = password_hash('password', PASSWORD_DEFAULT); // too long time in loop
-  for ($i = 0; $i < 100; $i++) {
-    $user_id = bin2hex(random_bytes(16));
+  for ($i = 1; $i < 100; $i++) {
+    $user_id = $i;
     $user_name = str_replace("'", "''", $faker->firstName);
     $user_last_name = str_replace("'", "''", $faker->lastName);
     $user_email = $faker->unique->email;
@@ -56,9 +47,19 @@ try {
     $user_created_at = time();
     $user_updated_at = 0;
     $user_deleted_at = 0;
-    $values .= "('$user_id', '$user_name', '$user_last_name', '$user_email', '$user_password', 
+    $values .= "($user_id, '$user_name', '$user_last_name', '$user_email', '$user_password', 
     '$user_address', '$user_role_name', '$user_tag_color', $user_created_at, $user_updated_at, $user_deleted_at),";
   }
+
+  // Admin roles
+
+  $admin_password = password_hash('password', PASSWORD_DEFAULT);
+  $admin_created_at = time();
+  $admin_updated_at = 0;
+  $admin_deleted_at = 0;
+  $values .= "(null, 'Admin', 'Admin', 'admin@company.com', 
+  '$admin_password', 'Admin address', 'admin', '#0ea5e9', $admin_created_at, $admin_updated_at, $admin_deleted_at),";
+
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO users VALUES $values");
   $q->execute();

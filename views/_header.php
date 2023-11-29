@@ -62,6 +62,12 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
         </span>
         Login
       </a>
+      <a href="/signup" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Signup
+      </a>
     <?php else : ?>
       <a href="/logout" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">

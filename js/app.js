@@ -177,5 +177,4 @@ async function update_user() {
     .catch(error => {
       console.error('error:', error);
     });
-   
 }

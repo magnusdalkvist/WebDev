@@ -24,7 +24,7 @@ try {
 
   $q = $db->prepare('
     CREATE TABLE orders_items(
-      orders_items_id             TEXT,
+      orders_items_id             int NOT NULL AUTO_INCREMENT,
       orders_items_order_fk       TEXT,
       orders_items_item_fk        TEXT,
       orders_items_total_price    TEXT,
@@ -32,7 +32,7 @@ try {
       orders_items_created_at     TEXT,
       orders_items_updated_at     TEXT,
       orders_items_deleted_at     TEXT,
-      PRIMARY KEY (orders_items_id(255))
+      PRIMARY KEY (orders_items_id)
     )
   ');
   $q->execute();
@@ -41,7 +41,6 @@ try {
   $values = '';
   for ($i = 0; $i < 100; $i++) {
     $item = $items[array_rand($items)];
-    $orders_items_id = bin2hex(random_bytes(16));
     $orders_items_order_fk = $orders_ids[array_rand($orders_ids)];
     $orders_items_item_fk = $item[0];
     // Same order with same item cannot repeat
@@ -57,7 +56,7 @@ try {
     $orders_items_updated_at = 0;
     $orders_items_deleted_at = 0;
 
-    $values .= "('$orders_items_id', '$orders_items_order_fk', '$orders_items_item_fk',
+    $values .= "(null, '$orders_items_order_fk', '$orders_items_item_fk',
                   $orders_items_total_price, $orders_items_item_quantity, $orders_items_created_at,
                   $orders_items_updated_at, $orders_items_deleted_at),";
   }

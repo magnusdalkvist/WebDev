@@ -17,27 +17,26 @@ try {
   // echo json_encode($users_ids); exit();
   $q = $db->prepare('
     CREATE TABLE items(
-      item_id                   TEXT,
+      item_id                   int NOT NULL AUTO_INCREMENT,
       item_name                 TEXT,
       item_price                TEXT,
       item_created_at           TEXT,
       item_updated_at           TEXT,
       item_deleted_at           TEXT,
-      item_created_by_user_fk   TEXT,
-      PRIMARY KEY (item_id(255))
+      item_created_by_user_fk   int,
+      PRIMARY KEY (item_id)
     )
   ');
   $q->execute();
   $values = '';
   for ($i = 0; $i < 100; $i++) {
-    $item_id = bin2hex(random_bytes(16));
     $item_name = str_replace("'", "''", $faker->unique->word);
     $item_price = rand(1000, 99999);
     $item_created_at = time();
     $item_updated_at = 0;
     $item_deleted_at = 0;
     $item_created_by_user_fk = $users_ids[array_rand($users_ids)];
-    $values .= "('$item_id', '$item_name', $item_price, $item_created_at, $item_updated_at, $item_deleted_at, '$item_created_by_user_fk'),";
+    $values .= "(null, '$item_name', $item_price, $item_created_at, $item_updated_at, $item_deleted_at, '$item_created_by_user_fk'),";
   }
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO items VALUES $values");

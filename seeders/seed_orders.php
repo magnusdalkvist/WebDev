@@ -29,21 +29,20 @@ try {
 
   $q = $db->prepare('
     CREATE TABLE orders(
-      order_id                      TEXT,
-      order_created_by_user_fk      TEXT,
+      order_id                      int NOT NULL AUTO_INCREMENT,
+      order_created_by_user_fk      int,
       order_created_at              TEXT,
       order_updated_at              TEXT,
       order_deleted_at              TEXT,
       order_delivered_at            TEXT,
-      order_delivered_by_user_fk    TEXT,
-      PRIMARY KEY (order_id(255))
+      order_delivered_by_user_fk    int,
+      PRIMARY KEY (order_id)
     )
   ');
   $q->execute();
 
   $values = '';
   for ($i = 0; $i < 100; $i++) {
-    $order_id = bin2hex(random_bytes(16));
     $order_created_by_user_fk = $users_ids[array_rand($users_ids)];
     $order_created_at = time();
     $order_updated_at = 0;
@@ -51,7 +50,7 @@ try {
     $order_delivered_at = 0;
     $order_delivered_by_user_fk = $employees_ids[array_rand($employees_ids)];
 
-    $values .= "('$order_id', '$order_created_by_user_fk', '$order_created_at', '$order_updated_at', 
+    $values .= "(null, '$order_created_by_user_fk', '$order_created_at', '$order_updated_at', 
     '$order_deleted_at', '$order_delivered_at', '$order_delivered_by_user_fk'),";
   }
   $values = rtrim($values, ',');

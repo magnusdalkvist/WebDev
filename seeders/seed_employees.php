@@ -19,12 +19,12 @@ try {
 
   $q = $db->prepare('
     CREATE TABLE employees(
-      employee_id                       TEXT,
+      employee_id                       int,
       employee_salary                   TEXT,
       employee_created_at               TEXT,
       employee_updated_at               TEXT,
       employee_deleted_at               TEXT,
-      PRIMARY KEY (employee_id(255))
+      PRIMARY KEY (employee_id)
     )
   ');
   $q->execute();

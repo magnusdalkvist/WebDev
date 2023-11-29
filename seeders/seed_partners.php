@@ -16,10 +16,10 @@ try {
 
   $q = $db->prepare('
   CREATE TABLE partners(
-  user_partner_id               TEXT,
+  user_partner_id               int,
   partner_geo                   TEXT,
   partner_name                  TEXT,
-  PRIMARY KEY (user_partner_id(255))
+  PRIMARY KEY (user_partner_id)
 )
 ');
   $q->execute();

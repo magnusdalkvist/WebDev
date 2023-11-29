@@ -11,19 +11,19 @@ try {
 
   $q = $db->prepare('
     CREATE TABLE roles(
-      role_id           TEXT,
+      role_id           int NOT NULL AUTO_INCREMENT,
       role_name         TEXT,
       role_created_at   TEXT,
       role_updated_at   TEXT,
-      PRIMARY KEY (role_id(255))
+      PRIMARY KEY (role_id)
     )
   ');
   $q->execute();
   $created_at = time();
   $q = $db->prepare(" INSERT INTO roles VALUES 
-                      ('113201f10aaa410f9b7b9f0a6477b443', 'partner', $created_at, 0),
-                      ('a3280a85612746c38a17465530739090', 'customer', $created_at, 0),
-                      ('4e8f0d641fff4cd6aed260c4521718e8', 'employee', $created_at, 0)");
+                      (null, 'partner', $created_at, 0),
+                      (null, 'customer', $created_at, 0),
+                      (null, 'employee', $created_at, 0)");
   $q->execute();
 
   echo "+ roles" . PHP_EOL;

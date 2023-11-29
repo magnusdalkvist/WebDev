@@ -7,7 +7,7 @@ if (!_is_admin()) {
 
 $db = _db();
 $q = $db->prepare(' SELECT *
-                    FROM users WHERE user_role_name = "customer" AND user_deleted_at = 0');
+                    FROM users ');
 $q->execute();
 $users = $q->fetchAll();
 ?>
@@ -17,7 +17,7 @@ $users = $q->fetchAll();
 
   <div class="flex py-4 text-xl">
     <h1 class="text-black">
-      Customers
+      All users
     </h1>
 
     <?php
@@ -40,6 +40,7 @@ $users = $q->fetchAll();
       </div>
       <div class="w-1/4"><?php out($user['user_name']) ?></div>
       <div class="w-1/4"><?php out($user['user_last_name']) ?></div>
+      <div class="w-1/4"><?php out($user['user_role_name']) ?></div>
       <div class="w-2/5"><?php out($user['user_email']) ?></div>
       <button class="ml-auto">
         <span class="material-symbols-outlined mr-2 font-thin">

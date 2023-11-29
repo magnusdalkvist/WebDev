@@ -27,11 +27,11 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
 
     <?php if (_is_admin()) : ?>
       <div class="flex flex-col gap-4">
-        <a href="/customers" class="flex items-center">
+        <a href="/all_users" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">
             group
           </span>
-          Customers
+          All users
         </a>
         <a href="/employees" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">

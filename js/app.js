@@ -21,7 +21,9 @@ function search_users() {
           <div class="">${user.employee_salaray}</div>
         </div>
       `;
-      document.querySelector("#query_results").insertAdjacentHTML("afterbegin", div_user);
+      document
+        .querySelector("#query_results")
+        .insertAdjacentHTML("afterbegin", div_user);
     });
   }, 500);
 }
@@ -36,7 +38,9 @@ async function is_email_available() {
   if (!conn.ok) {
     // everything that is not a 2xx
     console.log("email not available");
-    document.querySelector("#msg_email_not_available").classList.remove("hidden");
+    document
+      .querySelector("#msg_email_not_available")
+      .classList.remove("hidden");
     return;
   }
   console.log("email available");
@@ -57,20 +61,15 @@ async function delete_user() {
 
 // ##############################
 async function toggle_blocked(user_id, user_is_blocked) {
-  console.log("user_id", user_id);
-  console.log("user_is_blocked", user_is_blocked);
-
   if (user_is_blocked == 0) {
     event.target.innerHTML = "blocked";
   } else {
     event.target.innerHTML = "unblocked";
   }
-
   const conn = await fetch(
     `api/api-toggle-user-blocked.php?user_id=${user_id}&user_is_blocked=${user_is_blocked}`
   );
   const data = await conn.text();
-  console.log(data);
 }
 
 // const system_theme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -106,16 +105,6 @@ function toogle_menu() {
   document.querySelector("#menu").classList.remove("-left-60");
   document.querySelector("#menu").classList.add("left-0");
   document.querySelector("#menu_background").classList.remove("hidden");
-}
-
-function toggle_language() {
-  console.log("x");
-  if (document.querySelector("#box_languages").classList.contains("hidden")) {
-    console.log("the box hidden");
-    document.querySelector("#box_languages").classList.remove("hidden");
-    return;
-  }
-  document.querySelector("#box_languages").classList.add("hidden");
 }
 
 async function signup() {
@@ -162,19 +151,19 @@ async function login() {
 }
 
 async function update_user() {
-  const frm = event.target
+  const frm = event.target;
   event.preventDefault();
-  console.log(frm)
+  console.log(frm);
 
   fetch("/api/api-update-user.php", {
     method: "POST",
     body: new FormData(frm),
-   })
-    .then(response => response.json())
-    .then(data => {
+  })
+    .then((response) => response.json())
+    .then((data) => {
       location.reload();
     })
-    .catch(error => {
-      console.error('error:', error);
+    .catch((error) => {
+      console.error("error:", error);
     });
 }

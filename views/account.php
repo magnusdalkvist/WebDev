@@ -32,7 +32,7 @@ $orders = $q->fetchAll();
       <div class="w-2/5"><?php out($user['user_email']) ?></div>
     </div>
   </section>
-  <section class="flex flex-col mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
+  <!-- <section class="flex flex-col mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
     <h3 class="py-4">Orders:</h3>
     <div id="account_orders">
       <div class="">
@@ -70,7 +70,7 @@ $orders = $q->fetchAll();
           </div>
         <?php endforeach ?>
       </div>
-  </section>
+  </section> -->
 
 
   <form class="flex flex-col mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500" onsubmit="validate(update_user);">

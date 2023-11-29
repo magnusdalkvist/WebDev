@@ -160,3 +160,22 @@ async function login() {
 
   location.href = "/";
 }
+
+async function update_user() {
+  const frm = event.target
+  event.preventDefault();
+  console.log(frm)
+
+  fetch("/api/api-update-user.php", {
+    method: "POST",
+    body: new FormData(frm),
+   })
+    .then(response => response.json())
+    .then(data => {
+      location.reload();
+    })
+    .catch(error => {
+      console.error('error:', error);
+    });
+   
+}

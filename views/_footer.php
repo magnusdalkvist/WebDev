@@ -1,9 +1,7 @@
 </main>
 
-
-<script src="/app.js"></script>
-<script src="/validator.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/validator.js"></script>
 
 </body>
-
 </html>

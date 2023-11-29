@@ -23,6 +23,7 @@ try{
   }
 
   $_SESSION['user'] = $user;
+  $_SESSION['user_id'] = $user['user_id']; 
   echo json_encode($_SESSION['user']);
 
 }catch(Exception $e){

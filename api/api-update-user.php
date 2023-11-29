@@ -2,7 +2,6 @@
 require_once __DIR__.'/../_.php';
 
 try{
- session_start(); 
 
  if(!isset($_SESSION['user_id'])) {
  throw new Exception('User not logged in', 401);
@@ -20,6 +19,19 @@ try{
  $q->bindValue(':user_password', $_POST['user_password'] ? password_hash($_POST['user_password'], PASSWORD_DEFAULT) : $user['user_password']);
 
  $q->execute();
+
+ if ($q->rowCount() == 0) {
+ throw new Exception('No rows were updated');
+ }
+
+ // Re-fetch the user information from the database
+ $q = $db->prepare('SELECT * FROM users WHERE user_id = :user_id');
+ $q->bindValue(':user_id', $user['user_id']);
+ $q->execute();
+ $user = $q->fetch(PDO::FETCH_ASSOC);
+
+ // Update the $_SESSION['user'] variable with the latest user information
+ $_SESSION['user'] = $user;
 
  echo json_encode(['message' => 'User updated successfully']);
 }catch(Exception $e){

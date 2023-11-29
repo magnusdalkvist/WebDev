@@ -14,8 +14,8 @@ try {
   $q->bindValue(':user_name', '%' . $_POST['query'] . '%');
   $q->bindValue(':user_last_name', '%' . $_POST['query'] . '%');
   $q->execute();
-  $employees = $q->fetchAll();
-  echo json_encode($employees);
+  $partners = $q->fetchAll();
+  echo json_encode($partners);
 } catch (Exception $e) {
   $status_code = !ctype_digit($e->getCode()) ? 500 : $e->getCode();
   $message = strlen($e->getMessage()) == 0 ? 'error - ' . $e->getLine() : $e->getMessage();

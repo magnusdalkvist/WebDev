@@ -8,7 +8,7 @@ try{
  throw new Exception('User not logged in', 401);
  }
 
- $user = $_SESSION['user']; // Fetch the user object from the session
+ $user = $_SESSION['user']; 
 
  $db = _db();
  $q = $db->prepare('UPDATE users SET user_name = :user_name, user_last_name = :user_last_name, user_email = :user_email, user_password = :user_password WHERE user_id = :user_id');

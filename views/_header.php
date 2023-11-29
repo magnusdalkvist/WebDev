@@ -68,6 +68,16 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
       <!-- TODO: Orders made for related partner store to employee -->
     <?php endif ?>
 
+    <?php if (_is_customer()) : ?>
+      <a href="/user_orders" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          receipt_long
+        </span>
+        Orders
+      </a>
+
+    <?php endif ?>
+
     <?php if (!isset($_SESSION['user'])) : ?>
       <a href="/login" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">

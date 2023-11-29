@@ -132,6 +132,10 @@ function _is_employee()
 {
   return (!isset($_SESSION['user']) || $_SESSION['user']['user_role_name'] != 'employee') ? false : true;
 }
+function _is_customer()
+{
+  return (!isset($_SESSION['user']) || $_SESSION['user']['user_role_name'] != 'customer') ? false : true;
+}
 
 // ##############################
 function out($text)

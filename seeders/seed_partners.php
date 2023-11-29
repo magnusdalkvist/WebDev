@@ -18,18 +18,19 @@ try {
   CREATE TABLE partners(
   user_partner_id               TEXT,
   partner_geo                   TEXT,
+  partner_name                  TEXT,
   PRIMARY KEY (user_partner_id(255))
 )
 ');
   $q->execute();
 
-  $q = $db->prepare("SELECT user_id FROM users WHERE user_role_name = 'partner' LIMIT 2");
+  $q = $db->prepare("SELECT user_id FROM users WHERE user_role_name = 'partner'");
   $q->execute();
   $ids = $q->fetchAll(PDO::FETCH_COLUMN); // [5,10]
 
   $values = '';
   foreach ($ids as $user_partner_id) {
-    $values .= "('$user_partner_id', '$faker->latitude,$faker->longitude'),";
+    $values .= "('$user_partner_id', '$faker->latitude,$faker->longitude', '$faker->company'),";
   }
 
   $values = rtrim($values, ',');

@@ -27,7 +27,7 @@ try {
       orders_items_id             TEXT,
       orders_items_order_fk       TEXT,
       orders_items_item_fk        TEXT,
-      orders_items_item_price     TEXT,
+      orders_items_total_price    TEXT,
       orders_items_item_quantity  TEXT,
       orders_items_created_at     TEXT,
       orders_items_updated_at     TEXT,
@@ -40,9 +40,10 @@ try {
   $orders_items = [];
   $values = '';
   for ($i = 0; $i < 100; $i++) {
+    $item = $items[array_rand($items)];
     $orders_items_id = bin2hex(random_bytes(16));
     $orders_items_order_fk = $orders_ids[array_rand($orders_ids)];
-    $orders_items_item_fk = $items[array_rand($items)][0];
+    $orders_items_item_fk = $item[0];
     // Same order with same item cannot repeat
     $order_item = $orders_items_order_fk . $orders_items_item_fk;
     if (in_array($order_item, $orders_items)) {
@@ -50,14 +51,14 @@ try {
       continue;
     }
     array_push($orders_items, $order_item);
-    $orders_items_item_price = $items[array_rand($items)][1];
     $orders_items_item_quantity = rand(1, 5);
+    $orders_items_total_price = $item[1] * $orders_items_item_quantity;
     $orders_items_created_at = rand(time() - 1602343484, time());
     $orders_items_updated_at = 0;
     $orders_items_deleted_at = 0;
 
     $values .= "('$orders_items_id', '$orders_items_order_fk', '$orders_items_item_fk',
-                  $orders_items_item_price, $orders_items_item_quantity, $orders_items_created_at,
+                  $orders_items_total_price, $orders_items_item_quantity, $orders_items_created_at,
                   $orders_items_updated_at, $orders_items_deleted_at),";
   }
   $values = rtrim($values, ',');

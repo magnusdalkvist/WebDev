@@ -19,7 +19,7 @@ $orders = $q->fetchAll();
 
 <main>
   <section class="flex flex-col mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
-    <h3 class="py-4">My orders:</h3>
+    <h3 class="py-4 text-black font-bold">My orders:</h3>
     <div id="account_orders">
       <div class="">
         <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">

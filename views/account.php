@@ -18,7 +18,6 @@ $q = $db->prepare(' SELECT *
 $q->bindValue(':user_id',  $user['user_id']);
 $q->execute();
 $orders = $q->fetchAll();
-echo json_encode($orders);
 
 ?>
 
@@ -40,11 +39,34 @@ echo json_encode($orders);
         <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
           <div class="w-1/4">Order created:</div>
           <div class="w-1/4">Order ID:</div>
+          <div class="w-1/4">Items:</div>
+          <div class="w-1/4">Total price:</div>
         </div>
-        <?php foreach ($orders as $order) : ?>
+        <?php foreach ($orders as $order) :
+          $db = _db();
+          $q = $db->prepare('SELECT `item_name`, `item_price`, `orders_items_item_quantity`, `orders_items_total_price` FROM `orders_items`
+        INNER JOIN `items` ON `orders_items`.`orders_items_item_fk` = `items`.`item_id` WHERE `orders_items_order_fk` = :order_id');
+          $q->bindValue(':order_id', $order['order_id']);
+          $q->execute();
+          $items = $q->fetchAll();
+        ?>
           <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
-            <div class="w-1/4"><?php out($order['order_created_at']) ?></div>
+            <div class="w-1/4"><?php echo date("d/m/Y H.i", $order['order_created_at']) ?></div>
             <div class="w-1/4"><?php out($order['order_id']) ?></div>
+            <div class="w-1/4">
+              <?php foreach ($items as $item) : ?>
+                <div><?php out($item['orders_items_item_quantity'] . 'x ' . $item['item_name'] . '(' . $item['item_price'] . ')') ?></div>
+              <?php endforeach ?>
+            </div>
+            <div class="w-1/4">
+              <?php
+              $totalPrice = 0;
+              foreach ($items as $item) {
+                $totalPrice += $item['orders_items_total_price'];
+              }
+              ?>
+              <div><?php echo $totalPrice; ?></div>
+            </div>
           </div>
         <?php endforeach ?>
       </div>

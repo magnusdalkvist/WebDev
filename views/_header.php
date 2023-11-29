@@ -33,17 +33,17 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
           </span>
           All users
         </a>
-        <a href="/employees" class="flex items-center">
+        <a href="/all_orders" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">
-            engineering
+            receipt_long
           </span>
-          Employees
+          All orders
         </a>
         <a href="/partners" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">
-            handshake
+            database
           </span>
-          Partners
+          All data
         </a>
         <a href="/account" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">
@@ -56,6 +56,86 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
 
 
     <?php if (!isset($_SESSION['user'])) : ?>
+      <a href="/user_orders" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          receipt_long
+        </span>
+        Orders
+      </a>
+      <a href="/account" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          Person
+        </span>
+        Account
+      </a>
+      <a href="/login" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Login
+      </a>
+      <a href="/signup" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Signup
+      </a>
+    <?php else : ?>
+      <a href="/logout" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          lock
+        </span>
+        Logout
+      </a>
+    <?php endif ?>
+
+    <?php if (_is_partner()) : ?>
+      <a href="/user_orders" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          receipt_long
+        </span>
+        Orders
+      </a>
+      <a href="/account" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          Person
+        </span>
+        Account
+      </a>
+      <a href="/login" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Login
+      </a>
+      <a href="/signup" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Signup
+      </a>
+    <?php else : ?>
+      <a href="/logout" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          lock
+        </span>
+        Logout
+      </a>
+    <?php endif ?>
+
+    <?php if (_is_employee()) : ?>
+      <a href="/user_orders" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          receipt_long
+        </span>
+        Orders
+      </a>
+      <a href="/account" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          Person
+        </span>
+        Account
+      </a>
       <a href="/login" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           key

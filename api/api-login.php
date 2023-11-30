@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/../_.php';
-try{
+require_once __DIR__ . '/../_.php';
+try {
 
   _validate_user_email();
   _validate_user_password();
@@ -13,30 +13,36 @@ try{
   $q->execute();
   $user = $q->fetch();
 
-  if( ! $user ){
+
+  // Check if user is deleted
+  if ($user['user_deleted_at'] !== 0) {
+    throw new Exception('Account deleted', 400);
+  }
+
+  if (!$user) {
     throw new Exception('invalid credentials', 400);
   }
 
   // Check if the found user has a valid password
-  if( ! password_verify($_POST['user_password'], $user['user_password']) ){
-    throw new Exception('invalid credentials', 400);
+  if (!password_verify($_POST['user_password'], $user['user_password'])) {
+    throw new Exception('invalid password', 400);
   }
 
   $_SESSION['user'] = $user;
-  $_SESSION['user_id'] = $user['user_id']; 
-  echo json_encode($_SESSION['user']);
+  $_SESSION['user_id'] = $user['user_id'];
 
-}catch(Exception $e){
-  try{
-    if( ! $e->getCode() || ! $e->getMessage()){ throw new Exception(); }
+
+
+  echo json_encode($_SESSION['user']);
+} catch (Exception $e) {
+  try {
+    if (!$e->getCode() || !$e->getMessage()) {
+      throw new Exception();
+    }
     http_response_code($e->getCode());
-    echo json_encode(['info'=>$e->getMessage()]);
-  }catch(Exception $ex){
+    echo json_encode(['info' => $e->getMessage()]);
+  } catch (Exception $ex) {
     http_response_code(500);
-    echo json_encode($ex);    
+    echo json_encode($ex);
   }
 }
-
-
-
-

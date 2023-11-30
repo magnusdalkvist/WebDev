@@ -12,7 +12,9 @@ try {
   $sql->bindValue(':user_id', $user_id);
   $sql->execute();
 
-
+  session_destroy();
+  header('Location: /');
+  exit();
 
   echo json_encode(['info' => "user deleted with id: $user_id"]);
 } catch (Exception $e) {

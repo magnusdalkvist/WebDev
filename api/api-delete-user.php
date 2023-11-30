@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__.'/../_.php';
-try{
+require_once __DIR__ . '/../_.php';
+try {
   session_start();
-  if( ! isset($_SESSION['user']['user_id']) ){
+  if (!isset($_SESSION['user']['user_id'])) {
     throw new Exception('user not logged', 400);
   }
   $user_id = $_SESSION['user']['user_id'];
@@ -16,18 +16,23 @@ try{
   $q->bindValue(':user_id', $user_id);
   $q->execute();
   $counter = $q->rowCount();
-  if( $counter != 1 ){
+  if ($counter != 1) {
     throw new Exception('could not delete user', 500);
   }
   http_response_code(204);
 
-}catch(Exception $e){
-  try{
-    if( ! $e->getCode() || ! $e->getMessage()){ throw new Exception(); }
+  session_destroy();
+  header('Location: /');
+  exit();
+} catch (Exception $e) {
+  try {
+    if (!$e->getCode() || !$e->getMessage()) {
+      throw new Exception();
+    }
     http_response_code($e->getCode());
-    echo json_encode(['info'=>$e->getMessage()]);
-  }catch(Exception $ex){
+    echo json_encode(['info' => $e->getMessage()]);
+  } catch (Exception $ex) {
     http_response_code(500);
-    echo json_encode($ex); 
+    echo json_encode($ex);
   }
 }

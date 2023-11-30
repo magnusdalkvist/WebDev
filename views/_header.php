@@ -29,7 +29,7 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
       <div class="flex flex-col gap-4">
         <a href="/browse" class="flex items-center">
           <span class="material-symbols-outlined">
-            shopping_cart_checkout
+            storefront
           </span>
           Browse
         </a>
@@ -87,7 +87,7 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
     <?php if (!isset($_SESSION['user'])) : ?>
       <a href="/browse" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
-          key
+          storefront
         </span>
         Browse
       </a>

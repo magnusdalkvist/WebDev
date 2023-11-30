@@ -66,13 +66,13 @@ async function is_email_available() {
 async function delete_user() {
   const frm = event.target;
   console.log(frm);
-  const conn = await fetch("api/api-admin-delete-user.php", {
+  const conn = await fetch("api/api-delete-user.php", {
     method: "POST",
     body: new FormData(frm),
   });
   const response = await conn.json();
   console.log(response);
-  frm.parentElement.remove();
+  // frm.parentElement.remove();
 }
 
 // ##############################
@@ -183,3 +183,6 @@ async function update_user() {
       console.error("error:", error);
     });
 }
+
+
+

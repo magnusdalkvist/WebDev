@@ -11,18 +11,23 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
+    <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
+        <div class="w-1/4">Shops</div>
+        <div class="w-1/4">Price</div>
+    </div>
     <?php 
     $currentPartner = '';
     foreach($items as $item) {
         if($item['partner_name'] !== $currentPartner) {
             $currentPartner = $item['partner_name'];
     ?>
-            <h2 class="text-2xl font-bold mt-4 mb-2"><?= htmlspecialchars($currentPartner) ?></h2>
+            <h2 class="text-2l font-bold mt-4 mb-2"><?= htmlspecialchars($currentPartner) ?></h2>
     <?php
         }
     ?>
         <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
             <div class="w-1/4"><?= htmlspecialchars($item['item_name']) ?></div>
+            <div class="w-1/4"><?= htmlspecialchars($item['item_price']) ?></div>
         </div>
     <?php
     }

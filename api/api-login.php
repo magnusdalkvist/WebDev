@@ -15,7 +15,7 @@ try {
 
 
   // Check if user is deleted
-  if ($user['user_deleted_at'] !== 0) {
+  if ($user['user_deleted_at'] != 0) {
     throw new Exception('Account deleted', 400);
   }
 

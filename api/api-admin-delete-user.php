@@ -13,10 +13,8 @@ try {
   $sql->execute();
 
   session_destroy();
-  header('Location: /');
+  header("Refresh:0");
   exit();
-
-  echo json_encode(['info' => "user deleted with id: $user_id"]);
 } catch (Exception $e) {
   $status_code = !ctype_digit($e->getCode()) ? 500 : $e->getCode();
   $message = strlen($e->getMessage()) == 0 ? 'error - ' . $e->getLine() : $e->getMessage();

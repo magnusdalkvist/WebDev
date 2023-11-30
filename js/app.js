@@ -40,7 +40,7 @@ async function is_email_available() {
     console.log("email not available");
     document
       .querySelector("#msg_email_not_available")
-      .classList.remove("hidden");
+      .classList.remove("opacity-0");
     return;
   }
   console.log("email available");
@@ -137,7 +137,7 @@ async function login() {
   const data = await conn.json();
 
   if (!conn.ok) {
-    document.querySelector("#login_error").innerHTML = data.info;
+    document.querySelector("#login_error").innerHTML = "Invalid credentials";
     return;
   }
 

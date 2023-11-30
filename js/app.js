@@ -170,7 +170,7 @@ async function login() {
 async function update_user() {
   const frm = event.target;
   event.preventDefault();
-  console.log(frm);
+  console.log("user" + frm);
 
   fetch("/api/api-update-user.php", {
     method: "POST",
@@ -180,6 +180,25 @@ async function update_user() {
     .then((data) => {
       location.reload();
     })
+    .catch((error) => {
+      console.error("error:", error);
+    });
+}
+
+async function update_user_password() {
+  // virker ikke
+  const frm = event.target;
+  event.preventDefault();
+  console.log("pass" + frm);
+  fetch("/api/api-update-user-password.php", {
+    method: "POST",
+    body: new FormData(frm),
+  })
+    .then((response) => response.json())
+    // .then((data) => {
+    //   // location.reload();
+
+    // })
     .catch((error) => {
       console.error("error:", error);
     });

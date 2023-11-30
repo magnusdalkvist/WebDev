@@ -21,7 +21,7 @@ $users = $q->fetchAll();
     </h1>
 
     <?php
-    $frm_search_url = 'api-search-customers.php';
+    $frm_search_url = 'api-search-all-users.php';
     include_once __DIR__ . '/_form_search.php'
     ?>
 

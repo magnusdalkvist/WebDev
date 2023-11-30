@@ -27,6 +27,12 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
 
     <?php if (_is_admin()) : ?>
       <div class="flex flex-col gap-4">
+        <a href="/browse" class="flex items-center">
+          <span class="material-symbols-outlined">
+            shopping_cart_checkout
+          </span>
+          Browse
+        </a>
         <a href="/all_users" class="flex items-center">
           <span class="material-symbols-outlined mr-2 font-thin">
             group
@@ -79,6 +85,12 @@ text-gray-600 bg-slate-200 [&_a]:px-4">
     <?php endif ?>
 
     <?php if (!isset($_SESSION['user'])) : ?>
+      <a href="/browse" class="flex items-center">
+        <span class="material-symbols-outlined mr-2 font-thin">
+          key
+        </span>
+        Browse
+      </a>
       <a href="/login" class="flex items-center">
         <span class="material-symbols-outlined mr-2 font-thin">
           key

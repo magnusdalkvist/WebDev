@@ -145,16 +145,15 @@ async function signup() {
 async function login() {
   const frm = event.target;
   event.preventDefault();
-  console.log(frm);
   const conn = await fetch("/api/api-login.php", {
     method: "POST",
     body: new FormData(frm),
   });
 
   const data = await conn.json();
-  console.log(data);
 
   if (!conn.ok) {
+    document.querySelector("#login_error").innerHTML = data.info;
     return;
   }
 
@@ -183,6 +182,3 @@ async function update_user() {
       console.error("error:", error);
     });
 }
-
-
-

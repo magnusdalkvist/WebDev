@@ -11,6 +11,7 @@ require_once __DIR__ . '/_header.php';
       <form onsubmit="validate(login); return false" class="flex flex-col gap-6 w-full h-full m-auto pt-8">
         <input class="pl-2" name="user_email" type="email" id="username" placeholder="email">
         <input class="pl-2" name="user_password" type="password" id="password" placeholder="password">
+        <div id="login_error"></div>
         <button class="w-full h-10 my-1 bg-sexyred text-white font-bold rounded-md">Login</button>
       </form>
     </div>

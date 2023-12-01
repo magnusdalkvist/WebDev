@@ -2,20 +2,16 @@
 header('Content-Type: application/json');
 require_once __DIR__ . '/../_.php';
 try {
-  // TODO: validate $_POST['query']
-  $search = $_POST['query'] ?? '';
+  $order_id = $_GET['id'] ?? '';
   $db = _db();
   $q = $db->prepare('
-    SELECT *
-    FROM orders
-    WHERE order_id LIKE :order_id
-    OR order_created_by_user_fk LIKE :order_created_by
+  SELECT `item_name`, `item_price`, `orders_items_item_quantity`, `orders_items_total_price` FROM `orders_items`
+  INNER JOIN `items` ON `orders_items`.`orders_items_item_fk` = `items`.`item_id` WHERE `orders_items_order_fk` = :order_id
   ');
-  $q->bindValue(':order_id', '%' . $search . '%');
-  $q->bindValue(':order_created_by', '%' . $search . '%');
+  $q->bindValue(':order_id', $order_id);
   $q->execute();
-  $orders = $q->fetchAll();
-  echo json_encode($orders);
+  $order = $q->fetchAll();
+  echo json_encode($order);
 } catch (Exception $e) {
   $status_code = !ctype_digit($e->getCode()) ? 500 : $e->getCode();
   $message = strlen($e->getMessage()) == 0 ? 'error - ' . $e->getLine() : $e->getMessage();

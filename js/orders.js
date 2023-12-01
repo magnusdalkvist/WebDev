@@ -99,9 +99,14 @@ async function sortStatus() {
   displayorders(orders);
 }
 
-async function displayorders(orders) {
+function displayorders(orders) {
+  console.log(orders);
   document.querySelector("#results").innerHTML = "";
-  orders.forEach((order) => {
+  orders.forEach(async (order) => {
+    // const items = await fetch(`/api/api-get-order-details.php?id=${order.order_id}`).then((res) =>
+    //   res.json()
+    // );
+
     let div_order = `
     <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
     <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString("en-GB", {
@@ -113,16 +118,22 @@ async function displayorders(orders) {
     })}</div>
     <div>${order.order_id}</div>
     <div>${order.order_created_by_user_fk}</div>
-    <div>
-      
-    </div>
-    <div>
-      
-      <div></div>
-    </div>
+    <div>${order.order_delivered_at > 0 ? "Delivered" : "Not delivered"}</div>
+    <div>${order.order_delivered_by_user_fk}</div>
   </div>
         `;
     document.querySelector("#results").insertAdjacentHTML("afterbegin", div_order);
+    document.querySelector("#items-list").innerHTML = "";
+    let div_item_total = 0;
+    // items.forEach((item) => {
+    //   let div_item = `
+    //     <div>${item.orders_items_item_quantity}x ${item.item_name}(${item.item_price})</div>
+    //     `;
+    //   div_item_total += Number(item.orders_items_total_price);
+
+    //   document.querySelector("#items-list").insertAdjacentHTML("afterbegin", div_item);
+    // });
+    document.querySelector("#items-total").innerHTML = div_item_total;
   });
   if (orders.length == 0) {
     document.querySelector("#results").innerHTML = `
@@ -136,4 +147,5 @@ async function displayorders(orders) {
 document.addEventListener("DOMContentLoaded", async () => {
   const orders = await getOrders();
   displayorders(orders);
+  console.log(orders);
 });

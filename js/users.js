@@ -98,7 +98,7 @@ async function sortStatus() {
   displayUsers(users);
 }
 
-async function displayUsers(users) {
+function displayUsers(users) {
   document.querySelector("#results").innerHTML = "";
   users.forEach((user) => {
     let div_user = `

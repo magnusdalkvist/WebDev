@@ -22,7 +22,7 @@ try {
   http_response_code(204);
 
   session_destroy();
-  header('Location: /');
+  header("Refresh:0");
   exit();
 } catch (Exception $e) {
   try {

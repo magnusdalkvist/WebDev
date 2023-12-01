@@ -37,7 +37,7 @@ try {
   $q->bindValue(':user_role_name', 'customer');
   $q->bindValue(':user_tag_color', '#0ea5e9');
   $q->bindValue(':user_created_at', time());
-  $q->bindValue(':user_updated_at', 0);
+  $q->bindValue(':user_updated_at', time());
   $q->bindValue(':user_deleted_at', 0);
   $q->bindValue(':user_is_blocked', 0);
 

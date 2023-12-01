@@ -16,16 +16,16 @@ try {
 
   // Check if user is deleted
   if ($user['user_deleted_at'] != 0) {
-    throw new Exception('Account deleted', 400);
+    throw new Exception('Invalid credentials', 400);
   }
 
   if (!$user) {
-    throw new Exception('invalid credentials', 400);
+    throw new Exception('Invalid credentials', 400);
   }
 
   // Check if the found user has a valid password
   if (!password_verify($_POST['user_password'], $user['user_password'])) {
-    throw new Exception('invalid password', 400);
+    throw new Exception('Invalid password', 400);
   }
 
   $_SESSION['user'] = $user;

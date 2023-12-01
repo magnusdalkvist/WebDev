@@ -45,7 +45,7 @@ try {
     $user_role_name = $roles[array_rand($roles)];
     $user_tag_color = $faker->hexcolor;
     $user_created_at = time();
-    $user_updated_at = 0;
+    $user_updated_at = time();
     $user_deleted_at = 0;
     $user_is_blocked = 0;
     $values .= "(null, '$user_name', '$user_last_name', '$user_email', '$user_password', 

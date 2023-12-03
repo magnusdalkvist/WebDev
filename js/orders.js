@@ -10,11 +10,11 @@ async function getOrders() {
   return data;
 }
 
-// document.querySelector("#sort_name").addEventListener("click", sortName);
-// document.querySelector("#sort_last_name").addEventListener("click", sortLastName);
-// document.querySelector("#sort_email").addEventListener("click", sortEmail);
-// document.querySelector("#sort_role").addEventListener("click", sortRole);
-// document.querySelector("#sort_status").addEventListener("click", sortStatus);
+document.querySelector("#sort_created_at").addEventListener("click", sortCreatedAt);
+document.querySelector("#sort_id").addEventListener("click", sortId);
+document.querySelector("#sort_created_by").addEventListener("click", sortCreatedBy);
+document.querySelector("#sort_status").addEventListener("click", sortStatus);
+document.querySelector("#sort_delivered_by").addEventListener("click", sortDeliveredBy);
 document.querySelector("#frm_search").addEventListener("input", handleSearch);
 
 var timer_search_orders = "";
@@ -29,59 +29,45 @@ async function handleSearch() {
   }, 500);
 }
 
-let sortNameDirection = -1;
-async function sortName() {
+let sortCreatedAtDirection = -1;
+async function sortCreatedAt() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortCreatedAtDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_name.localeCompare(b.order_name) * sortNameDirection;
+    return a.order_created_at.localeCompare(b.order_created_at) * sortCreatedAtDirection;
   });
-  sortNameDirection *= -1;
+  sortCreatedAtDirection *= -1;
   displayorders(orders);
 }
 
-let sortLastNameDirection = -1;
-async function sortLastName() {
+let sortIdDirection = -1;
+async function sortId() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortLastNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortIdDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_last_name.localeCompare(b.order_last_name) * sortLastNameDirection;
+    return (a.order_id - b.order_id) * sortIdDirection;
   });
-  sortLastNameDirection *= -1;
+  sortIdDirection *= -1;
   displayorders(orders);
 }
 
-let sortEmailDirection = -1;
-async function sortEmail() {
+let sortCreatedByDirection = -1;
+async function sortCreatedBy() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortEmailDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortCreatedByDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_email.localeCompare(b.order_email) * sortEmailDirection;
+    return (a.order_created_by_user_fk - b.order_created_by_user_fk) * sortCreatedByDirection;
   });
-  sortEmailDirection *= -1;
-  displayorders(orders);
-}
-
-let sortRoleDirection = -1;
-async function sortRole() {
-  document.querySelectorAll("#direction").forEach((el) => {
-    el.innerHTML = "";
-  });
-  this.querySelector("#direction").innerHTML = sortRoleDirection == 1 ? "▲" : "▼";
-  const orders = await getOrders();
-  orders.sort((a, b) => {
-    return a.order_role_name.localeCompare(b.order_role_name) * sortRoleDirection;
-  });
-  sortRoleDirection *= -1;
+  sortCreatedByDirection *= -1;
   displayorders(orders);
 }
 
@@ -93,9 +79,23 @@ async function sortStatus() {
   this.querySelector("#direction").innerHTML = sortStatusDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_is_blocked.localeCompare(b.order_is_blocked) * sortStatusDirection;
+    return (a.order_delivered_at - b.order_delivered_at) * sortStatusDirection;
   });
   sortStatusDirection *= -1;
+  displayorders(orders);
+}
+
+let sortDeliveredByDirection = -1;
+async function sortDeliveredBy() {
+  document.querySelectorAll("#direction").forEach((el) => {
+    el.innerHTML = "";
+  });
+  this.querySelector("#direction").innerHTML = sortDeliveredByDirection == 1 ? "▲" : "▼";
+  const orders = await getOrders();
+  orders.sort((a, b) => {
+    return (a.order_delivered_by_user_fk - b.order_delivered_by_user_fk) * sortDeliveredByDirection;
+  });
+  sortDeliveredByDirection *= -1;
   displayorders(orders);
 }
 
@@ -123,17 +123,6 @@ function displayorders(orders) {
   </div>
         `;
     document.querySelector("#results").insertAdjacentHTML("afterbegin", div_order);
-    document.querySelector("#items-list").innerHTML = "";
-    let div_item_total = 0;
-    // items.forEach((item) => {
-    //   let div_item = `
-    //     <div>${item.orders_items_item_quantity}x ${item.item_name}(${item.item_price})</div>
-    //     `;
-    //   div_item_total += Number(item.orders_items_total_price);
-
-    //   document.querySelector("#items-list").insertAdjacentHTML("afterbegin", div_item);
-    // });
-    document.querySelector("#items-total").innerHTML = div_item_total;
   });
   if (orders.length == 0) {
     document.querySelector("#results").innerHTML = `

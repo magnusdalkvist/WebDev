@@ -19,11 +19,11 @@ if (!_is_admin()) {
       ?>
     </div>
     <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
-      <div>Order created: <span id="direction"></span></div>
-      <div>Order ID: <span id="direction"></span></div>
-      <div>Order created by: <span id="direction"></span></div>
-      <div>Order status: </div>
-      <div>Delivered by: <span id="direction"></span></div>
+      <div id="sort_created_at">Order created: <span id="direction"></span></div>
+      <div id="sort_id">Order ID: <span id="direction"></span></div>
+      <div id="sort_created_by">Order created by: <span id="direction"></span></div>
+      <div id="sort_status">Order status: <span id="direction"></span></div>
+      <div id="sort_delivered_by">Delivered by: <span id="direction"></span></div>
     </div>
     <div id="results"></div>
 </main>

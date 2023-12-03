@@ -10,9 +10,11 @@ try {
     FROM orders
     WHERE order_id LIKE :order_id
     OR order_created_by_user_fk LIKE :order_created_by
+    OR order_delivered_by_user_fk LIKE :order_delivered_by
   ');
   $q->bindValue(':order_id', '%' . $search . '%');
   $q->bindValue(':order_created_by', '%' . $search . '%');
+  $q->bindValue(':order_delivered_by', '%' . $search . '%');
   $q->execute();
   $orders = $q->fetchAll();
   echo json_encode($orders);

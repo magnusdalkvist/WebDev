@@ -119,7 +119,7 @@ $orders = $q->fetchAll();
 
     </div>
   </section>
-  <section class="flex items-center">
+  <section class="flex items-start">
     <div id="delete" class="flex w-1/2 flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
       <div class="font-medium  flex items-center">
         <h3 class="">Temporarily deactivate your account. <br>

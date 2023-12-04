@@ -63,7 +63,8 @@ $orders = $q->fetchAll();
         <p>
           If you temporarily deactivate your account, your profile and information will be hidden until you reactivate it by logging back in. </p>
       </div>
-      <form onsubmit="temporarily_deactivate_user(); return false">
+      <!-- onsubmit="temporarily_deactivate_user();  -->
+      <form onsubmit="if(confirm('You are about to temporarily deactivate your account from our system. Do you want to continue?')) {window.location.href = '/logout';} return false;">
         <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
         <button class=" mt-6 font-bold flex items-center">
           <span class="material-symbols-outlined mr-2">
@@ -75,7 +76,7 @@ $orders = $q->fetchAll();
     </div>
 
     <div id="delete" class="flex  flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
-      <div class="text-red-500"">
+      <div class="text-red-500">
         <h2 class=" font-extrabold ">Delete your account. </h2>
         <p>
           This action is irreversible and will permanently remove your account from our system.
@@ -89,8 +90,8 @@ $orders = $q->fetchAll();
           </span>
           DELETE ACCOUNT
         </button>
-        </form>
-      </div>
+      </form>
+    </div>
 
   </section>
   <section class="flex flex-col ">
@@ -133,9 +134,11 @@ $orders = $q->fetchAll();
         <label class="flex flex-col" for="user_password">Password:
           <input class="pl-2" type="password" id="user_password" name="user_password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
         </label>
-        <label class="flex flex-col" for="user_password">Confirm password:
+
+        <label class="flex flex-col" for="user_confirm_password">Confirm password:
           <input class="pl-2" type="password" id="user_confirm_password" name="user_confirm_password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
         </label>
+        <div id="password_error" class="text-red-500"></div>
         <input type="submit" value="Update">
       </form>
     </div>

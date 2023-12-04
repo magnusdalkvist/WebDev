@@ -186,20 +186,27 @@ async function update_user() {
 }
 
 async function update_user_password() {
-  // virker ikke
-  const frm = event.target;
   event.preventDefault();
-  console.log("pass" + frm);
-  fetch("/api/api-update-user-password.php", {
-    method: "POST",
-    body: new FormData(frm),
-  })
-    .then((response) => response.json())
-    // .then((data) => {
-    //   // location.reload();
-
-    // })
-    .catch((error) => {
-      console.error("error:", error);
+  const frm = event.target;
+  const errorElement = document.getElementById("password_error");
+  try {
+    const response = await fetch("/api/api-update-user-password.php", {
+      method: "POST",
+      body: new FormData(frm),
     });
+    const data = await response.json();
+    console.log("data:", data);
+
+    if (!response.ok) {
+      errorElement.innerHTML = data.info;
+    }
+
+    // Handle success
+    alert("Password updated successfully");
+    // Clear form or handle further actions
+  } catch (error) {
+    console.error("error:", error);
+    // Display specific error message to the user
+    errorElement.textContent = error.info;
+  }
 }

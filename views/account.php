@@ -14,10 +14,9 @@ $_SESSION['user_id'] = $user['user_id'];
 
 ?>
 
-
 <section class="grid grid-cols-2">
   <div class="flex flex-col">
-    <div class="flex  gap-2 flex-col mt-16 p-8 mr-4 bg-white rounded-md text-slate-500">
+    <div class="flex  gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>
 
       <div class="hidden"><?= $user['user_id'] ?></div>
@@ -52,7 +51,7 @@ $_SESSION['user_id'] = $user['user_id'];
     </div>
 
 
-    <div id="temporarily" class="flex  flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
+    <div id="temporarily" class="flex  flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
       <div class="">
         <h2 class="font-extrabold ">Temporarily deactivate your account. </h2>
         <p>
@@ -69,7 +68,7 @@ $_SESSION['user_id'] = $user['user_id'];
       </form>
     </div>
 
-    <div id="delete" class="flex  flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
+    <div id="delete" class="flex  flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
       <div class="text-red-500">
         <h2 class=" font-extrabold ">Delete your account. </h2>
         <p>
@@ -89,7 +88,7 @@ $_SESSION['user_id'] = $user['user_id'];
 
   </div>
   <div class="flex flex-col ">
-    <div id="update_account" class="flex flex-col mt-16 p-8 mr-4  bg-white rounded-md text-slate-500">
+    <div id="update_account" class="flex flex-col mt-16 p-8  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Update profile</h2>
       </div>
@@ -115,7 +114,7 @@ $_SESSION['user_id'] = $user['user_id'];
       </form>
     </div>
 
-    <div id="update_account" class="flex flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
+    <div id="update_account" class="flex flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Update password</h2>
       </div>

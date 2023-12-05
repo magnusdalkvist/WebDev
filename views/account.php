@@ -19,7 +19,7 @@ $q->execute();
 $orders = $q->fetchAll();
 ?>
 
-<main class="grid grid-cols-2">
+<main class="grid grid-cols-2 gap-4">
   <section class="flex flex-col">
     <div class="flex  gap-2 flex-col mt-16 p-8 mr-4 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>
@@ -94,7 +94,6 @@ $orders = $q->fetchAll();
 
   </section>
   <section class="flex flex-col ">
-
     <div id="update_account" class="flex flex-col mt-16 p-8 mr-4  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Update profile</h2>
@@ -118,9 +117,9 @@ $orders = $q->fetchAll();
           <input type="color" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
         </label>
         <input type="submit" value="Update profile">
-
       </form>
     </div>
+
     <div id="update_account" class="flex flex-col mt-4 p-8 mr-4  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Update password</h2>

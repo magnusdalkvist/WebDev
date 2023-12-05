@@ -16,14 +16,11 @@ if (isset($_GET['id']) && _is_admin()) {
   exit();
 }
 
-
-
-
 ?>
 
-<section class="grid grid-cols-2 gap-4">
-  <div class="flex flex-col">
-    <div class="flex  gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
+<section class=" mx-12">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="flex gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>
 
       <div class="hidden"><?= $user['user_id'] ?></div>
@@ -57,27 +54,6 @@ if (isset($_GET['id']) && _is_admin()) {
       </div>
     </div>
 
-
-    <div id="delete" class="flex flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
-      <div class="text-red-500">
-        <h2 class=" font-extrabold ">Delete <?php out($user['user_name']) ?>'s account. </h2>
-        <p>
-          This action is irreversible and will permanently remove <?php out($user['user_name']) ?>'s account from our system.
-          Please proceed with caution.</p>
-      </div>
-      <form onsubmit=" if(confirm('You are about to permanently remove the account from our system. Do you want to continue?')) { delete_user(); setTimeout(function(){ location.reload(); }, 1000); } return false;">
-        <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
-        <button class="text-red-500 mt-6 font-bold flex items-center">
-          <span class="material-symbols-outlined mr-2">
-            delete
-          </span>
-          DELETE ACCOUNT
-        </button>
-      </form>
-    </div>
-
-  </div>
-  <div class="flex flex-col ">
     <div id="update_account" class="flex flex-col mt-16 p-8  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Update profile</h2>
@@ -104,6 +80,9 @@ if (isset($_GET['id']) && _is_admin()) {
       </form>
     </div>
 
+
+  </div>
+  <div class="grid grid-cols-2 gap-4">
     <div id="block" class="flex flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
       <div class="pb-4">
         <h2 class="font-extrabold ">Block <?= $user['user_name'] ?> <?= $user['user_last_name'] ?></h2>
@@ -119,6 +98,24 @@ if (isset($_GET['id']) && _is_admin()) {
           <?= $user['user_is_blocked'] == 0 ? "UNBLOCKED" : "BLOCKED"; ?>
         </button>
       </div>
+    </div>
+
+    <div id="delete" class="flex flex-col mt-4 p-8  bg-white rounded-md text-slate-500">
+      <div class="text-red-500">
+        <h2 class=" font-extrabold ">Delete <?php out($user['user_name']) ?>'s account. </h2>
+        <p>
+          This action is irreversible and will permanently remove <?php out($user['user_name']) ?>'s account from our system.
+          Please proceed with caution.</p>
+      </div>
+      <form onsubmit=" if(confirm('You are about to permanently remove the account from our system. Do you want to continue?')) { delete_user(); setTimeout(function(){ location.reload(); }, 1000); } return false;">
+        <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
+        <button class="text-red-500 mt-6 font-bold flex items-center">
+          <span class="material-symbols-outlined mr-2">
+            delete
+          </span>
+          DELETE ACCOUNT
+        </button>
+      </form>
     </div>
 
   </div>

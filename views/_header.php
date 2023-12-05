@@ -86,5 +86,3 @@ require_once __DIR__ . '/../_.php';
   </header>
 
   <main class="">
-
-    <nav id="desktop"></nav>

@@ -10,8 +10,8 @@ require_once __DIR__ . '/_header.php';
         <h1>Welcome</h1>
         <p>Signup with email</p>
       </div>
-      <form onsubmit="validate(signup); return false" class="flex flex-col  gap-0.5 text-slate-500">
-        <div class="grid mb-4">
+      <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 text-slate-500">
+        <div class="grid">
           <label for="user_name" class="flex">
             <span class="font-bold hidden text-sexyred">name</span>
             <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_NAME_MIN ?> to <?= USER_NAME_MAX ?> characters</span>
@@ -19,7 +19,7 @@ require_once __DIR__ . '/_header.php';
           <input class="pl-2" id="user_name" placeholder="First name" name="user_name" type="text" data-validate="str" data-min="<?= USER_NAME_MIN ?>" data-max="<?= USER_NAME_MAX ?>">
         </div>
 
-        <div class="grid mb-4">
+        <div class="grid">
           <label for="user_last_name" class="flex">
             <span class="font-bold hidden text-sexyred">last name</span>
             <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_LAST_NAME_MIN ?> to <?= USER_LAST_NAME_MAX ?> characters</span>
@@ -37,14 +37,25 @@ require_once __DIR__ . '/_header.php';
           </div>
         </div>
 
-        <div class="grid mb-4" class="flex">
+        <div class="grid">
+          <label for="user_role_name" class="flex">
+            <span class="ml-auto mr-2 text-xs hidden">Chose user role</span>
+          </label>
+          <select class="pl-2 border-slate-300 border rounded h-8" name="user_role_name" id="user_role_name">
+            <option value="customer">Customer</option>
+            <option value="employee">Employee</option>
+            <option value="partner">Partner</option>
+          </select>
+        </div>
+
+        <div class="grid" class="flex">
           <label for="user_name" class="flex">
             <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_PASSWORD_MIN ?> to <?= USER_PASSWORD_MAX ?> characters</span>
           </label>
           <input class="pl-2" name="user_password" type="text" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
         </div>
 
-        <div class="grid mb-4">
+        <div class="grid">
           <span class="ml-auto text-xs opacity-0">x</span>
           <input class="pl-2" name="user_confirm_password" type="text" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
         </div>

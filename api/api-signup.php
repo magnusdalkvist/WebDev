@@ -34,7 +34,7 @@ try {
   $q->bindValue(':user_email', $_POST['user_email']);
   $q->bindValue(':user_password', password_hash($_POST['user_password'], PASSWORD_DEFAULT));
   $q->bindValue(':user_address', "");
-  $q->bindValue(':user_role_name', 'customer');
+  $q->bindValue(':user_role_name',  $_POST['user_role_name']);
   $q->bindValue(':user_tag_color', '#0ea5e9');
   $q->bindValue(':user_created_at', time());
   $q->bindValue(':user_updated_at', time());

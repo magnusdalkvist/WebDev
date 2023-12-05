@@ -56,7 +56,9 @@ async function is_email_available() {
   if (!conn.ok) {
     // everything that is not a 2xx
     console.log("email not available");
-    document.querySelector("#msg_email_not_available").classList.remove("opacity-0");
+    document
+      .querySelector("#msg_email_not_available")
+      .classList.remove("opacity-0");
     return;
   }
   console.log("email available");
@@ -78,12 +80,12 @@ async function delete_user() {
 // ##############################
 async function toggle_blocked(user_id, user_is_blocked) {
   if (user_is_blocked == 0) {
-    event.target.innerHTML = "blocked";
+    event.target.innerHTML = "BLOCKED";
   } else {
-    event.target.innerHTML = "unblocked";
+    event.target.innerHTML = "UNBLOCKED";
   }
   const conn = await fetch(
-    `api/api-toggle-user-blocked.php?user_id=${user_id}&user_is_blocked=${user_is_blocked}`
+    `/api/api-toggle-user-blocked.php?user_id=${user_id}&user_is_blocked=${user_is_blocked}`
   );
   const data = await conn.text();
 }

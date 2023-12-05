@@ -28,13 +28,13 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
                 echo "<div class='p-5 flex-grow'>";
                 echo "<h5 class='text-2xl font-bold tracking-tight text-gray-900'>" . $currentPartner . "</h5>";
             }
-            // Display item details
+            
             echo "<div class='mt-4 flex justify-between'>";
             echo "<p class='font-normal text-gray-700'>" . $item['item_name'] . "</p>";
             echo "<p class='font-normal text-gray-700'>" . $item['item_price'] . " $</p>";
             echo "</div>";
         }
-        // Close the last card
+        
         if($currentPartner !== '') {
             echo '</div></div>';
         }

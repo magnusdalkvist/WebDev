@@ -37,9 +37,9 @@ require_once __DIR__ . '/../_.php';
         </div>
       </div>
       <div>
-        <a href="/" class="flex">
-          <p class="font-semibold text-2xl italic">YumHub</p>
-          <p class="text-xs">
+        <a href="/" class="relative">
+          <p class=" font-semibold text-2xl italic">YumHub</p>
+          <p class="absolute text-xs top-0 left-full">
             <?php if (_is_admin()) : ?>
               (admin)
             <?php endif ?>
@@ -101,6 +101,7 @@ require_once __DIR__ . '/../_.php';
             Orders
           </a>
         <?php endif ?>
+        <a href="/browse">Browse</a>
         <a href="/contact">Contact</a>
         <a href="/about-us">About us</a>
       </div>

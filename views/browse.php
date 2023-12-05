@@ -10,30 +10,34 @@ $q->execute();
 $items = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
-    <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
-        <div class="w-1/4">Shops</div>
-        <div class="w-1/4">Price</div>
-    </div>
-    <?php 
-    $currentPartner = '';
-    foreach($items as $item) {
-        if($item['partner_name'] !== $currentPartner) {
-            $currentPartner = $item['partner_name'];
-    ?>
-            <h2 class="text-2l font-bold mt-4 mb-2"><?= htmlspecialchars($currentPartner) ?></h2>
-    <?php
-        }
-    ?>
-        <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
-            <div class="w-1/4"><?= htmlspecialchars($item['item_name']) ?></div>
-            <div class="w-1/4"><?= htmlspecialchars($item['item_price']) ?></div>
-        </div>
-    <?php
-    }
-    ?>
-</div>
 
-<?php
-require_once __DIR__ . '/_footer.php';
-?>
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-8 mt-16">Partners</h1>
+    <div class="grid grid-cols-3 gap-4">
+        <?php 
+        $currentPartner = '';
+        foreach($items as $item) {
+            if($item['partner_name'] !== $currentPartner) {
+                if($currentPartner !== '') {
+                   
+                    echo '</div></div>';
+                }
+                $currentPartner = $item['partner_name'];
+ 
+                echo "<div class='flex flex-col bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden mb-5'>";
+                echo "<div class='p-5 flex-grow'>";
+                echo "<h5 class='text-2xl font-bold tracking-tight text-gray-900'>" . $currentPartner . "</h5>";
+            }
+            // Display item details
+            echo "<div class='mt-4 flex justify-between'>";
+            echo "<p class='font-normal text-gray-700'>" . $item['item_name'] . "</p>";
+            echo "<p class='font-normal text-gray-700'>" . $item['item_price'] . " $</p>";
+            echo "</div>";
+        }
+        // Close the last card
+        if($currentPartner !== '') {
+            echo '</div></div>';
+        }
+        ?>
+    </div>
+</div>

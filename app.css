@@ -623,6 +623,11 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }

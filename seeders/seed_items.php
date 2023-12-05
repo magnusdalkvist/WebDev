@@ -29,14 +29,16 @@ try {
   ');
   $q->execute();
   $values = '';
+  $foodItems = ['Pizza', 'Burger', 'Pasta', 'Salad', 'Sushi', 'Steak', 'Tacos', 'Sandwich', 'Soup', 'Chicken', 'Fish', 'Rice', 'Noodles', 'Curry', 'Dumplings', 'Ice Cream', 'Cake', 'Coffee', 'Tea', 'Juice'];
+
   for ($i = 0; $i < 100; $i++) {
-    $item_name = str_replace("'", "''", $faker->unique->word);
-    $item_price = rand(1000, 99999);
-    $item_created_at = time();
-    $item_updated_at = 0;
-    $item_deleted_at = 0;
-    $item_created_by_user_fk = $users_ids[array_rand($users_ids)];
-    $values .= "(null, '$item_name', $item_price, $item_created_at, $item_updated_at, $item_deleted_at, '$item_created_by_user_fk'),";
+      $item_name = $foodItems[array_rand($foodItems)] . ' ' . $faker->unique()->word;
+      $item_price = $faker->numberBetween(10, 500);
+      $item_created_at = time();
+      $item_updated_at = 0;
+      $item_deleted_at = 0;
+      $item_created_by_user_fk = $users_ids[array_rand($users_ids)];
+      $values .= "(null, '$item_name', $item_price, $item_created_at, $item_updated_at, $item_deleted_at, '$item_created_by_user_fk'),";
   }
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO items VALUES $values");

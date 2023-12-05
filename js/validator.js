@@ -8,7 +8,8 @@ function validate(callback) {
     element.classList.remove("validate_error");
     // element.style.backgroundColor = "rgba(60, 80, 100, 1)"
     // element.style.backgroundColor = "white"
-    element.style.border = "none";
+    element.style.border =
+      "1px solid rgb(203 213 225 / var(--tw-border-opacity))";
   });
   form.querySelectorAll("[data-validate]").forEach(function (element) {
     switch (element.getAttribute("data-validate")) {

@@ -187,8 +187,9 @@ async function update_user() {
 
 async function update_user_password() {
   event.preventDefault();
-  const frm = event.target;
   const errorElement = document.getElementById("password_error");
+  errorElement.innerHTML = "";
+  const frm = event.target;
 
   const response = await fetch("/api/api-update-user-password.php", {
     method: "POST",
@@ -196,10 +197,14 @@ async function update_user_password() {
   });
   const data = await response.json();
 
-  if (!response.ok) {
+  if (response.ok) {
+    location.reload();
+  } else {
     errorElement.innerHTML = data.info;
-  }
+    frm.reset();
 
-  // Handle success
-  alert("Password updated successfully");
+    setTimeout(() => {
+      errorElement.innerHTML = "";
+    }, 5000);
+  }
 }

@@ -8,6 +8,8 @@ try {
 
     _validate_user_password(); // Validate the new password
 
+    $user = $_SESSION['user'];
+
     $db = _db(); // Get database connection
 
     // Fetch current password
@@ -27,35 +29,25 @@ try {
 
     // Update password
     $new_password_hashed = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
-    $qu = $db->prepare('UPDATE users SET user_password = :new_password WHERE user_id = :user_id');
-    $qu->bindValue(':new_password', $new_password_hashed);
-    $qu->bindValue(':user_id', $_SESSION['user']['user_id']);
-    $qu->execute();
+    $q = $db->prepare('UPDATE users SET user_password = :new_password, user_updated_at = :user_updated_at WHERE user_id = :user_id');
+    $q->bindValue(':new_password', $new_password_hashed);
+    $q->bindValue(':user_updated_at', time());
+    $q->bindValue(':user_id', $_SESSION['user']['user_id']);
+    $q->execute();
+
+
+    // Re-fetch the user information from the database
+    $q = $db->prepare('SELECT * FROM users WHERE user_id = :user_id');
+    $q->bindValue(':user_id', $user['user_id']);
+    $q->execute();
+    $user = $q->fetch(PDO::FETCH_ASSOC);
+
+    // Update the $_SESSION['user'] variable with the latest user information
+    $_SESSION['user'] = $user;
+
 
     echo json_encode(['info' => 'Password updated successfully']);
 } catch (Exception $e) {
     http_response_code($e->getCode() ?: 500);
     echo json_encode(['info' => $e->getMessage()]);
 }
-
-
-
-// <!-- <?php
-// require_once __DIR__ . '/../_.php';
-
-// try {
-
-
-//     echo json_encode(['message' => 'User password updated successfully']);
-// } catch (Exception $e) {
-//     try {
-//         if (!$e->getCode() || !$e->getMessage()) {
-//             throw new Exception();
-//         }
-//         http_response_code($e->getCode());
-//         echo json_encode(['info' => $e->getMessage()]);
-//     } catch (Exception $ex) {
-//         http_response_code(500);
-//         echo json_encode($ex);
-//     }
-// } -->

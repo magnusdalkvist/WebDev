@@ -11,15 +11,10 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']) {
 $user = $_SESSION['user'];
 $_SESSION['user_id'] = $user['user_id'];
 
-$db = _db();
-$q = $db->prepare(' SELECT * 
-                    FROM orders WHERE order_created_by_user_fk = :user_id ');
-$q->bindValue(':user_id',  $user['user_id']);
-$q->execute();
-$orders = $q->fetchAll();
+
 ?>
 
-<section class="grid grid-cols-2 gap-4">
+<section class="grid grid-cols-2">
   <div class="flex flex-col">
     <div class="flex  gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>
@@ -62,7 +57,6 @@ $orders = $q->fetchAll();
         <p>
           If you temporarily deactivate your account, your profile and information will be hidden until you reactivate it by logging back in. </p>
       </div>
-      <!-- onsubmit="temporarily_deactivate_user();  -->
       <form onsubmit="if(confirm('You are about to temporarily deactivate your account from our system. Do you want to continue?')) {window.location.href = '/logout';} return false;">
         <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
         <button class=" mt-6 font-bold flex items-center">
@@ -137,7 +131,7 @@ $orders = $q->fetchAll();
           <input class="pl-2" type="password" id="user_confirm_password" name="user_confirm_password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
         </label>
         <div id="password_error" class="text-red-500"></div>
-        <input type="submit" value="Update">
+        <input type="submit" value="Update password">
       </form>
     </div>
   </div>

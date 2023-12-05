@@ -1,1 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+#open_menu[open] .open_icon,
+#open_menu .close_icon {
+  display: none;
+}
+
+#open_menu[open] .close_icon {
+  display: block;
+}

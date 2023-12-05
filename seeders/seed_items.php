@@ -33,7 +33,7 @@ try {
 
   for ($i = 0; $i < 100; $i++) {
       $item_name = $foodItems[array_rand($foodItems)] . ' ' . $faker->unique()->word;
-      $item_price = $faker->numberBetween(10, 500);
+      $item_price = $faker->numberBetween(10, 100);
       $item_created_at = time();
       $item_updated_at = 0;
       $item_deleted_at = 0;

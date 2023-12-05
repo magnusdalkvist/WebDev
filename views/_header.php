@@ -20,9 +20,53 @@ require_once __DIR__ . '/../_.php';
 </head>
 
 <body class="w-full min-h-screen bg-hot-noir text-white">
-  <header class="sticky top-0 z-10 backdrop-blur backdrop-brightness-75">
+  <header class="sticky top-0 z-20">
     <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
+
       <div class="flex gap-4">
+        <div id="open_menu" class="flex items-center">
+          <svg class="open_icon" width="20" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 2L21 2" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <path d="M1 18L21 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <path d="M1 10L21 10" stroke="white" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <svg class="close_icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2L17.92 17.92" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <path d="M2.08008 18L18.0001 2.07998" stroke="white" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+      <div>
+        <a href="/" class="flex">
+          <p class="font-semibold text-2xl italic">YumHub</p>
+          <p class="text-xs">
+            <?php if (_is_admin()) : ?>
+              (admin)
+            <?php endif ?>
+            <?php if (_is_employee()) : ?>
+              (partner)
+            <?php endif ?>
+          </p>
+        </a>
+      </div>
+      <div class="flex justify-end gap-6">
+        <a href="/browse" class="flex items-center">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.2818 14.2731L21 21M16.5556 8.77778C16.5556 13.0733 13.0733 16.5556 8.77778 16.5556C4.48223 16.5556 1 13.0733 1 8.77778C1 4.48223 4.48223 1 8.77778 1C13.0733 1 16.5556 4.48223 16.5556 8.77778Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="/account" class="flex items-center">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.66675 21V19.8235C1.66675 16.5748 4.30037 13.9412 7.5491 13.9412H12.255C15.5037 13.9412 18.1373 16.5748 18.1373 19.8235V21M14.6079 5.70588C14.6079 8.30487 12.501 10.4118 9.90204 10.4118C7.30305 10.4118 5.19616 8.30487 5.19616 5.70588C5.19616 3.10689 7.30305 1 9.90204 1C12.501 1 14.6079 3.10689 14.6079 5.70588Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <nav id="mobile" class="fixed inset-0 z-10 -translate-x-full duration-300">
+    <div id="menu_whitespace" class="relative w-full h-full"></div>
+    <div class="absolute inset-0 bg-50-shades p-4 pt-16 md:max-w-[390px] flex flex-col justify-between uppercase">
+      <div class="flex flex-col gap-6">
         <?php if (_is_admin()) : ?>
           <a href="/all_users" class="flex items-center">
             All users
@@ -57,34 +101,20 @@ require_once __DIR__ . '/../_.php';
             Orders
           </a>
         <?php endif ?>
+        <a href="/contact">Contact</a>
+        <a href="/about-us">About us</a>
       </div>
-      <div class="flex">
-        <p class="font-semibold text-2xl italic ">YumHub</p>
-        <p class="text-xs">
-          <?php if (_is_admin()) : ?>
-            (admin)
-          <?php endif ?>
-          <?php if (_is_employee()) : ?>
-            (partner)
-          <?php endif ?>
-        </p>
-      </div>
-      <div class="flex justify-end gap-6">
-        <a href="/browse" class="flex items-center">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.2818 14.2731L21 21M16.5556 8.77778C16.5556 13.0733 13.0733 16.5556 8.77778 16.5556C4.48223 16.5556 1 13.0733 1 8.77778C1 4.48223 4.48223 1 8.77778 1C13.0733 1 16.5556 4.48223 16.5556 8.77778Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <a href=/account class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
+        <div class="flex items-center gap-4">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-        </a>
-        <a href="/account" class="flex items-center">
-          <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.66675 21V19.8235C1.66675 16.5748 4.30037 13.9412 7.5491 13.9412H12.255C15.5037 13.9412 18.1373 16.5748 18.1373 19.8235V21M14.6079 5.70588C14.6079 8.30487 12.501 10.4118 9.90204 10.4118C7.30305 10.4118 5.19616 8.30487 5.19616 5.70588C5.19616 3.10689 7.30305 1 9.90204 1C12.501 1 14.6079 3.10689 14.6079 5.70588Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-      </div>
-    </nav>
-    <nav id="mobile"></nav>
-  </header>
-
+          Account
+        </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </nav>
   <main class="">
-
-    <nav id="desktop"></nav>

@@ -46,6 +46,22 @@
 //   }, 500);
 // }
 
+const menu = document.getElementById("mobile");
+const menuWhitespace = document.getElementById("menu_whitespace");
+const openMenu = document.getElementById("open_menu");
+
+openMenu.addEventListener("click", clickMenu);
+menuWhitespace.addEventListener("click", clickMenu);
+
+function clickMenu() {
+  menu.classList.toggle("-translate-x-full");
+  if (openMenu.getAttribute("open") === null) {
+    openMenu.setAttribute("open", "");
+  } else {
+    openMenu.removeAttribute("open");
+  }
+}
+
 // ##############################
 async function is_email_available() {
   const frm = event.target.form;

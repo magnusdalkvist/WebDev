@@ -14,9 +14,14 @@ try {
 
   // Get employees assign to orders
   $user_role_name = 'employee';
+
   $q = $db->prepare("SELECT user_id FROM users WHERE user_role_name = '$user_role_name'");
   $q->execute();
   $employees_ids = $q->fetchAll(PDO::FETCH_COLUMN);
+
+  $q = $db->prepare("SELECT user_partner_id FROM partners");
+  $q->execute();
+  $partners_ids = $q->fetchAll(PDO::FETCH_COLUMN);
 
   // Get items_ids to assign to order
   $q = $db->prepare("SELECT item_id FROM items");
@@ -36,6 +41,7 @@ try {
       order_deleted_at              TEXT,
       order_delivered_at            TEXT,
       order_delivered_by_user_fk    int,
+      order_placed_at_partner_fk    int,
       PRIMARY KEY (order_id)
     )
   ');
@@ -49,9 +55,10 @@ try {
     $order_deleted_at = 0;
     $order_delivered_at = 0;
     $order_delivered_by_user_fk = $employees_ids[array_rand($employees_ids)];
+    $order_placed_at_partner_fk = $partners_ids[array_rand($partners_ids)]; // assuming $partners_ids contains the ids of partners
 
     $values .= "(null, '$order_created_by_user_fk', '$order_created_at', '$order_updated_at', 
-    '$order_deleted_at', '$order_delivered_at', '$order_delivered_by_user_fk'),";
+    '$order_deleted_at', '$order_delivered_at', '$order_delivered_by_user_fk', '$order_placed_at_partner_fk'),";
   }
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO orders VALUES $values");

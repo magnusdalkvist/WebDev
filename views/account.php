@@ -15,40 +15,33 @@ $_SESSION['user_id'] = $user['user_id'];
 
 ?>
 
-<section class="grid grid-cols-2">
+<section class="grid grid-cols-2 gap-4 mx-12">
   <div class="flex flex-col">
     <div class="flex  gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>
 
       <div class="hidden"><?= $user['user_id'] ?></div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">First name: </div>
-        <div class="w-2/5"><?php out($user['user_name']) ?></div>
+      <div class="grid grid-cols-2  ">
+        <div>First name: </div>
+        <div><?php out($user['user_name']) ?></div>
       </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">Last name: </div>
-        <div class="w-2/5"><?php out($user['user_last_name']) ?></div>
+      <div class="grid grid-cols-2  ">
+        <div>Last name: </div>
+        <div><?php out($user['user_last_name']) ?></div>
       </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">Email: </div>
-        <div class="w-2/5"><?php out($user['user_email']) ?></div>
+      <div class="grid grid-cols-2  ">
+        <div>Email: </div>
+        <div><?php out($user['user_email']) ?></div>
       </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">Address: </div>
-        <div class="w-2/5"><?php out($user['user_address']) ?></div>
+      <div class="grid grid-cols-2  ">
+        <div>Address: </div>
+        <div><?php out($user['user_address']) ?></div>
       </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">User ID: </div>
-        <div class="w-2/5"><?php out($user['user_id']) ?></div>
+      <div class="grid grid-cols-2  ">
+        <div>Account created: </div>
+        <div><?php echo date("d/m/Y H.i", $user['user_created_at']) ?></div>
       </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">Account created: </div>
-        <div class="w-2/5"><?php echo date("d/m/Y H.i", $user['user_created_at']) ?></div>
-      </div>
-      <div class="flex  gap-4 ">
-        <div class="w-1/5">Account updated: </div>
-        <div class="w-2/5"><?php echo date("d/m/Y H.i", $user['user_updated_at']) ?></div>
-      </div>
+
     </div>
 
 

@@ -17,7 +17,6 @@ $q = $db->prepare(' SELECT *
 $q->bindValue(':user_id',  $user['user_id']);
 $q->execute();
 $orders = $q->fetchAll();
-
 ?>
 
 <main class="grid grid-cols-2">

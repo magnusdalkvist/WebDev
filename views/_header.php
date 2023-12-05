@@ -118,4 +118,4 @@ require_once __DIR__ . '/../_.php';
       </a>
     </div>
   </nav>
-  <main class="min-h-screen">
+  <main class="min-h-screen pt-16">

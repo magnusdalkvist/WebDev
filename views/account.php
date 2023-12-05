@@ -19,6 +19,7 @@ $q->execute();
 $orders = $q->fetchAll();
 ?>
 
+
 <section class="grid grid-cols-2 gap-4">
   <div class="flex flex-col">
     <div class="flex  gap-2 flex-col mt-16 p-8 mr-4 bg-white rounded-md text-slate-500">

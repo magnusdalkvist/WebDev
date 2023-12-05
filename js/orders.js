@@ -34,7 +34,8 @@ async function sortName() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML =
+    sortNameDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
     return a.order_name.localeCompare(b.order_name) * sortNameDirection;
@@ -48,10 +49,13 @@ async function sortLastName() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortLastNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML =
+    sortLastNameDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_last_name.localeCompare(b.order_last_name) * sortLastNameDirection;
+    return (
+      a.order_last_name.localeCompare(b.order_last_name) * sortLastNameDirection
+    );
   });
   sortLastNameDirection *= -1;
   displayorders(orders);
@@ -62,7 +66,8 @@ async function sortEmail() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortEmailDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML =
+    sortEmailDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
     return a.order_email.localeCompare(b.order_email) * sortEmailDirection;
@@ -76,10 +81,13 @@ async function sortRole() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortRoleDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML =
+    sortRoleDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_role_name.localeCompare(b.order_role_name) * sortRoleDirection;
+    return (
+      a.order_role_name.localeCompare(b.order_role_name) * sortRoleDirection
+    );
   });
   sortRoleDirection *= -1;
   displayorders(orders);
@@ -90,10 +98,13 @@ async function sortStatus() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML = sortStatusDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML =
+    sortStatusDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_is_blocked.localeCompare(b.order_is_blocked) * sortStatusDirection;
+    return (
+      a.order_is_blocked.localeCompare(b.order_is_blocked) * sortStatusDirection
+    );
   });
   sortStatusDirection *= -1;
   displayorders(orders);
@@ -109,20 +120,25 @@ function displayorders(orders) {
 
     let div_order = `
     <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
-    <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    })}</div>
-    <div>${order.order_id}</div>
+    <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      }
+    )}</div>
+    <a href="order/${order.order_id}">${order.order_id}</a>
     <div>${order.order_created_by_user_fk}</div>
     <div>${order.order_delivered_at > 0 ? "Delivered" : "Not delivered"}</div>
     <div>${order.order_delivered_by_user_fk}</div>
   </div>
         `;
-    document.querySelector("#results").insertAdjacentHTML("afterbegin", div_order);
+    document
+      .querySelector("#results")
+      .insertAdjacentHTML("afterbegin", div_order);
     document.querySelector("#items-list").innerHTML = "";
     let div_item_total = 0;
     // items.forEach((item) => {

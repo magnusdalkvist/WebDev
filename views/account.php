@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/_header.php';
 
 
 if (!isset($_SESSION['user']) || !$_SESSION['user']) {
   header('Location: /login');
   exit();
 }
+
+require_once __DIR__ . '/_header.php';
 
 $user = $_SESSION['user'];
 $_SESSION['user_id'] = $user['user_id'];

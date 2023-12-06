@@ -11,6 +11,7 @@ module.exports = {
         "50-shades": "#212121",
         "mr-grey": "#2C2C2C",
         "soft-white": "#D0D0D0",
+        "transparent-50": "rgba(0, 0, 0, 0.5)",
       },
     },
   },

@@ -19,8 +19,8 @@ require_once __DIR__ . '/../_.php';
   <title>YumHub</title>
 </head>
 
-<body class="w-full min-h-screen bg-hot-noir text-white">
-  <header class="fixed top-0 left-0 right-0 z-20 mix-blend-difference">
+<body class="flex flex-col w-full min-h-screen bg-hot-noir text-white">
+  <header class="fixed top-0 left-0 right-0 z-20 ">
     <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
 
       <div class="flex gap-4">
@@ -105,7 +105,7 @@ require_once __DIR__ . '/../_.php';
       <a href=/account class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
         <div class="flex items-center gap-4">
           <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           Account
         </div>
@@ -115,4 +115,4 @@ require_once __DIR__ . '/../_.php';
       </a>
     </div>
   </nav>
-  <main class="min-h-screen pt-16">
+  <main class="flex-1">

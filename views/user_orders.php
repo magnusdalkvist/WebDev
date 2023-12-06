@@ -19,7 +19,11 @@ $orders = $q->fetchAll();
 
 <main>
   <section class="p-4 container mx-auto  bg-50-shades rounded-md text-soft-white">
-    <h3 class="py-4 text-soft-white font-bold">My orders:</h3>
+    <div class="flex pb-4 text-xl">
+      <h1 class="text-soft-white">
+        Your orders
+      </h1>
+    </div>
     <div id="account_orders">
       <div class="">
         <div class="grid grid-cols-[2fr_1fr_1fr] md:grid-cols-[1fr_1fr_2fr_1fr] items-center gap-4 border-b border-b-slate-200 py-2">

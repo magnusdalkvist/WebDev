@@ -12,7 +12,7 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="h-[500px] relative rounded-b-2xl overflow-hidden -mt-16">
     <img src="/assets/ivan-torres-MQUqbmszGGM-unsplash.jpg" alt="pizza" class="object-cover w-full h-full">
-    <div class="absolute inset-0 p-4 bg-transparent-50 grid grid-rows-3 grid-cols-1 justify-between w-full">
+    <div class="absolute inset-0 p-6 bg-transparent-50 grid grid-rows-3 grid-cols-1 justify-between w-full">
         <div class="row-start-2 flex flex-col gap-2 justify-center items-center">
             <form method="post" action="/browse" class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey w-full max-w-[390px]">
                 <label for="deilivery_address">
@@ -20,18 +20,18 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
                         <path d="M11.6254 11.6185L17 17M13.4444 7.22222C13.4444 10.6587 10.6587 13.4444 7.22222 13.4444C3.78579 13.4444 1 10.6587 1 7.22222C1 3.78579 3.78579 1 7.22222 1C10.6587 1 13.4444 3.78579 13.4444 7.22222Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </label>
-                <input type="text" name="deilivery_address" id="deilivery_address" placeholder="Enter delivery address" class="bg-transparent placeholder:text-transparent-50 focus:outline-none">
+                <input type="text" name="deilivery_address" id="deilivery_address" placeholder="Enter delivery address" class="w-full bg-transparent placeholder:text-transparent-50 focus:outline-none">
             </form>
             <a href="/browse" class="underline">Use current location</a>
         </div>
         <div class="row-start-3 flex flex-col justify-end">
-            <p>Delight in every bite!</p>
+            <p class="opacity-75">Delight in every bite!</p>
             <h1 class="font-semibold text-3xl italic">YumHub</h1>
         </div>
     </div>
 </div>
 
-<div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-4 py-8">
+<div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-6">
     <div class="bg-50-shades flex w-full flex-wrap rounded-2xl overflow-hidden">
         <div class="bg-mr-grey flex justify-center items-center p-4 rounded-2xl overflow-hidden min-w-[200px] flex-1">
             <svg class="max-w-[64px] max-h-[64px]" viewBox="0 0 77 85" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,17 +68,17 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="flex flex-col gap-4 items-center text-black">
-    <div class="bg-sexyred-light px-4 py-16 w-full rounded-2xl flex justify-center items-center">
+    <div class="bg-sexyred-light px-6 py-16 w-full rounded-2xl flex justify-center items-center">
         <div class="flex">
             <p class="font-semibold text-5xl italic">YumHub</p>
             <p class="text-xl">(partner)</p>
         </div>
     </div>
-    <div class="px-4 w-full max-w-[400px]">
+    <div class="px-6 w-full max-w-[400px]">
         <a href="" class="flex bg-sexyred hover:bg-sexyred-light rounded-2xl px-4 py-3 w-full justify-center font-bold">Become a partner now</a>
     </div>
 </div>
-<div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-4 py-8">
+<div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-6">
     <div class="bg-50-shades flex w-full flex-wrap rounded-2xl overflow-hidden">
         <div class="bg-mr-grey flex justify-center items-center p-4 rounded-2xl overflow-hidden min-w-[200px] flex-1">
             <svg class="max-w-[64px] max-h-[64px]" viewBox="0 0 77 77" fill="none" xmlns="http://www.w3.org/2000/svg">

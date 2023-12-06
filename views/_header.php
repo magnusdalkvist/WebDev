@@ -21,7 +21,7 @@ require_once __DIR__ . '/../_.php';
 
 <body class="flex flex-col w-full min-h-screen bg-hot-noir text-white">
   <header class="sticky top-0 left-0 right-0 z-20 ">
-    <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
+    <nav class="grid grid-cols-[1fr_auto_1fr] px-6 py-4">
 
       <div class="flex gap-4">
         <div id="open_menu" class="flex items-center">
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../_.php';
   </header>
   <nav id="mobile" class="fixed inset-0 z-10 -translate-x-full duration-300">
     <div id="menu_whitespace" class="relative w-full h-full"></div>
-    <div class="absolute inset-0 bg-50-shades p-4 pt-16 md:max-w-[390px] flex flex-col justify-between uppercase">
+    <div class="absolute inset-0 bg-50-shades p-6 pt-16 md:max-w-[390px] flex flex-col justify-between uppercase">
       <div class="flex flex-col gap-6">
         <?php if (_is_admin()) : ?>
           <a href="/all_users" class="flex items-center">
@@ -93,14 +93,12 @@ require_once __DIR__ . '/../_.php';
       </a> -->
           <!-- TODO: Orders made for related partner store to employee -->
         <?php endif ?>
-        <?php if (_is_customer()) : ?>
-          <a href="/user_orders" class="flex items-center">
-            Orders
-          </a>
-        <?php endif ?>
         <a href="/browse">Browse</a>
         <a href="/contact">Contact</a>
         <a href="/about-us">About us</a>
+        <?php if (_is_customer()) : ?>
+          <a href="/user_orders">Your orders</a>
+        <?php endif ?>
       </div>
       <?php
       if (!isset($_SESSION['user']) || !$_SESSION['user']) : ?>
@@ -143,4 +141,4 @@ require_once __DIR__ . '/../_.php';
       <?php endif ?>
     </div>
   </nav>
-  <main class="flex-1">
+  <main class="flex-1 flex flex-col gap-8 pb-8">

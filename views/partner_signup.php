@@ -5,10 +5,10 @@ require_once __DIR__ . '/_header.php';
 
 <main class="w-full min-h-screen mt-16">
   <section class="flex flex-col items-center">
-    <div class="mt-20 py-8 px-8 md:w-1/3 bg-white rounded-md">
-      <div class="py-4">
+    <div class="gap-4 p-4 container max-w-sm mx-auto bg-50-shades rounded-md text-soft-white">
+      <div class="pb-2">
         <h1>Welcome</h1>
-        <p>Signup with email</p>
+        <p>Signup as a partner today!</p>
       </div>
       <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 text-slate-500">
         <div class="grid">
@@ -37,15 +37,6 @@ require_once __DIR__ . '/_header.php';
           </div>
         </div>
 
-        <div class="grid">
-          <label for="user_role_name" class="flex">
-            <span class="ml-auto mr-2 text-xs hidden">Chose user role</span>
-          </label>
-          <select class="pl-2 border-slate-300 border rounded h-8" name="user_role_name" id="user_role_name">
-            <option value="customer">Customer</option>
-            <option value="employee">Employee</option>
-          </select>
-        </div>
 
         <div class="grid" class="flex">
           <label for="user_name" class="flex">

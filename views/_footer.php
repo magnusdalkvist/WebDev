@@ -7,7 +7,7 @@
                 <?php if (_is_admin()) : ?>
                     (admin)
                 <?php endif ?>
-                <?php if (_is_employee()) : ?>
+                <?php if (_is_partner()) : ?>
                     (partner)
                 <?php endif ?>
             </p>

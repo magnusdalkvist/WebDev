@@ -18,15 +18,15 @@ $orders = $q->fetchAll();
 
 
 <main>
-  <section class="flex flex-col mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
-    <h3 class="py-4 text-black font-bold">My orders:</h3>
+  <section class="p-4 container mx-auto  bg-50-shades rounded-md text-soft-white">
+    <h3 class="py-4 text-soft-white font-bold">My orders:</h3>
     <div id="account_orders">
       <div class="">
-        <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
-          <div class="w-1/5">Order created:</div>
-          <div class="w-1/5">Order ID:</div>
-          <div class="w-1/5">Items:</div>
-          <div class="w-1/5">Total price:</div>
+        <div class="grid grid-cols-[2fr_1fr_1fr] md:grid-cols-[1fr_1fr_2fr_1fr] items-center gap-4 border-b border-b-slate-200 py-2">
+          <div class="">Order created:</div>
+          <div class="">Order ID:</div>
+          <div class="hidden md:block">Items:</div>
+          <div class="">Total price:</div>
         </div>
         <?php foreach ($orders as $order) :
           $db = _db();
@@ -36,15 +36,15 @@ $orders = $q->fetchAll();
           $q->execute();
           $items = $q->fetchAll();
         ?>
-          <a href="order/<?= $order['order_id'] ?>" class="flex items-center gap-4 border-b border-b-slate-200 py-2">
-            <div class="w-1/5"><?php echo date("d/m/Y H.i", $order['order_created_at']) ?></div>
-            <div class="w-1/5"><?php out($order['order_id']) ?></div>
-            <div class="w-1/5">
+          <a href="order/<?= $order['order_id'] ?>" class="grid grid-cols-[2fr_1fr_1fr] md:grid-cols-[1fr_1fr_2fr_1fr]  items-center gap-4 border-b border-b-slate-200 py-2">
+            <div class=""><?php echo date("d/m/Y H.i", $order['order_created_at']) ?></div>
+            <div class=""><?php out($order['order_id']) ?></div>
+            <div class="hidden md:block">
               <?php foreach ($items as $item) : ?>
                 <div><?php out($item['orders_items_item_quantity'] . 'x ' . $item['item_name'] . '(' . $item['item_price'] . ')') ?></div>
               <?php endforeach ?>
             </div>
-            <div class="w-1/5">
+            <div class="">
               <?php
               $totalPrice = 0;
               foreach ($items as $item) {

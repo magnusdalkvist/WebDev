@@ -43,8 +43,8 @@ $items = $q->fetchAll();
 
 ?>
 
-<section class="flex flex-col gap-8 p-4 container mx-auto bg-50-shades rounded-md text-soft-white">
-    <h3 class="py-2 text-black font-bold">Order <?= $order_id ?></h3>
+<section class="flex flex-col gap-4 p-4 container mx-auto bg-50-shades rounded-md text-soft-white">
+    <h3 class="pt-2 text-soft-white font-bold">Order <?= $order_id ?></h3>
 
     <div class="flex flex-col items-start gap-4  border-b-slate-200">
         <h4>Order details:</h4>

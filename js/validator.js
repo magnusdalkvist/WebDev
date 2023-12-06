@@ -5,10 +5,10 @@ function validate(callback) {
   // const validate_error = "rgba(240, 130, 240, 0.2)"
   const validate_error = "rgba(215, 71, 44, 100)";
   form.querySelectorAll("[data-validate]").forEach(function (element) {
-    element.classList.remove("validate_error");
+    element.parentElement.classList.remove("validate_error");
     // element.style.backgroundColor = "rgba(60, 80, 100, 1)"
     // element.style.backgroundColor = "white"
-    element.style.border =
+    element.parentElement.style.border =
       "1px solid rgb(203 213 225 / var(--tw-border-opacity))";
   });
   form.querySelectorAll("[data-validate]").forEach(function (element) {
@@ -18,9 +18,9 @@ function validate(callback) {
           element.value.length < parseInt(element.getAttribute("data-min")) ||
           element.value.length > parseInt(element.getAttribute("data-max"))
         ) {
-          element.classList.add("validate_error");
+          element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = `2px solid ${validate_error}`;
+          element.parentElement.style.border = `2px solid ${validate_error}`;
         }
         break;
       case "int":
@@ -30,18 +30,18 @@ function validate(callback) {
             parseInt(element.getAttribute("data-min")) ||
           parseInt(element.value) > parseInt(element.getAttribute("data-max"))
         ) {
-          element.classList.add("validate_error");
+          element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = `2px solid ${validate_error}`;
+          element.parentElement.style.border = `2px solid ${validate_error}`;
         }
         break;
       case "email":
         let re =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!re.test(element.value.toLowerCase())) {
-          element.classList.add("validate_error");
+          element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = `2px solid ${validate_error}`;
+          element.parentElement.style.border = `2px solid ${validate_error}`;
         }
         break;
       case "regex":
@@ -50,9 +50,9 @@ function validate(callback) {
         if (!regex.test(element.value)) {
           console.log(element.value);
           console.log("regex error");
-          element.classList.add("validate_error");
+          element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = `2px solid ${validate_error}`;
+          element.parentElement.style.border = `2px solid ${validate_error}`;
         }
         break;
       case "match":
@@ -62,9 +62,9 @@ function validate(callback) {
             `[name='${element.getAttribute("data-match-name")}']`
           ).value
         ) {
-          element.classList.add("validate_error");
+          element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = `2px solid ${validate_error}`;
+          element.parentElement.style.border = `2px solid ${validate_error}`;
         }
         break;
     }

@@ -19,12 +19,12 @@ require_once __DIR__ . '/_header.php';
     include_once __DIR__ . '/_form_search.php'
     ?>
   </div>
-  <div class="grid grid-cols-5 items-center gap-4 border-b border-b-soft-white py-2">
+  <div class="grid grid-cols-[2fr_1fr_2fr] md:grid-cols-5 items-center gap-4 border-b border-b-soft-white py-2">
     <div>Order created: <span id="direction"></span></div>
     <div>Order ID: <span id="direction"></span></div>
-    <div>Order created by: <span id="direction"></span></div>
+    <div class="hidden md:block">Order created by: <span id="direction"></span></div>
     <div>Order status: </div>
-    <div>Delivered by: <span id="direction"></span></div>
+    <div class="hidden md:block">Delivered by: <span id="direction"></span></div>
   </div>
   <div id="results"></div>
 </section>

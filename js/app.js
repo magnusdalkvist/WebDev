@@ -227,3 +227,9 @@ async function update_user_password() {
     }, 5000);
   }
 }
+
+// ######################
+
+function goBack() {
+  window.history.back();
+}

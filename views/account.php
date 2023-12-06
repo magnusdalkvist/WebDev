@@ -17,7 +17,6 @@ $_SESSION['user_id'] = $user['user_id'];
 
 
 
-
 <section class=" gap-4 p-4 container mx-auto ">
   <div class=" flex flex-col gap-4">
     <div class="flex  gap-2 flex-col p-4 bg-50-shades rounded-md text-soft-white">

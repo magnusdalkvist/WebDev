@@ -21,7 +21,7 @@ require_once __DIR__ . '/../_.php';
 
 <body class="flex flex-col w-full min-h-screen bg-hot-noir text-white">
   <header class="sticky top-0 left-0 right-0 z-20 ">
-    <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
+    <nav class="grid grid-cols-[1fr_auto_1fr] px-6 py-4">
 
       <div class="flex gap-4">
         <div id="open_menu" class="flex items-center">
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../_.php';
   </header>
   <nav id="mobile" class="fixed inset-0 z-10 -translate-x-full duration-300">
     <div id="menu_whitespace" class="relative w-full h-full"></div>
-    <div class="absolute inset-0 bg-50-shades p-4 pt-16 md:max-w-[390px] flex flex-col justify-between uppercase">
+    <div class="absolute inset-0 bg-50-shades p-6 pt-16 md:max-w-[390px] flex flex-col justify-between uppercase">
       <div class="flex flex-col gap-6">
         <?php if (_is_admin()) : ?>
           <a href="/all_users" class="flex items-center">
@@ -93,26 +93,52 @@ require_once __DIR__ . '/../_.php';
       </a> -->
           <!-- TODO: Orders made for related partner store to employee -->
         <?php endif ?>
-        <?php if (_is_customer()) : ?>
-          <a href="/user_orders" class="flex items-center">
-            Orders
-          </a>
-        <?php endif ?>
         <a href="/browse">Browse</a>
         <a href="/contact">Contact</a>
         <a href="/about-us">About us</a>
+        <?php if (_is_customer()) : ?>
+          <a href="/user_orders">Your orders</a>
+        <?php endif ?>
       </div>
-      <a href=/account class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
-        <div class="flex items-center gap-4">
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <?php
+      if (!isset($_SESSION['user']) || !$_SESSION['user']) : ?>
+        <a href=/login class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
+          <div class="flex items-center gap-4">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Login
+          </div>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Account
+        </a>
+      <?php else : ?>
+        <div class="flex flex-col gap-4">
+          <a href=/account class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
+            <div class="flex items-center gap-4">
+              <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Account
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href=/logout class="flex justify-between items-center bg-mr-grey p-4 rounded-2xl">
+            <div class="flex items-center gap-4">
+              <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Logout
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </a>
+      <?php endif ?>
     </div>
   </nav>
-  <main class="flex-1">
+  <main class="flex-1 flex flex-col gap-8 pb-8">

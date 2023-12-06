@@ -21,18 +21,20 @@ async function handleSearch() {
 }
 
 function displayItems(items) {
-  let currentPartner = '';
-  let html = items.map(item => {
-    let card = '';
-    if(item.partner_name !== currentPartner) {
-      card += currentPartner ? '</div></div></div>' : '';
-      currentPartner = item.partner_name;
-      card += `<div class='mt-4 p-4 bg-50-shades rounded-lg overflow-hidden mb-5 text-center'><div class='p-5'><h1 class='font-bold text-white p-4'>${currentPartner}</h1><div class='mt-4'>`;
-    }
-    card += `<div class='flex justify-between p-2'><p class='text-white'>${item.item_name}</p><p class='font-normal text-gray-700'>${item.item_price} $</p></div>`;
-    return card;
-  }).join('');
-  html += currentPartner ? '</div></div></div>' : '';
+  let currentPartner = "";
+  let html = items
+    .map((item) => {
+      let card = "";
+      if (item.partner_name !== currentPartner) {
+        card += currentPartner ? "</div></div></div>" : "";
+        currentPartner = item.partner_name;
+        card += `<div class='p-4 bg-50-shades rounded-lg overflow-hidden text-center'><div class='p-5'><h1 class='font-bold text-white p-4'>${currentPartner}</h1><div class='mt-4'>`;
+      }
+      card += `<div class='flex justify-between p-2'><p class='text-white'>${item.item_name}</p><p class='font-normal text-gray-700'>${item.item_price} $</p></div>`;
+      return card;
+    })
+    .join("");
+  html += currentPartner ? "</div></div></div>" : "";
   document.querySelector("#results").innerHTML = html;
 }
 

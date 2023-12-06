@@ -9,7 +9,8 @@ $q = $db->prepare('SELECT items.*, partners.partner_name FROM items
 $q->execute();
 $items = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<div class="h-[500px] relative rounded-b-2xl overflow-hidden">
+
+<div class="h-[500px] relative rounded-b-2xl overflow-hidden -mt-16">
     <img src="/assets/ivan-torres-MQUqbmszGGM-unsplash.jpg" alt="pizza" class="object-cover w-full h-full">
     <div class="absolute inset-0 p-4 bg-transparent-50 grid grid-rows-3 grid-cols-1 justify-between w-full">
         <div class="row-start-2 flex flex-col gap-2 justify-center items-center">

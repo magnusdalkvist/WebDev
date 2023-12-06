@@ -677,6 +677,10 @@ video {
   margin-top: 2rem;
 }
 
+.-mt-16 {
+  margin-top: -4rem;
+}
+
 .block {
   display: block;
 }

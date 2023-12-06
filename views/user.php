@@ -18,7 +18,7 @@ if (isset($_GET['id']) && _is_admin()) {
 
 ?>
 
-<section class=" mx-12">
+<section class=" p-4 container mx-auto ">
   <div class="grid grid-cols-2 gap-4">
     <div class="flex gap-2 flex-col mt-16 p-8 bg-white rounded-md text-slate-500">
       <h2 class="font-extrabold ">Profile</h2>

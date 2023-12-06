@@ -22,20 +22,17 @@ async function handleSearch() {
 
 function displayItems(items) {
   let currentPartner = '';
-  let html = ''; 
-  items.forEach((item) => {
+  let html = items.map(item => {
+    let card = '';
     if(item.partner_name !== currentPartner) {
-      if(currentPartner !== '') {
-        html += '</div></div></div>';
-      }
+      card += currentPartner ? '</div></div></div>' : '';
       currentPartner = item.partner_name;
-      html += `<div class='border border-50-shades bg-50-shades rounded-lg overflow-hidden mb-5 text-center'><div class='p-5'><h2 class='text-2xl font-bold tracking-tight text-white'>${currentPartner}</h2><div class='mt-4 text-left'>`;
+      card += `<div class='mt-4 p-4 bg-50-shades rounded-lg overflow-hidden mb-5 text-center'><div class='p-5'><h1 class='font-bold text-white p-4'>${currentPartner}</h1><div class='mt-4'>`;
     }
-    html += `<div class='flex justify-between'><p class='font-normal text-white'>${item.item_name}</p><p class='font-normal text-gwhite'>${item.item_price}$</p></div>`;
-  });
-  if(currentPartner !== '') {
-    html += '</div></div></div>';
-  }
+    card += `<div class='flex justify-between p-2'><p class='text-white'>${item.item_name}</p><p class='font-normal text-gray-700'>${item.item_price} $</p></div>`;
+    return card;
+  }).join('');
+  html += currentPartner ? '</div></div></div>' : '';
   document.querySelector("#results").innerHTML = html;
 }
 

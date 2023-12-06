@@ -6,7 +6,7 @@ require_once __DIR__ . '/_header.php';
   <div class="py-5 bg-hot-noir shadow rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="flex justify-between items-center">
-        <h2 class="text-lg leading-6 font-medium text-white">Browse Products</h2>
+        <h1 class="text-lg leading-6 font-medium text-white">Browse Products</h1>
         <?php
         $frm_search_url = 'api-search-items.php';
         include_once __DIR__ . '/_form_search.php';

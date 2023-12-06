@@ -20,7 +20,7 @@ require_once __DIR__ . '/../_.php';
 </head>
 
 <body class="flex flex-col w-full min-h-screen bg-hot-noir text-white">
-  <header class="sticky top-0 left-0 right-0 z-20 mix-blend-difference">
+  <header class="fixed top-0 left-0 right-0 z-20 ">
     <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
 
       <div class="flex gap-4">

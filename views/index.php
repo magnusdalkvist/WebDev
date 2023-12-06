@@ -13,17 +13,16 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
 <div class="h-[500px] relative rounded-b-2xl overflow-hidden">
     <img src="/assets/ivan-torres-MQUqbmszGGM-unsplash.jpg" alt="pizza" class="object-cover w-full h-full">
     <div class="absolute inset-0 p-4 bg-transparent-50 grid grid-rows-3 grid-cols-1 justify-between w-full">
-        <div class="row-start-2 flex flex-col justify-center items-center">
-            <input type="text" class="flex justify-between items-center bg- p-4 rounded-2xl">
-            <div class="flex items-center gap-4">
-                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.33325 17V16.0588C1.33325 13.4599 3.44015 11.3529 6.03913 11.3529H9.80384C12.4028 11.3529 14.5097 13.4599 14.5097 16.0588V17M11.6862 4.76471C11.6862 6.8439 10.0006 8.52941 7.92149 8.52941C5.8423 8.52941 4.15678 6.8439 4.15678 4.76471C4.15678 2.68552 5.8423 1 7.92149 1C10.0006 1 11.6862 2.68552 11.6862 4.76471Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-
-            </div>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 1L12 8L5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+        <div class="row-start-2 flex flex-col gap-2 justify-center items-center">
+            <form action="" class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey w-full max-w-[390px]">
+                <label for="deilivery_address">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.6254 11.6185L17 17M13.4444 7.22222C13.4444 10.6587 10.6587 13.4444 7.22222 13.4444C3.78579 13.4444 1 10.6587 1 7.22222C1 3.78579 3.78579 1 7.22222 1C10.6587 1 13.4444 3.78579 13.4444 7.22222Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </label>
+                <input type="text" name="deilivery_address" id="deilivery_address" placeholder="Enter delivery address" class="bg-transparent placeholder:text-transparent-50 focus:outline-none">
+            </form>
+            <a href="/browse" class="underline">Use current location</a>
         </div>
         <div class="row-start-3 flex flex-col justify-end">
             <p>Delight in every bite!</p>

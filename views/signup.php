@@ -4,12 +4,12 @@ require_once __DIR__ . '/_header.php';
 ?>
 
 <section class="flex flex-col items-center">
-  <div class="py-8 px-8 md:w-1/3 bg-50-shades rounded-md">
+  <div class="py-8 px-8 md:w-1/3 bg-50-shades text-soft-white rounded-md">
     <div class="py-4">
       <h1>Welcome</h1>
       <p>Signup with email</p>
     </div>
-    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 text-soft-white [&_input]:bg-soft-white [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">
+    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 [&_input]:bg-soft-white [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">
       <div class="grid">
         <label for="user_name" class="flex">
           <span class="font-bold hidden text-sexyred">name</span>
@@ -41,6 +41,7 @@ require_once __DIR__ . '/_header.php';
           <span class="ml-auto mr-2 text-xs hidden">Chose user role</span>
         </label>
         <select class="pl-2 border-slate-300 border rounded h-8" name="user_role_name" id="user_role_name">
+          <option hidden>Select role</option>
           <option value="customer">Customer</option>
           <option value="employee">Employee</option>
         </select>

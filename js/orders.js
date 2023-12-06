@@ -132,7 +132,7 @@ function displayorders(orders) {
         minute: "2-digit",
       }
     )}</div>
-    <div href="order/${order.order_id}">${order.order_id}</div>
+    <div>${order.order_id}</div>
     <div>${order.order_created_by_user_fk}</div>
     <div>${order.order_delivered_at > 0 ? "Delivered" : "Not delivered"}</div>
     <div>${order.order_delivered_by_user_fk}</div>

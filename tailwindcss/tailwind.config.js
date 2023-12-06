@@ -10,6 +10,7 @@ module.exports = {
         "hot-noir": "#121212",
         "50-shades": "#212121",
         "mr-grey": "#2C2C2C",
+        "transparent-50": "rgba(0, 0, 0, 0.5)",
       },
     },
   },

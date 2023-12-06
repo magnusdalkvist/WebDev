@@ -8,3 +8,24 @@
 #open_menu[open] .close_icon {
   display: block;
 }
+
+.bg-field::before,
+.bg-field::after {
+  background-color: white;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.bg-field::before {
+  z-index: 1;
+}
+
+.bg-field::after {
+  z-index: -1;
+}

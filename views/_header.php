@@ -19,8 +19,8 @@ require_once __DIR__ . '/../_.php';
   <title>YumHub</title>
 </head>
 
-<body class="w-full min-h-screen bg-hot-noir text-white">
-  <header class="fixed top-0 left-0 right-0 z-20 mix-blend-difference">
+<body class="flex flex-col w-full min-h-screen bg-hot-noir text-white">
+  <header class="sticky top-0 left-0 right-0 z-20 mix-blend-difference">
     <nav class="grid grid-cols-[1fr_auto_1fr] p-4">
 
       <div class="flex gap-4">
@@ -115,4 +115,4 @@ require_once __DIR__ . '/../_.php';
       </a>
     </div>
   </nav>
-  <main class="min-h-screen pt-16">
+  <main class="flex-1">

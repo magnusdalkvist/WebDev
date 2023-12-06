@@ -14,6 +14,14 @@ if (isset($_GET['id']) && isset($_SESSION['user_id'])) {
         $q->bindValue(':order_id', $order_id);
         $q->execute();
         $order = $q->fetch();
+    } elseif ($_SESSION['user']['user_role_name'] == 'partner') {
+        $db = _db();
+        $q = $db->prepare(' SELECT * 
+                        FROM orders WHERE order_id = :order_id AND order_placed_at_partner_fk = :partner_id');
+        $q->bindValue(':order_id', $order_id);
+        $q->bindValue(':partner_id',  $_SESSION['user_id']);
+        $q->execute();
+        $order = $q->fetch();
     } else {
         $db = _db();
         $q = $db->prepare(' SELECT * 
@@ -35,7 +43,7 @@ $items = $q->fetchAll();
 
 ?>
 
-<section class="flex flex-col gap-8 mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
+<section class="flex flex-col gap-8 p-4 container mx-auto bg-50-shades rounded-md text-soft-white">
     <h3 class="py-2 text-black font-bold">Order <?= $order_id ?></h3>
 
     <div class="flex flex-col items-start gap-4  border-b-slate-200">

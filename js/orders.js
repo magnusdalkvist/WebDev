@@ -119,7 +119,9 @@ function displayorders(orders) {
     // );
 
     let div_order = `
-    <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
+    <a href="order/${
+      order.order_id
+    }" class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2"> 
     <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString(
       "en-GB",
       {
@@ -130,11 +132,11 @@ function displayorders(orders) {
         minute: "2-digit",
       }
     )}</div>
-    <a href="order/${order.order_id}">${order.order_id}</a>
+    <div href="order/${order.order_id}">${order.order_id}</div>
     <div>${order.order_created_by_user_fk}</div>
     <div>${order.order_delivered_at > 0 ? "Delivered" : "Not delivered"}</div>
     <div>${order.order_delivered_by_user_fk}</div>
-  </div>
+  </a>
         `;
     document
       .querySelector("#results")

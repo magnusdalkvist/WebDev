@@ -48,25 +48,26 @@ $_SESSION['user_id'] = $user['user_id'];
         <div class="pb-4">
           <h2 class="font-extrabold ">Update profile</h2>
         </div>
+        <!-- flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey -->
+        <!-- bg-transparent placeholder:text-transparent-50 focus:outline-none"> -->
         <form class="flex flex-col gap-2" onsubmit="validate(update_user); return false">
-          <label class="flex flex-col" for="user_name">Name:
-            <input class="pl-2" type="text" id="user_name" name="user_name" value="<?= $user['user_name'] ?>" data-validate="str" data-min="<?= USER_NAME_MIN ?>" data-max="<?= USER_NAME_MAX ?>">
+          <label class=" flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_name">Name:
+            <input class=" pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_name" name="user_name" value="<?= $user['user_name'] ?>" data-validate="str" data-min="<?= USER_NAME_MIN ?>" data-max="<?= USER_NAME_MAX ?>"> </label>
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_last_name">Last Name:
+            <input class=" pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_last_name" name="user_last_name" value="<?= $user['user_last_name'] ?>" data-validate="str" data-min="<?= USER_LAST_NAME_MIN ?>" data-max="<?= USER_LAST_NAME_MAX ?>">
           </label>
-          <label class="flex flex-col" for="user_last_name">Last Name:
-            <input class="pl-2" type="text" id="user_last_name" name="user_last_name" value="<?= $user['user_last_name'] ?>" data-validate="str" data-min="<?= USER_LAST_NAME_MIN ?>" data-max="<?= USER_LAST_NAME_MAX ?>">
-          </label>
-          <label class="flex flex-col" for="user_email">Email:
-            <input class="pl-2" type="text" id="user_email" name="user_email" value="<?= $user['user_email'] ?>" data-validate="email">
-          </label>
-
-          <label class="flex flex-col" for="user_address">Address:
-            <input class="pl-2" type="text" id="user_address" name="user_address" value="<?= $user['user_address'] ?>">
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_email">Email:
+            <input class=" pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_email" name="user_email" value="<?= $user['user_email'] ?>" data-validate="email">
           </label>
 
-          <label class="flex flex-col" for="user_tag_colo">Profile color:
-            <input type="color" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_address">Address:
+            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_address" name="user_address" value="<?= $user['user_address'] ?>">
           </label>
-          <input type="submit" value="Update profile">
+
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_tag_colo">Profile color:
+            <input type="color" class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
+          </label>
+          <input class=" text-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" type="submit" value="Update profile">
         </form>
       </div>
       <div id="update_account" class="flex flex-col p-4  bg-50-shades rounded-md text-soft-white">
@@ -74,19 +75,19 @@ $_SESSION['user_id'] = $user['user_id'];
           <h2 class="font-extrabold ">Update password</h2>
         </div>
         <form class="flex flex-col gap-2" onsubmit="validate(update_user_password); return false">
-          <label class="flex flex-col" for="user_old_password">Old password:
-            <input class="pl-2" type="password" id="user_old_password" name="user_old_password" placeholder="Old password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_old_password">Old password:
+            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="password" id="user_old_password" name="user_old_password" placeholder="Old password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
           </label>
 
-          <label class="flex flex-col" for="user_password">Password:
-            <input class="pl-2" type="password" id="user_password" name="user_password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_password">Password:
+            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="password" id="user_password" name="user_password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
           </label>
 
-          <label class="flex flex-col" for="user_confirm_password">Confirm password:
-            <input class="pl-2" type="password" id="user_confirm_password" name="user_confirm_password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
+          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_confirm_password">Confirm password:
+            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="password" id="user_confirm_password" name="user_confirm_password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
           </label>
           <div id="password_error" class="text-red-500"></div>
-          <input type="submit" value="Update password">
+          <input class="text-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" type="submit" value="Update password">
         </form>
       </div>
     </div>

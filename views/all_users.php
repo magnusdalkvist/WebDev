@@ -7,10 +7,10 @@ if (!_is_admin()) {
 ?>
 
 
-<section class="p-4 container mx-auto  bg-white rounded-md text-slate-500">
+<section class="p-4 container mx-auto  bg-50-shades rounded-md text-soft-white">
 
   <div class="flex py-4 text-xl">
-    <h1 class="text-black">
+    <h1 class="text-soft-white">
       All users
     </h1>
     <?php

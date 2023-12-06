@@ -8,9 +8,9 @@ if (!_is_admin()) {
 };
 ?>
 <main>
-  <div class="p-4 container mx-auto  bg-white rounded-md text-slate-500">
+  <div class="p-4 container mx-auto  bg-50-shades rounded-md text-soft-white">
     <div class="flex py-4 text-xl">
-      <h1 class="text-black">
+      <h1 class="text-soft-white">
         All Orders
       </h1>
       <?php
@@ -18,12 +18,12 @@ if (!_is_admin()) {
       include_once __DIR__ . '/_form_search.php'
       ?>
     </div>
-    <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
+    <div class="grid grid-cols-[2fr_1fr_2fr] md:grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
       <div>Order created: <span id="direction"></span></div>
       <div>Order ID: <span id="direction"></span></div>
-      <div>Order created by: <span id="direction"></span></div>
+      <div class="hidden md:block">Order created by: <span id="direction"></span></div>
       <div>Order status: </div>
-      <div>Delivered by: <span id="direction"></span></div>
+      <div class="hidden md:block">Delivered by: <span id="direction"></span></div>
     </div>
     <div id="results"></div>
 </main>

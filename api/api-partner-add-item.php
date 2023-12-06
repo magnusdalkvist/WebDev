@@ -10,8 +10,8 @@ try {
       VALUES 
       (:item_name, :item_price, :item_created_at, :item_updated_at, :item_deleted_at, :item_created_by_user_fk)
     ');
-  $q->bindValue(':item_name', $_POST['item_name']);
-  $q->bindValue(':item_price', $_POST['item_price']);
+  $q->bindValue(':item_name', $_POST['add_item_price']);
+  $q->bindValue(':item_price', $_POST['add_item_price']);
   $q->bindValue(':item_created_at', time());
   $q->bindValue(':item_updated_at', time());
   $q->bindValue(':item_deleted_at', 0);

@@ -650,6 +650,10 @@ video {
   grid-row-start: 3;
 }
 
+.float-right {
+  float: right;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -1112,6 +1116,10 @@ video {
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
+.fill-soft-white {
+  fill: #D0D0D0;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1236,6 +1244,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
 }
 
 .text-left {

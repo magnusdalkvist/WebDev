@@ -181,63 +181,6 @@ async function login() {
 
 // ##############################
 
-async function add_item() {
-  const frm = event.target;
-  event.preventDefault();
-  console.log("add_item" + frm);
-
-  fetch("/api/api-partner-add-item.php", {
-    method: "POST",
-    body: new FormData(frm),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      location.reload();
-    })
-    .catch((error) => {
-      console.error("error:", error);
-    });
-}
-async function update_item() {
-  const frm = event.target;
-  event.preventDefault();
-  console.log("update_item" + frm);
-
-  fetch("/api/api-partner-update-item.php", {
-    method: "POST",
-    body: new FormData(frm),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      location.reload();
-    })
-    .catch((error) => {
-      console.error("error:", error);
-    });
-}
-
-// ##############################
-
-async function delete_item() {
-  const frm = event.target;
-  event.preventDefault();
-  console.log("delete_item" + frm);
-
-  fetch("/api/api-partner-delete-item.php", {
-    method: "POST",
-    body: new FormData(frm),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      location.reload();
-    })
-    .catch((error) => {
-      console.error("error:", error);
-    });
-}
-
-// ##############################
-
 async function update_user() {
   const frm = event.target;
   event.preventDefault();

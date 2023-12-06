@@ -1008,6 +1008,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .rounded-b-2xl {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
@@ -1533,4 +1537,109 @@ video {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+.\[\&\*\]\:bg-soft-white* {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&\>\*\]\:bg-soft-white>* {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&\>div\]\:bg-soft-white>div {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&\>label\]\:bg-soft-white>label {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_\.grid\]\:bg-soft-white .grid {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_inpput\]\:bg-soft-white inpput {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_input\]\:rounded-2xl input {
+  border-radius: 1rem;
+}
+
+.\[\&_input\]\:bg-soft-white input {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_input\]\:px-4 input {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.\[\&_input\]\:py-3 input {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.\[\&_input\]\:placeholder\:text-transparent-50 input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.\[\&_input\]\:placeholder\:text-transparent-50 input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.\[\&_label\]\:bg-soft-white label {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_select\]\:mr-4 select {
+  margin-right: 1rem;
+}
+
+.\[\&_select\]\:h-full select {
+  height: 100%;
+}
+
+.\[\&_select\]\:rounded-2xl select {
+  border-radius: 1rem;
+}
+
+.\[\&_select\]\:bg-soft-white select {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.\[\&_select\]\:px-4 select {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.\[\&_select\]\:py-3 select {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.\[\&_select\]\:pr-8 select {
+  padding-right: 2rem;
+}
+
+.\[\&_select\]\:text-transparent-50 select {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.\[\&_select\]\:placeholder\:text-transparent-50 select::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.\[\&_select\]\:placeholder\:text-transparent-50 select::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }

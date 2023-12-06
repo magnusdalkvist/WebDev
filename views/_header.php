@@ -82,6 +82,9 @@ require_once __DIR__ . '/../_.php';
           <a href="/partner_orders" class="flex items-center">
             Orders
           </a>
+          <a href="/partner_items" class="flex items-center">
+            Products
+          </a>
           <!-- TODO: Orders made for partner store -->
         <?php endif ?>
         <?php if (_is_employee()) : ?>

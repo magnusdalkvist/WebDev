@@ -14,24 +14,12 @@ try {
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exception
   $db->beginTransaction(); // Start transaction
 
-  $q = $db->prepare(
-    '
-    INSERT INTO users 
-    VALUES (
-      :user_id, 
-      :user_name, 
-      :user_last_name, 
-      :user_email, 
-      :user_password, 
-      :user_address,
-      :user_role_name,
-      :user_tag_color, 
-      :user_created_at, 
-      :user_updated_at,
-      :user_deleted_at,
-      :user_is_blocked)'
-  );
-  $q->bindValue(':user_id', null);
+  $q = $db->prepare('
+  INSERT INTO users 
+  (user_name, user_last_name, user_email, user_password, user_address, user_role_name, user_tag_color, user_created_at, user_updated_at, user_deleted_at, user_is_blocked)
+  VALUES 
+  (:user_name, :user_last_name, :user_email, :user_password, :user_address, :user_role_name, :user_tag_color, :user_created_at, :user_updated_at, :user_deleted_at, :user_is_blocked)
+');
   $q->bindValue(':user_name', $_POST['user_name']);
   $q->bindValue(':user_last_name', $_POST['user_last_name']);
   $q->bindValue(':user_email', $_POST['user_email']);
@@ -52,16 +40,15 @@ try {
 
   $user_id = $db->lastInsertId();
 
-
   $q = $db->prepare(
     '
     INSERT INTO partners 
     VALUES (
-      :partner_id, 
+      :user_partner_id, 
       :partner_geo,  
       :partner_name)'
   );
-  $q->bindValue(':partner_id', $user_id);
+  $q->bindValue(':user_partner_id', $user_id);
   $q->bindValue(':partner_geo', null);
   $q->bindValue(':partner_name', $_POST['partner_name']);
 

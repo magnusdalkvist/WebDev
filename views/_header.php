@@ -43,7 +43,7 @@ require_once __DIR__ . '/../_.php';
             <?php if (_is_admin()) : ?>
               (admin)
             <?php endif ?>
-            <?php if (_is_employee()) : ?>
+            <?php if (_is_partner()) : ?>
               (partner)
             <?php endif ?>
           </p>
@@ -79,12 +79,9 @@ require_once __DIR__ . '/../_.php';
           </a>
         <?php endif ?>
         <?php if (_is_partner()) : ?>
-          <!-- <a href="/user_orders" class="flex items-center">
-        <span class="material-symbols-outlined mr-2 font-thin">
-          receipt_long
-        </span>
-        Orders
-      </a> -->
+          <a href="/partner_orders" class="flex items-center">
+            Orders
+          </a>
           <!-- TODO: Orders made for partner store -->
         <?php endif ?>
         <?php if (_is_employee()) : ?>

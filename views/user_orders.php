@@ -36,9 +36,9 @@ $orders = $q->fetchAll();
           $q->execute();
           $items = $q->fetchAll();
         ?>
-          <div class="flex items-center gap-4 border-b border-b-slate-200 py-2">
+          <a href="order/<?= $order['order_id'] ?>" class="flex items-center gap-4 border-b border-b-slate-200 py-2">
             <div class="w-1/5"><?php echo date("d/m/Y H.i", $order['order_created_at']) ?></div>
-            <a href="order/<?= $order['order_id'] ?>" class="w-1/5"><?php out($order['order_id']) ?></a>
+            <div class="w-1/5"><?php out($order['order_id']) ?></div>
             <div class="w-1/5">
               <?php foreach ($items as $item) : ?>
                 <div><?php out($item['orders_items_item_quantity'] . 'x ' . $item['item_name'] . '(' . $item['item_price'] . ')') ?></div>
@@ -53,7 +53,7 @@ $orders = $q->fetchAll();
               ?>
               <div><?php echo $totalPrice; ?></div>
             </div>
-          </div>
+          </a>
         <?php endforeach ?>
       </div>
   </section>

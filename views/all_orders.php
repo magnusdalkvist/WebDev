@@ -8,7 +8,7 @@ if (!_is_admin()) {
 };
 ?>
 <main>
-  <div class="mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
+  <div class="p-4 container mx-auto  bg-white rounded-md text-slate-500">
     <div class="flex py-4 text-xl">
       <h1 class="text-black">
         All Orders

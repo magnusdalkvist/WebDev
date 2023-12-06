@@ -9,26 +9,25 @@ if (!_is_partner()) {
 
 require_once __DIR__ . '/_header.php';
 ?>
-<main>
-  <div class="mt-16 pb-20 mr-4 px-4 bg-white rounded-md text-slate-500">
-    <div class="flex py-4 text-xl">
-      <h1 class="text-black">
-        All your orders
-      </h1>
-      <?php
-      $frm_search_url = 'api-search-partner-orders.php';
-      include_once __DIR__ . '/_form_search.php'
-      ?>
-    </div>
-    <div class="grid grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2">
-      <div>Order created: <span id="direction"></span></div>
-      <div>Order ID: <span id="direction"></span></div>
-      <div>Order created by: <span id="direction"></span></div>
-      <div>Order status: </div>
-      <div>Delivered by: <span id="direction"></span></div>
-    </div>
-    <div id="results"></div>
-</main>
+<section class=" p-4 container mx-auto bg-50-shades rounded-md text-soft-white">
+  <div class="flex py-4 text-xl">
+    <h1 class="">
+      All your orders
+    </h1>
+    <?php
+    $frm_search_url = 'api-search-partner-orders.php';
+    include_once __DIR__ . '/_form_search.php'
+    ?>
+  </div>
+  <div class="grid grid-cols-5 items-center gap-4 border-b border-b-soft-white py-2">
+    <div>Order created: <span id="direction"></span></div>
+    <div>Order ID: <span id="direction"></span></div>
+    <div>Order created by: <span id="direction"></span></div>
+    <div>Order status: </div>
+    <div>Delivered by: <span id="direction"></span></div>
+  </div>
+  <div id="results"></div>
+</section>
 <?php
 require_once __DIR__ . '/_footer.php';
 ?>

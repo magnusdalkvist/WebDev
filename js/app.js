@@ -65,7 +65,7 @@ function clickMenu() {
 // ##############################
 async function is_email_available() {
   const frm = event.target.form;
-  const conn = await fetch("api/api-is-email-available.php", {
+  const conn = await fetch("/api/api-is-email-available.php", {
     method: "POST",
     body: new FormData(frm),
   });
@@ -166,6 +166,24 @@ async function signup() {
 
   // TODO: redirect to the login page
   location.href = "/login";
+}
+async function partner_signup() {
+  const frm = event.target;
+  console.log(frm);
+  const conn = await fetch("/api/api-partner-signup.php", {
+    method: "POST",
+    body: new FormData(frm),
+  });
+
+  const data = await conn.text();
+  console.log(data);
+
+  // if (!conn.ok) {
+  //   return;
+  // }
+
+  // // TODO: redirect to the login page
+  // location.href = "/login";
 }
 
 async function login() {

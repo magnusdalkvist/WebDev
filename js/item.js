@@ -83,3 +83,10 @@ async function delete_item() {
       console.error("error:", error);
     });
 }
+
+function updateItemName() {
+  const select = document.getElementById('itemSelect');
+  const nameInput = document.getElementById('itemName');
+  const selectedOption = select.options[select.selectedIndex];
+  nameInput.value = selectedOption.getAttribute('data-name');
+}

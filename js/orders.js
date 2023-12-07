@@ -38,7 +38,7 @@ async function sortCreatedAt() {
   this.querySelector("#direction").innerHTML = sortCreatedAtDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_created_at - b.order_created_at * sortCreatedAtDirection;
+    return (a.order_created_at - b.order_created_at) * sortCreatedAtDirection;
   });
   sortCreatedAtDirection *= -1;
   displayorders(orders);
@@ -52,7 +52,7 @@ async function sortId() {
   this.querySelector("#direction").innerHTML = sortIdDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return Number(a.order_id) - Number(b.order_id) * sortIdDirection;
+    return (Number(a.order_id) - Number(b.order_id)) * sortIdDirection;
   });
   sortIdDirection *= -1;
   displayorders(orders);
@@ -67,8 +67,8 @@ async function sortCreatedBy() {
   const orders = await getOrders();
   orders.sort((a, b) => {
     return (
-      Number(a.order_created_by_user_fk) -
-      Number(b.order_created_by_user_fk) * sortCreatedByDirection
+      (Number(a.order_created_by_user_fk) - Number(b.order_created_by_user_fk)) *
+      sortCreatedByDirection
     );
   });
   sortCreatedByDirection *= -1;
@@ -83,7 +83,7 @@ async function sortDelivered() {
   this.querySelector("#direction").innerHTML = sortDeliveredDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_delivered_at - b.order_delivered_at * sortDeliveredDirection;
+    return (a.order_delivered_at - b.order_delivered_at) * sortDeliveredDirection;
   });
   sortDeliveredDirection *= -1;
   displayorders(orders);
@@ -98,8 +98,8 @@ async function sortDeliveredBy() {
   const orders = await getOrders();
   orders.sort((a, b) => {
     return (
-      Number(a.order_delivered_by_user_fk) -
-      Number(b.order_delivered_by_user_fk) * sortDeliveredByDirection
+      (Number(a.order_delivered_by_user_fk) - Number(b.order_delivered_by_user_fk)) *
+      sortDeliveredByDirection
     );
   });
   sortDeliveredByDirection *= -1;

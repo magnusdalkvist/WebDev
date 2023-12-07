@@ -6,15 +6,16 @@ async function getOrders() {
     body: new FormData(frm),
   });
   const data = await conn.json();
-  console.log(data);
   return data;
 }
 
-// document.querySelector("#sort_name").addEventListener("click", sortName);
-// document.querySelector("#sort_last_name").addEventListener("click", sortLastName);
-// document.querySelector("#sort_email").addEventListener("click", sortEmail);
-// document.querySelector("#sort_role").addEventListener("click", sortRole);
-// document.querySelector("#sort_status").addEventListener("click", sortStatus);
+//make for sort_created_at, sort_id, sort_created_by, sort_delivered, sort_delivered_by
+document.querySelector("#sort_created_at").addEventListener("click", sortCreatedAt);
+document.querySelector("#sort_id").addEventListener("click", sortId);
+document.querySelector("#sort_created_by").addEventListener("click", sortCreatedBy);
+document.querySelector("#sort_delivered").addEventListener("click", sortDelivered);
+document.querySelector("#sort_delivered_by").addEventListener("click", sortDeliveredBy);
+
 document.querySelector("#frm_search").addEventListener("input", handleSearch);
 
 var timer_search_orders = "";
@@ -29,129 +30,103 @@ async function handleSearch() {
   }, 500);
 }
 
-let sortNameDirection = -1;
-async function sortName() {
+let sortCreatedAtDirection = -1;
+async function sortCreatedAt() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortCreatedAtDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_name.localeCompare(b.order_name) * sortNameDirection;
+    return a.order_created_at - b.order_created_at * sortCreatedAtDirection;
   });
-  sortNameDirection *= -1;
+  sortCreatedAtDirection *= -1;
   displayorders(orders);
 }
 
-let sortLastNameDirection = -1;
-async function sortLastName() {
+let sortIdDirection = -1;
+async function sortId() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortLastNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortIdDirection == 1 ? "▲" : "▼";
+  const orders = await getOrders();
+  orders.sort((a, b) => {
+    return Number(a.order_id) - Number(b.order_id) * sortIdDirection;
+  });
+  sortIdDirection *= -1;
+  displayorders(orders);
+}
+
+let sortCreatedByDirection = -1;
+async function sortCreatedBy() {
+  document.querySelectorAll("#direction").forEach((el) => {
+    el.innerHTML = "";
+  });
+  this.querySelector("#direction").innerHTML = sortCreatedByDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
     return (
-      a.order_last_name.localeCompare(b.order_last_name) * sortLastNameDirection
+      Number(a.order_created_by_user_fk) -
+      Number(b.order_created_by_user_fk) * sortCreatedByDirection
     );
   });
-  sortLastNameDirection *= -1;
+  sortCreatedByDirection *= -1;
   displayorders(orders);
 }
 
-let sortEmailDirection = -1;
-async function sortEmail() {
+let sortDeliveredDirection = -1;
+async function sortDelivered() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortEmailDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortDeliveredDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
-    return a.order_email.localeCompare(b.order_email) * sortEmailDirection;
+    return a.order_delivered_at - b.order_delivered_at * sortDeliveredDirection;
   });
-  sortEmailDirection *= -1;
+  sortDeliveredDirection *= -1;
   displayorders(orders);
 }
 
-let sortRoleDirection = -1;
-async function sortRole() {
+let sortDeliveredByDirection = -1;
+async function sortDeliveredBy() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortRoleDirection == 1 ? "▲" : "▼";
-  const orders = await getOrders();
-  orders.sort((a, b) => {
-    return (
-      a.order_role_name.localeCompare(b.order_role_name) * sortRoleDirection
-    );
-  });
-  sortRoleDirection *= -1;
-  displayorders(orders);
-}
-
-let sortStatusDirection = -1;
-async function sortStatus() {
-  document.querySelectorAll("#direction").forEach((el) => {
-    el.innerHTML = "";
-  });
-  this.querySelector("#direction").innerHTML =
-    sortStatusDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortDeliveredByDirection == 1 ? "▲" : "▼";
   const orders = await getOrders();
   orders.sort((a, b) => {
     return (
-      a.order_is_blocked.localeCompare(b.order_is_blocked) * sortStatusDirection
+      Number(a.order_delivered_by_user_fk) -
+      Number(b.order_delivered_by_user_fk) * sortDeliveredByDirection
     );
   });
-  sortStatusDirection *= -1;
+  sortDeliveredByDirection *= -1;
   displayorders(orders);
 }
 
 function displayorders(orders) {
-  console.log(orders);
   document.querySelector("#results").innerHTML = "";
-  orders.forEach(async (order) => {
-    // const items = await fetch(`/api/api-get-order-details.php?id=${order.order_id}`).then((res) =>
-    //   res.json()
-    // );
-
+  orders.forEach((order) => {
     let div_order = `
     <a href="order/${
       order.order_id
     }" class="grid grid-cols-[2fr_1fr_2fr]  md:grid-cols-5 items-center gap-4 border-b border-b-slate-200 py-2"> 
-    <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString(
-      "en-GB",
-      {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      }
-    )}</div>
+    <div>${new Date(Number(order.order_created_at + "000")).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    })}</div>
     <div>${order.order_id}</div>
     <div class="hidden md:block">${order.order_created_by_user_fk}</div>
     <div>${order.order_delivered_at > 0 ? "Delivered" : "Not delivered"}</div>
     <div class="hidden md:block">${order.order_delivered_by_user_fk}</div>
   </a>
         `;
-    document
-      .querySelector("#results")
-      .insertAdjacentHTML("afterbegin", div_order);
-    document.querySelector("#items-list").innerHTML = "";
-    let div_item_total = 0;
-    // items.forEach((item) => {
-    //   let div_item = `
-    //     <div>${item.orders_items_item_quantity}x ${item.item_name}(${item.item_price})</div>
-    //     `;
-    //   div_item_total += Number(item.orders_items_total_price);
-
-    //   document.querySelector("#items-list").insertAdjacentHTML("afterbegin", div_item);
-    // });
-    document.querySelector("#items-total").innerHTML = div_item_total;
+    document.querySelector("#results").insertAdjacentHTML("afterbegin", div_order);
   });
   if (orders.length == 0) {
     document.querySelector("#results").innerHTML = `
@@ -165,5 +140,4 @@ function displayorders(orders) {
 document.addEventListener("DOMContentLoaded", async () => {
   const orders = await getOrders();
   displayorders(orders);
-  console.log(orders);
 });

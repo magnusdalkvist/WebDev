@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../_.php';
 
-header('Content-Type: application/json');
+
 try {
   $db = _db();
   $q = $db->prepare('
@@ -9,7 +9,7 @@ try {
     WHERE item_id = :item_id
     AND item_created_by_user_fk = :item_created_by_user_fk
   ');
-  $q->bindValue(':item_id', $_POST['item_id']);
+  $q->bindValue(':item_id', $_GET['item_id']);
   $q->bindValue(':item_created_by_user_fk', $_SESSION['user_id']);
   $q->execute();
 

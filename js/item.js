@@ -18,14 +18,20 @@ async function add_item() {
 
 // ##############################
 
-async function load_item(event) {
+async function load_item() {
+  const selectedOption = event.target.selectedOptions[0].value;
+  console.log("update_item called with form: ", selectedOption);
   event.preventDefault();
-  const frm = event.target;
-  console.log("update_item called with form: ", frm);
 
-  fetch("/api/api-partner-load-item.php", {
-    method: "POST",
-    body: new FormData(frm),
+  fetch(`/api/api-partner-load-item.php?item_id=${selectedOption}`, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    // mode: "cors", // no-cors, *cors, same-origin
+    // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    // credentials: "same-origin", // include, *same-origin, omit
+    // headers: { "Content-Type": "application/json" }, // 'Content-Type': 'application/x-www-form-urlencoded',
+    // redirect: "follow", // manual, *follow, error
+    // referrerPolicy: "no-referrer",
+    // body: JSON.stringify({ item_id: selectedOption }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -82,11 +88,4 @@ async function delete_item() {
     .catch((error) => {
       console.error("error:", error);
     });
-}
-
-function updateItemName() {
-  const select = document.getElementById('itemSelect');
-  const nameInput = document.getElementById('itemName');
-  const selectedOption = select.options[select.selectedIndex];
-  nameInput.value = selectedOption.getAttribute('data-name');
 }

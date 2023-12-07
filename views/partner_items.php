@@ -40,14 +40,15 @@ $items = $q->fetchAll();
           </label>
           <!-- ... -->
           <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_id">
-            <select id="itemSelect" class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" name="item_id" required data-validate="str" data-min="1" data-max="60" onchange="updateItemName()">
+            <select id="itemSelect" class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" name="item_id" required data-validate="str" data-min="1" data-max="60" onchange="load_item()">
+              <option hidden>Select a product</option>
               <?php foreach ($items as $item) : ?>
                 <option value="<?= $item['item_id'] ?>" data-name="<?= $item['item_name'] ?>"><?= $item['item_name'] ?></option>
               <?php endforeach ?>
             </select>
           </label>
           <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_name">
-            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="text" name="item_name" placeholder="Item name" required data-validate="str" data-min="1" data-max="10">
+            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="text" name="item_name" placeholder="Item name" required data-validate="str" data-min="1" data-max="50">
           </label>
           <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_price">
             <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="number" name="item_price" placeholder="Item Price" required data-validate="str" data-min="1" data-max="10">
@@ -78,19 +79,12 @@ $items = $q->fetchAll();
             <p class="text-lg"><?= $item['item_id'] ?></p>
             <p class="text-lg"><?= $item['item_name'] ?></p>
             <p class="text-lg"><?= $item['item_price'] ?></p>
-            <div id="actions" class="flex align-center justify-end">
+            <div id="delete" class="flex align-center justify-end">
               <form onsubmit=" if(confirm('You are about to permanently deleted this product from our system. Do you want to continue?')) {delete_item() ;} return false;">
                 <input type="text" name="item_id" class="hidden" value="<?= $item['item_id'] ?>">
                 <button class="float-right hover:cursor-pointer " type="submit" value="">
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" fill="#D0D0D0" width="30" height="30" viewBox="0 0 24 24">
                     <path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path>
-                  </svg></button>
-              </form>
-              <form onsubmit="load_item(event); return false;">
-                <input type="text" name="item_id" class="hidden" value="<?= $item['item_id'] ?>">
-                <button class="float-right hover:cursor-pointer fill-soft-white" type="submit" value="">
-                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" fill="#D0D0D0" width="30" height="30" viewBox="0 0 72 72">
-                    <path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"></path>
                   </svg></button>
               </form>
             </div>

@@ -75,7 +75,7 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="px-6 w-full max-w-[400px]">
-        <a href="" class="flex bg-sexyred hover:bg-sexyred-light rounded-2xl px-4 py-3 w-full justify-center font-bold">Become a partner now</a>
+        <a href="/partner_signup" class="flex bg-sexyred hover:bg-sexyred-light rounded-2xl px-4 py-3 w-full justify-center font-bold">Become a partner now</a>
     </div>
 </div>
 <div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-6">

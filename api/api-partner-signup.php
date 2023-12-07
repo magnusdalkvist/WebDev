@@ -11,30 +11,21 @@ try {
   _validate_user_confirm_password();
 
   $db = _db();
-  $q = $db->prepare(
-    '
-    INSERT INTO users 
-    VALUES (
-      :user_id, 
-      :user_name, 
-      :user_last_name, 
-      :user_email, 
-      :user_password, 
-      :user_address,
-      :user_role_name,
-      :user_tag_color, 
-      :user_created_at, 
-      :user_updated_at,
-      :user_deleted_at,
-      :user_is_blocked)'
-  );
-  $q->bindValue(':user_id', null);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exception
+  $db->beginTransaction(); // Start transaction
+
+  $q = $db->prepare('
+  INSERT INTO users 
+  (user_name, user_last_name, user_email, user_password, user_address, user_role_name, user_tag_color, user_created_at, user_updated_at, user_deleted_at, user_is_blocked)
+  VALUES 
+  (:user_name, :user_last_name, :user_email, :user_password, :user_address, :user_role_name, :user_tag_color, :user_created_at, :user_updated_at, :user_deleted_at, :user_is_blocked)
+');
   $q->bindValue(':user_name', $_POST['user_name']);
   $q->bindValue(':user_last_name', $_POST['user_last_name']);
   $q->bindValue(':user_email', $_POST['user_email']);
   $q->bindValue(':user_password', password_hash($_POST['user_password'], PASSWORD_DEFAULT));
   $q->bindValue(':user_address', "");
-  $q->bindValue(':user_role_name',  $_POST['user_role_name']);
+  $q->bindValue(':user_role_name',  'partner');
   $q->bindValue(':user_tag_color', '#0ea5e9');
   $q->bindValue(':user_created_at', time());
   $q->bindValue(':user_updated_at', time());
@@ -42,22 +33,40 @@ try {
   $q->bindValue(':user_is_blocked', 0);
 
   $q->execute();
-  $counter = $q->rowCount();
-  if ($counter != 1) {
-    throw new Exception('ups...', 500);
+
+  if ($q->rowCount() != 1) {
+    throw new Exception('User creation failed', 500);
   }
 
-  echo json_encode(['user_id' => $db->lastInsertId()]);
-} catch (Exception $e) {
-  try {
-    if (!ctype_digit($e->getCode())) {
-      throw new Exception();
-    }
-    http_response_code($e->getCode());
-    echo json_encode(['info' => $e->getMessage()]);
-  } catch (Exception $ex) {
-    // echo $ex;
-    http_response_code(500);
-    echo json_encode(['info' => json_encode($ex)]);
+  $user_id = $db->lastInsertId();
+
+  $q = $db->prepare(
+    '
+    INSERT INTO partners 
+    VALUES (
+      :user_partner_id, 
+      :partner_geo,  
+      :partner_name)'
+  );
+  $q->bindValue(':user_partner_id', $user_id);
+  $q->bindValue(':partner_geo', null);
+  $q->bindValue(':partner_name', $_POST['partner_name']);
+
+  $q->execute();
+
+  if ($q->rowCount() != 1) {
+    throw new Exception('Partner creation failed', 500);
   }
+
+  $db->commit(); // Commit the transaction
+
+  echo json_encode(['user_id' => $db->lastInsertId()]);
+} catch (PDOException $pdoe) {
+  $db->rollBack(); // Roll back the transaction in case of error
+  http_response_code(500);
+  echo json_encode(['error' => $pdoe->getMessage()]);
+} catch (Exception $e) {
+  $db->rollBack(); // Roll back the transaction in case of error
+  http_response_code($e->getCode() ?: 500);
+  echo json_encode(['info' => $e->getMessage()]);
 }

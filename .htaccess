@@ -24,6 +24,8 @@ RewriteRule ^account$         views/account.php [NC,L]
 RewriteRule ^search-results$  views/search_results.php [NC,L]
 RewriteRule ^browse$          views/browse.php [NC,L]
 RewriteRule ^partner_orders$  views/partner_orders.php [NC,L]
+RewriteRule ^partner_items$   views/partner_items.php [NC,L]
+RewriteRule ^partner_signup$   views/partner_signup.php [NC,L]
 
 RewriteRule ^order/([0-9]+)$  views/order.php?id=$1 [NC,L]
 RewriteRule ^user/([0-9]+)$  views/user.php?id=$1 [NC,L]

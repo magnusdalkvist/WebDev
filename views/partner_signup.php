@@ -6,12 +6,13 @@ require_once __DIR__ . '/_header.php';
 <main class="w-full min-h-screen mt-16">
   <section class="flex flex-col items-center">
     <div class="gap-4 p-4 container max-w-sm mx-auto bg-50-shades rounded-md text-soft-white">
-      <div class="pb-2">
-        <h1>Welcome</h1>
-        <p>Signup as a partner today!</p>
+      <div class="pb-4">
+        <h1>Signup as a partner today!</h1>
       </div>
-      <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 text-slate-500">
+      <form onsubmit="validate(partner_signup); return false" class="flex flex-col gap-4 text-slate-500">
+
         <div class="grid">
+          <h2 class="text-sm ">Owner information</h2>
           <label for="user_name" class="flex">
             <span class="font-bold hidden text-sexyred">name</span>
             <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_NAME_MIN ?> to <?= USER_NAME_MAX ?> characters</span>
@@ -28,6 +29,15 @@ require_once __DIR__ . '/_header.php';
         </div>
 
         <div class="grid">
+          <h2 class="text-sm ">Restaurant information</h2>
+          <label for="partner_name" class="flex">
+            <span class="font-bold hidden text-sexyred">Restaurant name</span>
+            <span class="ml-auto pb-0.5 mr-2 text-xs">2 to 60 characters</span>
+          </label>
+          <input class="pl-2" id="partner_name" placeholder="Restaurant name" name="partner_name" type="text" data-validate="str" data-min="2" data-max="60">
+        </div>
+
+        <div class="grid">
           <label for="user_email" class="flex">
             <span class="ml-auto mr-2 text-xs opacity-0">x</span>
           </label>
@@ -36,7 +46,6 @@ require_once __DIR__ . '/_header.php';
             Email is not available
           </div>
         </div>
-
 
         <div class="grid" class="flex">
           <label for="user_name" class="flex">
@@ -50,11 +59,16 @@ require_once __DIR__ . '/_header.php';
           <input class="pl-2" name="user_confirm_password" type="text" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
         </div>
 
+
+
         <div class="grid">
-          <span class="text-xs pt-2 text-grey-100">By clicking 'Create Account', you consent to our Terms of Service. Discover how we handle your information in our Privacy Policy and our use of cookies in our Cookie Policy.
+          <span class="text-xs pt-2 text-grey-100">By clicking 'Create partner account', you consent to our Terms of Service. Discover how we handle your information in our Privacy Policy and our use of cookies in our Cookie Policy.
           </span>
-          <button class="w-full h-10 my-5 bg-sexyred text-white font-bold rounded-md">Create account</button>
+          <button class="w-full h-10 my-5 bg-sexyred text-white font-bold rounded-md">Create partner account</button>
         </div>
+
+
+
       </form>
     </div>
 

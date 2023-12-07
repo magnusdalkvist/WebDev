@@ -65,7 +65,7 @@ function clickMenu() {
 // ##############################
 async function is_email_available() {
   const frm = event.target.form;
-  const conn = await fetch("api/api-is-email-available.php", {
+  const conn = await fetch("/api/api-is-email-available.php", {
     method: "POST",
     body: new FormData(frm),
   });
@@ -114,27 +114,7 @@ async function toggle_blocked(user_id, user_is_blocked) {
   const data = await conn.text();
 }
 
-// const system_theme = window.matchMedia("(prefers-color-scheme: dark)");
-// console.log(system_theme.theme)
-// if (system_theme.matches) {
-//   // Theme set to dark.
-//   document.documentElement.classList.remove('dark')
-// } else {
-//   // Theme set to light.
-//   document.documentElement.classList.add('dark')
-// }
-
-function toggle_theme() {
-  if (document.querySelector("html").classList.contains("dark")) {
-    document.querySelector("html").classList.remove("dark");
-    document.querySelector("#btn_dark_icon").classList.remove("hidden");
-    document.querySelector("#btn_light_icon").classList.add("hidden");
-    return;
-  }
-  document.querySelector("html").classList.add("dark");
-  document.querySelector("#btn_dark_icon").classList.add("hidden");
-  document.querySelector("#btn_light_icon").classList.remove("hidden");
-}
+// ##############################
 
 function toogle_menu() {
   if (document.querySelector("#menu").classList.contains("left-0")) {
@@ -149,24 +129,37 @@ function toogle_menu() {
   document.querySelector("#menu_background").classList.remove("hidden");
 }
 
+// ########################################
+
 async function signup() {
   const frm = event.target;
-  console.log(frm);
   const conn = await fetch("/api/api-signup.php", {
     method: "POST",
     body: new FormData(frm),
   });
-
   const data = await conn.text();
-  console.log(data);
-
+  if (!conn.ok) {
+    return;
+  }
+  // TODO: redirect to the login page
+  location.href = "/login";
+}
+async function partner_signup() {
+  const frm = event.target;
+  const conn = await fetch("/api/api-partner-signup.php", {
+    method: "POST",
+    body: new FormData(frm),
+  });
+  const data = await conn.text();
   if (!conn.ok) {
     return;
   }
 
-  // TODO: redirect to the login page
-  location.href = "/login";
+  // // TODO: redirect to the login page
+  // location.href = "/login";
 }
+
+// ##############################
 
 async function login() {
   const frm = event.target;
@@ -186,6 +179,8 @@ async function login() {
   location.href = "/";
 }
 
+// ##############################
+
 async function update_user() {
   const frm = event.target;
   event.preventDefault();
@@ -203,6 +198,8 @@ async function update_user() {
       console.error("error:", error);
     });
 }
+
+// ##############################
 
 async function update_user_password() {
   event.preventDefault();

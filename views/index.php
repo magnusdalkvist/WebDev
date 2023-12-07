@@ -10,7 +10,7 @@ $q->execute();
 $items = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="h-[500px] relative rounded-b-2xl overflow-hidden -mt-16">
+<div class="h-[500px]  relative rounded-b-2xl overflow-hidden -mt-16">
     <img src="/assets/ivan-torres-MQUqbmszGGM-unsplash.jpg" alt="pizza" class="object-cover w-full h-full">
     <div class="absolute inset-0 p-6 bg-transparent-50 grid grid-rows-3 grid-cols-1 justify-between w-full">
         <div class="row-start-2 flex flex-col gap-2 justify-center items-center">
@@ -75,7 +75,7 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="px-6 w-full max-w-[400px]">
-        <a href="" class="flex bg-sexyred hover:bg-sexyred-light rounded-2xl px-4 py-3 w-full justify-center font-bold">Become a partner now</a>
+        <a href="/partner_signup" class="flex bg-sexyred hover:bg-sexyred-light rounded-2xl px-4 py-3 w-full justify-center font-bold">Become a partner now</a>
     </div>
 </div>
 <div class="container mx-auto grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 justify-center px-6">

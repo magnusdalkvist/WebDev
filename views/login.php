@@ -7,7 +7,7 @@ require_once __DIR__ . '/_header.php';
   <div class="p-8 bg-50-shades text-soft-white rounded-md w-full">
     <h1>Welcome back</h1>
     <p>Login with email</p>
-    <form onsubmit="validate(login); return false" class="flex flex-col gap-6 w-full h-full m-auto pt-8 [&_input]:outline-none [&_input]:bg-soft-white [&_input]:text-black [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_input]:w-full">
+    <form onsubmit="validate(login); return false" class="flex flex-col gap-6 w-full h-full m-auto pt-8">
       <label for="user_email">
         <input name="user_email" type="email" id="user_email" placeholder="Email" data-validate="email">
       </label>

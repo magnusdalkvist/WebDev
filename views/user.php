@@ -31,57 +31,57 @@ if (isset($_GET['id']) && _is_admin()) {
     </button>
   </div>
   <div class=" flex flex-col gap-4">
-    <div class="flex  gap-2 flex-col p-4 bg-50-shades rounded-md text-soft-white">
-      <h2 class="font-extrabold ">Profile</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="flex  gap-2 flex-col p-4 bg-50-shades rounded-md text-soft-white">
+        <h2 class="font-extrabold ">Profile</h2>
 
-      <div class="hidden"><?= $user['user_id'] ?></div>
-      <div class="grid grid-cols-2 ">
-        <div>First name: </div>
-        <div><?php out($user['user_name']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Last name: </div>
-        <div><?php out($user['user_last_name']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Email: </div>
-        <div><?php out($user['user_email']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Address: </div>
-        <div><?php out($user['user_address']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>User ID: </div>
-        <div><?php out($user['user_id']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Account created: </div>
-        <div><?php echo date("d/m/Y H.i", $user['user_created_at']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Account updated: </div>
-        <div><?php echo date("d/m/Y H.i", $user['user_updated_at']) ?></div>
-      </div>
-      <div class="grid grid-cols-2 ">
-        <div>Account deleted: </div>
-        <div>
-          <?php
-          if ($user['user_deleted_at'] != 0) {
-            echo date("d/m/Y H.i", $user['user_deleted_at']);
-          } else {
-            echo "User not deleted";
-          }
-          ?>
+        <div class="hidden"><?= $user['user_id'] ?></div>
+        <div class="grid grid-cols-2 ">
+          <div>First name: </div>
+          <div><?php out($user['user_name']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Last name: </div>
+          <div><?php out($user['user_last_name']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Email: </div>
+          <div><?php out($user['user_email']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Address: </div>
+          <div><?php out($user['user_address']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>User ID: </div>
+          <div><?php out($user['user_id']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Account created: </div>
+          <div><?php echo date("d/m/Y H.i", $user['user_created_at']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Account updated: </div>
+          <div><?php echo date("d/m/Y H.i", $user['user_updated_at']) ?></div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div>Account deleted: </div>
+          <div>
+            <?php
+            if ($user['user_deleted_at'] != 0) {
+              echo date("d/m/Y H.i", $user['user_deleted_at']);
+            } else {
+              echo "User not deleted";
+            }
+            ?>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid md:grid-cols-2 gap-4">
       <div id="update_account" class="flex flex-col  p-4 bg-50-shades rounded-md text-soft-white">
         <div class="pb-4">
           <h2 class="font-extrabold ">Update profile</h2>
         </div>
-        <form class="flex flex-col gap-2" onsubmit="validate(update_user); return false">
+        <form class="flex flex-col gap-4" onsubmit="validate(update_user); return false">
           <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
           <label class="flex flex-col" for="user_name">Name:
             <input class="pl-2" type="text" id="user_name" name="user_name" value="<?= $user['user_name'] ?>" data-validate="str" data-min="<?= USER_NAME_MIN ?>" data-max="<?= USER_NAME_MAX ?>">
@@ -98,36 +98,18 @@ if (isset($_GET['id']) && _is_admin()) {
           </label>
 
           <label class="flex flex-col" for="user_tag_colo">Profile color:
-            <input type="color" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
+            <input type="color" class="h-12" id="user_tag_color" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
           </label>
-          <input type="submit" value="Update profile">
+          <div id="user_error"></div>
+          <input type="submit" class="mt-4" value="Update profile">
         </form>
       </div>
-      <div id="update_account" class="flex flex-col p-4  bg-50-shades rounded-md text-soft-white">
-        <div class="pb-4">
-          <h2 class="font-extrabold ">Update password</h2>
-        </div>
-        <form class="flex flex-col gap-2" onsubmit="validate(update_user_password); return false">
-          <label class="flex flex-col" for="user_old_password">Old password:
-            <input class="pl-2" type="password" id="user_old_password" name="user_old_password" placeholder="Old password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
-          </label>
 
-          <label class="flex flex-col" for="user_password">Password:
-            <input class="pl-2" type="password" id="user_password" name="user_password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
-          </label>
-
-          <label class="flex flex-col" for="user_confirm_password">Confirm password:
-            <input class="pl-2" type="password" id="user_confirm_password" name="user_confirm_password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
-          </label>
-          <div id="password_error" class="text-red-500"></div>
-          <input type="submit" value="Update password">
-        </form>
-      </div>
     </div>
 
 
     <div class="grid md:grid-cols-2 gap-4">
-      <div id="block" class="flex flex-col mt-4 p-8   bg-50-shades rounded-md text-soft-white">
+      <div id="block" class="flex flex-col p-8   bg-50-shades rounded-md text-soft-white">
         <div class="pb-4">
           <h2 class="font-extrabold ">Block <?= $user['user_name'] ?> <?= $user['user_last_name'] ?></h2>
           <p>
@@ -144,7 +126,7 @@ if (isset($_GET['id']) && _is_admin()) {
         </div>
       </div>
 
-      <div id="delete" class="flex flex-col mt-4 p-8   bg-50-shades rounded-md text-soft-white">
+      <div id="delete" class="flex flex-col p-8   bg-50-shades rounded-md text-soft-white">
         <div class="text-red-500">
           <h2 class=" font-extrabold ">Delete <?php out($user['user_name']) ?>'s account. </h2>
           <p>

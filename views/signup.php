@@ -9,7 +9,7 @@ require_once __DIR__ . '/_header.php';
       <h1>Welcome</h1>
       <p>Sign up with email</p>
     </div>
-    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 [&_input]:outline-none [&_input]:bg-soft-white [&_input]:text-black [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">
+    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 ">
       <div class="grid">
         <label for="user_name" class="flex">
           <span class="font-bold hidden text-sexyred">name</span>

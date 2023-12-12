@@ -10,9 +10,7 @@ async function getUsers() {
 }
 
 document.querySelector("#sort_name").addEventListener("click", sortName);
-document
-  .querySelector("#sort_last_name")
-  .addEventListener("click", sortLastName);
+document.querySelector("#sort_last_name").addEventListener("click", sortLastName);
 document.querySelector("#sort_email").addEventListener("click", sortEmail);
 document.querySelector("#sort_role").addEventListener("click", sortRole);
 document.querySelector("#sort_status").addEventListener("click", sortStatus);
@@ -35,8 +33,7 @@ async function sortName() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortNameDirection == 1 ? "▲" : "▼";
   const users = await getUsers();
   users.sort((a, b) => {
     return a.user_name.localeCompare(b.user_name) * sortNameDirection;
@@ -50,13 +47,10 @@ async function sortLastName() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortLastNameDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortLastNameDirection == 1 ? "▲" : "▼";
   const users = await getUsers();
   users.sort((a, b) => {
-    return (
-      a.user_last_name.localeCompare(b.user_last_name) * sortLastNameDirection
-    );
+    return a.user_last_name.localeCompare(b.user_last_name) * sortLastNameDirection;
   });
   sortLastNameDirection *= -1;
   displayUsers(users);
@@ -67,8 +61,7 @@ async function sortEmail() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortEmailDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortEmailDirection == 1 ? "▲" : "▼";
   const users = await getUsers();
   users.sort((a, b) => {
     return a.user_email.localeCompare(b.user_email) * sortEmailDirection;
@@ -82,8 +75,7 @@ async function sortRole() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortRoleDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortRoleDirection == 1 ? "▲" : "▼";
   const users = await getUsers();
   users.sort((a, b) => {
     return a.user_role_name.localeCompare(b.user_role_name) * sortRoleDirection;
@@ -97,13 +89,10 @@ async function sortStatus() {
   document.querySelectorAll("#direction").forEach((el) => {
     el.innerHTML = "";
   });
-  this.querySelector("#direction").innerHTML =
-    sortStatusDirection == 1 ? "▲" : "▼";
+  this.querySelector("#direction").innerHTML = sortStatusDirection == 1 ? "▲" : "▼";
   const users = await getUsers();
   users.sort((a, b) => {
-    return (
-      a.user_is_blocked.localeCompare(b.user_is_blocked) * sortStatusDirection
-    );
+    return a.user_is_blocked.localeCompare(b.user_is_blocked) * sortStatusDirection;
   });
   sortStatusDirection *= -1;
   displayUsers(users);
@@ -116,7 +105,7 @@ function displayUsers(users) {
     
         <a href="user/${
           user.user_id
-        }" class="grid grid-cols-[auto_1fr_1fr_1fr] md:grid-cols-[auto_1fr_1fr_1fr_2fr_1fr] gap-4 border-b border-b-slate-200 py-2">
+        }" class="grid grid-cols-[auto_1fr_1fr_1fr] items-center md:grid-cols-[auto_1fr_1fr_1fr_2fr_1fr] gap-4 border-b border-b-slate-200 py-2">
           <div class="hidden">${user.user_id}</div>
           <div class="w-8 h-8 flex items-center justify-center text-white text-sm rounded-full" style="background-color: ${
             user.user_tag_color
@@ -127,16 +116,14 @@ function displayUsers(users) {
           <div>${user.user_last_name}</div>
           <div>${user.user_role_name}</div>
           <div class="hidden md:block">${user.user_email}</div>
-            <button class="text-right hidden md:block" onclick="toggle_blocked(${
-              user.user_id
-            },${user.user_is_blocked})">
+            <button class="text-right hidden md:block" onclick="toggle_blocked(${user.user_id},${
+      user.user_is_blocked
+    })">
             ${user.user_is_blocked == 0 ? "unblocked" : "blocked"}
             </button>
         </a>
         `;
-    document
-      .querySelector("#results")
-      .insertAdjacentHTML("afterbegin", div_user);
+    document.querySelector("#results").insertAdjacentHTML("afterbegin", div_user);
   });
   if (users.length == 0) {
     document.querySelector("#results").innerHTML = `

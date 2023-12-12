@@ -141,4 +141,4 @@ require_once __DIR__ . '/../_.php';
       <?php endif ?>
     </div>
   </nav>
-  <main class="flex-1 flex flex-col gap-8 pb-8">
+  <main class="flex-1 flex flex-col gap-8 pb-8 [&_input]:w-full [&_input]:outline-none [&_input]:bg-soft-white [&_input]:text-black [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">

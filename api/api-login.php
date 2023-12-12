@@ -14,12 +14,12 @@ try {
   $user = $q->fetch();
 
 
-  // Check if user is deleted
-  if ($user['user_deleted_at'] != 0) {
+  if (!$user || !isset($user)) {
     throw new Exception('Invalid credentials', 400);
   }
 
-  if (!$user) {
+  // Check if user is deleted
+  if ($user['user_deleted_at'] != 0) {
     throw new Exception('Invalid credentials', 400);
   }
 

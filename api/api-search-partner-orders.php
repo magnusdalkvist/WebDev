@@ -10,10 +10,10 @@ try {
     SELECT *
     FROM orders
     WHERE order_placed_at_partner_fk = :partner_id
-    AND order_id LIKE :order_id
+    AND (order_id LIKE :search OR order_created_by_user_fk LIKE :search OR order_delivered_by_user_fk LIKE :search)
   ');
   $q->bindValue(':partner_id', $partner_id);
-  $q->bindValue(':order_id', '%' . $search . '%');
+  $q->bindValue(':search', '%' . $search . '%');
   $q->execute();
   $orders = $q->fetchAll();
   echo json_encode($orders);

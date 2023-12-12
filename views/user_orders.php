@@ -1,19 +1,6 @@
 <?php
 require_once __DIR__ . '/../_.php';
 require_once __DIR__ . '/_header.php';
-
-// $user = $_SESSION['user'];
-// $_SESSION['user_id'] = $user['user_id'];
-
-
-// $db = _db();
-// $q = $db->prepare(' SELECT * 
-//                     FROM orders WHERE order_created_by_user_fk = :user_id ');
-// $q->bindValue(':user_id',  $user['user_id']);
-// $q->execute();
-// $orders = $q->fetchAll();
-
-// 
 ?>
 
 

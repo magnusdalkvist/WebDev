@@ -9,7 +9,7 @@ if (!_is_partner()) {
 
 require_once __DIR__ . '/_header.php';
 ?>
-<section class=" p-4 container mx-auto bg-50-shades rounded-md text-soft-white">
+<section class=" p-6 container mx-auto bg-50-shades rounded-md text-soft-white">
   <div class="flex justify-between py-4 text-xl">
     <h1 class="">
       All your orders

@@ -19,7 +19,7 @@ if (isset($_GET['id']) && _is_admin()) {
 ?>
 
 
-<section class=" gap-4 p-4 container mx-auto ">
+<section class=" gap-4 p-6 container mx-auto ">
   <div class="pb-5">
     <button class="text-left flex gap-2" onclick="goBack()">
       <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#D0D0D0" version="1.1" id="Capa_1" width="800px" height="800px" viewBox="0 0 299.021 299.021" xml:space="preserve">

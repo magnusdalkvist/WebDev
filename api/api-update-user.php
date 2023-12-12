@@ -7,6 +7,7 @@ try {
     }
 
     if (_is_admin()) {
+        $db = _db();
         $q = $db->prepare('SELECT * FROM users WHERE user_id = :user_id');
         $q->bindValue(':user_id', $_POST['user_id']);
         $q->execute();

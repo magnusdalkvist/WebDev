@@ -101,7 +101,7 @@ if (isset($_GET['id']) && _is_admin()) {
             <input type="color" class="h-12" id="user_tag_color" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
           </label>
           <div id="user_error"></div>
-          <input type="submit" class="mt-4" value="Update profile">
+          <input type="submit" value="Update profile">
         </form>
       </div>
 

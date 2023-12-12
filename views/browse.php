@@ -12,8 +12,9 @@ require_once __DIR__ . '/_header.php';
 </div>
 <div class="flex justify-center px-6 mx-auto container">
   <?php
+  $frm_search_value = $_POST['search'] ?? '';
   $frm_search_url = 'api-search-items.php';
-  $frm_search_placeholder = 'Search for restaurants, cities & more ';
+  $frm_search_placeholder = 'Search for restaurants, cities & more';
   include_once __DIR__ . '/_form_search.php';
   ?>
 </div>

@@ -9,7 +9,7 @@ require_once __DIR__ . '/_header.php';
       <h1>Welcome</h1>
       <p>Signup with email</p>
     </div>
-    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 [&_input]:bg-soft-white [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">
+    <form onsubmit="validate(signup); return false" class="flex flex-col gap-4 [&_input]:bg-soft-white [&_input]:text-black [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_select]:bg-soft-white [&_select]:px-4 [&_select]:py-3 [&_select]:rounded-2xl [&_select]:text-transparent-50 [&_select]:h-full">
       <div class="grid">
         <label for="user_name" class="flex">
           <span class="font-bold hidden text-sexyred">name</span>
@@ -62,7 +62,7 @@ require_once __DIR__ . '/_header.php';
       <div class="grid">
         <span class="text-xs py-2 text-grey-100">By clicking 'Create Account', you consent to our Terms of Service. Discover how we handle your information in our Privacy Policy and our use of cookies in our Cookie Policy.
         </span>
-        <button class="w-full px-4 py-3 bg-sexyred text-white font-bold rounded-md">Create account</button>
+        <button class="w-full px-4 py-3 bg-sexyred text-white font-bold rounded-2xl">Create account</button>
       </div>
     </form>
   </div>

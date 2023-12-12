@@ -139,7 +139,7 @@ if (isset($_GET['id']) && _is_admin()) {
             BLOCK
           </span>
           <button class="font-bold flex items-center" onclick="toggle_blocked('<?= $user['user_id']; ?>', '<?= $user['user_is_blocked']; ?>')">
-            <?= $user['user_is_blocked'] == 0 ? "UNBLOCKED" : "BLOCKED"; ?>
+            <?= $user['user_is_blocked'] == 0 ? "USER NOT BLOCKED" : "USER BLOCKED"; ?>
           </button>
         </div>
       </div>

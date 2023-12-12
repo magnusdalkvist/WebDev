@@ -179,22 +179,47 @@ async function login() {
 
 // ##############################
 
-async function update_user() {
-  const frm = event.target;
-  event.preventDefault();
-  console.log("user" + frm);
+// async function update_user() {
+//   const frm = event.target;
+//   event.preventDefault();
+//   console.log("user" + frm);
 
-  fetch("/api/api-update-user.php", {
+//   fetch("/api/api-update-user.php", {
+//     method: "POST",
+//     body: new FormData(frm),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       location.reload();
+//     })
+//     .catch((error) => {
+//       console.error("error:", error);
+//     });
+// }
+
+async function update_user() {
+  event.preventDefault();
+  const errorElement = document.getElementById("user_error");
+  errorElement.innerHTML = "";
+  const frm = event.target;
+  console.log(frm);
+
+  const response = await fetch("/api/api-update-user.php", {
     method: "POST",
     body: new FormData(frm),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      location.reload();
-    })
-    .catch((error) => {
-      console.error("error:", error);
-    });
+  });
+  const data = await response.json();
+
+  if (response.ok) {
+    location.reload();
+  } else {
+    errorElement.innerHTML = data.info;
+    frm.reset();
+
+    setTimeout(() => {
+      errorElement.innerHTML = "";
+    }, 5000);
+  }
 }
 
 // ##############################

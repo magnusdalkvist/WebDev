@@ -53,13 +53,13 @@ try {
     $order_created_at = time();
     $order_updated_at = 0;
     $order_deleted_at = 0;
-    $order_delivered_at = 0;
+    $order_delivered_at = rand(0, 1) ? rand($order_created_at, $order_created_at + 60 * 60 * 24 * 30) : 0;
     $order_delivered_by_user_fk = $employees_ids[array_rand($employees_ids)];
-    $order_placed_at_partner_fk = $partners_ids[array_rand($partners_ids)]; // assuming $partners_ids contains the ids of partners
+    $order_placed_at_partner_fk = $partners_ids[array_rand($partners_ids)]; 
 
     $values .= "(null, '$order_created_by_user_fk', '$order_created_at', '$order_updated_at', 
     '$order_deleted_at', '$order_delivered_at', '$order_delivered_by_user_fk', '$order_placed_at_partner_fk'),";
-  }
+}
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO orders VALUES $values");
   $q->execute();

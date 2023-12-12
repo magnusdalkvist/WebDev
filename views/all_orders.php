@@ -15,7 +15,7 @@ if (!_is_admin()) {
     include_once __DIR__ . '/_form_search.php'
     ?>
   </div>
-  <div class="p-4 bg-50-shades rounded-md text-soft-white">
+  <div class="p-6 bg-50-shades rounded-md text-soft-white">
     <div class="flex pb-4 text-xl">
       <h1 class="text-soft-white">
         All Orders

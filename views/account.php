@@ -48,9 +48,8 @@ $_SESSION['user_id'] = $user['user_id'];
         <div class="pb-4">
           <h2 class="font-extrabold ">Update profile</h2>
         </div>
-        <!-- flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey -->
-        <!-- bg-transparent placeholder:text-transparent-50 focus:outline-none"> -->
         <form class="flex flex-col gap-2" onsubmit="validate(update_user); return false">
+          <input name="user_id" value="<?= $user['user_id'] ?>" class="hidden"></input>
           <label class=" flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_name">Name:
             <input class=" pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_name" name="user_name" value="<?= $user['user_name'] ?>" data-validate="str" data-min="<?= USER_NAME_MIN ?>" data-max="<?= USER_NAME_MAX ?>"> </label>
           <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_last_name">Last Name:
@@ -67,6 +66,7 @@ $_SESSION['user_id'] = $user['user_id'];
           <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_tag_colo">Profile color:
             <input type="color" class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
           </label>
+          <div id="user_error" class="text-red-500"></div>
           <input class=" text-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" type="submit" value="Update profile">
         </form>
       </div>

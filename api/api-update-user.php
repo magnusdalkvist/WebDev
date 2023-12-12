@@ -34,7 +34,7 @@ try {
     // Update the $_SESSION['user'] variable with the latest user information
     if (!_is_admin()) {
         $q = $db->prepare('SELECT * FROM users WHERE user_id = :user_id');
-        $q->bindValue(':user_id', $user['user_id']);
+        $q->bindValue(':user_id', $_SESSION['user_id']);
         $q->execute();
         $user = $q->fetch(PDO::FETCH_ASSOC);
 

@@ -72,9 +72,7 @@ async function is_email_available() {
   if (!conn.ok) {
     // everything that is not a 2xx
     console.log("email not available");
-    document
-      .querySelector("#msg_email_not_available")
-      .classList.remove("opacity-0");
+    document.querySelector("#msg_email_not_available").classList.remove("opacity-0");
     return;
   }
   console.log("email available");

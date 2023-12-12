@@ -6,7 +6,7 @@ require_once __DIR__ . '/_header.php';
 
 
 <main>
-  <section class="flex justify-center pb-4">
+  <section class="flex justify-center pb-6">
 
     <?php
     $frm_search_url = 'api-search-user-orders.php';

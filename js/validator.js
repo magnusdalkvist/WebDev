@@ -2,14 +2,9 @@
 function validate(callback) {
   const form = event.target;
   console.log(form);
-  // const validate_error = "rgba(240, 130, 240, 0.2)"
-  const validate_error = "rgba(215, 71, 44, 100)";
   form.querySelectorAll("[data-validate]").forEach(function (element) {
-    element.parentElement.classList.remove("validate_error");
-    // element.style.backgroundColor = "rgba(60, 80, 100, 1)"
-    // element.style.backgroundColor = "white"
-    element.parentElement.style.border =
-      "1px solid rgb(203 213 225 / var(--tw-border-opacity))";
+    element.classList.remove("validate_error");
+    element.style.border = "none";
   });
   form.querySelectorAll("[data-validate]").forEach(function (element) {
     switch (element.getAttribute("data-validate")) {
@@ -20,19 +15,18 @@ function validate(callback) {
         ) {
           element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.parentElement.style.border = `2px solid ${validate_error}`;
+          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "int":
         if (
           !/^\d+$/.test(element.value) ||
-          parseInt(element.value) <
-            parseInt(element.getAttribute("data-min")) ||
+          parseInt(element.value) < parseInt(element.getAttribute("data-min")) ||
           parseInt(element.value) > parseInt(element.getAttribute("data-max"))
         ) {
           element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.parentElement.style.border = `2px solid ${validate_error}`;
+          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "email":
@@ -41,7 +35,7 @@ function validate(callback) {
         if (!re.test(element.value.toLowerCase())) {
           element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.parentElement.style.border = `2px solid ${validate_error}`;
+          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "regex":
@@ -52,19 +46,17 @@ function validate(callback) {
           console.log("regex error");
           element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.parentElement.style.border = `2px solid ${validate_error}`;
+          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "match":
         if (
           element.value !=
-          form.querySelector(
-            `[name='${element.getAttribute("data-match-name")}']`
-          ).value
+          form.querySelector(`[name='${element.getAttribute("data-match-name")}']`).value
         ) {
           element.parentElement.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.parentElement.style.border = `2px solid ${validate_error}`;
+          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
     }

@@ -3,23 +3,22 @@ require_once __DIR__ . '/../_.php';
 require_once __DIR__ . '/_header.php';
 ?>
 
-<section class="flex flex-col items-center">
-  <div class="flex flex-col mt-20 py-8 px-8 bg-50-shades rounded-md text-soft-white w-1/3">
+<section class="flex flex-col items-center mx-auto container max-w-[500px] p-6">
+  <div class="p-8 bg-50-shades text-soft-white rounded-md w-full">
     <h1>Welcome back</h1>
     <p>Login with email</p>
-    <form onsubmit="validate(login); return false" class="flex flex-col gap-6 w-full h-full m-auto pt-8">
-
-      <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_email">
-        <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" name=" user_email" type="email" id="user_email" placeholder="Email" data-validate="email">
+    <form onsubmit="validate(login); return false" class="flex flex-col gap-6 w-full h-full m-auto pt-8 [&_input]:outline-none [&_input]:bg-soft-white [&_input]:text-black [&_input]:px-4 [&_input]:py-3 [&_input]:rounded-2xl [&_input]:placeholder:text-transparent-50 [&_input]:w-full">
+      <label for="user_email">
+        <input name="user_email" type="email" id="user_email" placeholder="Email" data-validate="email">
       </label>
-      <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="user_password">
-        <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" name="user_password" type="password" id="password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
+      <label for="user_password">
+        <input name="user_password" type="password" id="password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
       </label>
       <div class="text-sexyred" id="login_error"></div>
       <button class="w-full px-4 py-3 bg-sexyred text-white font-bold rounded-2xl">Login</button>
     </form>
   </div>
-  <div class="text-sexyred mt-4 font-bold flex justify-center "><a href="/signup">Or signup</a></div>
+  <a class="mt-8" href="/signup">Don't have an account? <span class="text-sexyred">Sign up</span></a>
 </section>
 
 <?php

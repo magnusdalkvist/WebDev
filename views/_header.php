@@ -74,9 +74,6 @@ require_once __DIR__ . '/../_.php';
           <a href="/all_orders" class="flex items-center">
             All orders
           </a>
-          <a href="/partners" class="flex items-center">
-            All data
-          </a>
         <?php endif ?>
         <?php if (_is_partner()) : ?>
           <a href="/partner_orders" class="flex items-center">

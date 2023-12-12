@@ -30,7 +30,7 @@ try {
 
   $values = '';
   foreach ($ids as $user_partner_id) {
-    $values .= "('$user_partner_id', '$faker->latitude,$faker->longitude', '$faker->company'),";
+    $values .= "('$user_partner_id', '$faker->latitude,$faker->longitude', '$faker->domainName'),";
   }
 
   $values = rtrim($values, ',');

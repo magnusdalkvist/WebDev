@@ -63,9 +63,6 @@ $_SESSION['user_id'] = $user['user_id'];
             <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none" type="text" id="user_address" name="user_address" value="<?= $user['user_address'] ?>">
           </label>
 
-          <label class="flex flex-col" for="user_tag_colo">Profile color:
-            <input type="color" class="h-12 placeholder:text-transparent-50 focus:outline-none" id="user_tag_colo" name="user_tag_color" value="<?= $user['user_tag_color'] ?>">
-          </label>
           <div id="user_error" class="text-red-500"></div>
           <input class=" text-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" type="submit" value="Update profile">
         </form>

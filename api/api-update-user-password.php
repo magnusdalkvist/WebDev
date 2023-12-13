@@ -45,7 +45,6 @@ try {
     // Update the $_SESSION['user'] variable with the latest user information
     $_SESSION['user'] = $user;
 
-
     echo json_encode(['info' => 'Password updated successfully']);
 } catch (Exception $e) {
     http_response_code($e->getCode() ?: 500);

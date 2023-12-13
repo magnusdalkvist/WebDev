@@ -18,6 +18,11 @@ try {
     throw new Exception('Invalid credentials', 400);
   }
 
+  // Check if user is blocked
+  if ($user['user_is_blocked'] != 0) {
+    throw new Exception('Invalid credentials', 400);
+  }
+
   // Check if user is deleted
   if ($user['user_deleted_at'] != 0) {
     throw new Exception('Invalid credentials', 400);

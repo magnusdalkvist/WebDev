@@ -13,29 +13,33 @@ function validate(callback) {
           element.value.length < parseInt(element.getAttribute("data-min")) ||
           element.value.length > parseInt(element.getAttribute("data-max"))
         ) {
-          element.parentElement.classList.add("validate_error");
+          element.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
+          element.style.border =
+            "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "int":
         if (
           !/^\d+$/.test(element.value) ||
-          parseInt(element.value) < parseInt(element.getAttribute("data-min")) ||
+          parseInt(element.value) <
+            parseInt(element.getAttribute("data-min")) ||
           parseInt(element.value) > parseInt(element.getAttribute("data-max"))
         ) {
-          element.parentElement.classList.add("validate_error");
+          element.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
+          element.style.border =
+            "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "email":
         let re =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!re.test(element.value.toLowerCase())) {
-          element.parentElement.classList.add("validate_error");
+          element.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
+          element.style.border =
+            "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "regex":
@@ -44,19 +48,23 @@ function validate(callback) {
         if (!regex.test(element.value)) {
           console.log(element.value);
           console.log("regex error");
-          element.parentElement.classList.add("validate_error");
+          element.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
+          element.style.border =
+            "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
       case "match":
         if (
           element.value !=
-          form.querySelector(`[name='${element.getAttribute("data-match-name")}']`).value
+          form.querySelector(
+            `[name='${element.getAttribute("data-match-name")}']`
+          ).value
         ) {
-          element.parentElement.classList.add("validate_error");
+          element.classList.add("validate_error");
           // element.style.backgroundColor = validate_error
-          element.style.border = "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
+          element.style.border =
+            "2px solid rgb(215 71 44 / var(--tw-bg-opacity))";
         }
         break;
     }

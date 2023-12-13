@@ -49,7 +49,15 @@ try {
       :partner_name)'
   );
   $q->bindValue(':user_partner_id', $user_id);
-  $q->bindValue(':partner_geo', null);
+  // Generate random latitude between -90 and 90 with 5-6 digits after the decimal point
+  $latitude = number_format(mt_rand(-900000, 900000) / 10000, 5, '.', '');
+
+  // Generate random longitude between -180 and 180 with 5-6 digits after the decimal point
+  $longitude = number_format(mt_rand(-1800000, 1800000) / 10000, 5, '.', '');
+  // Format the geo location
+  $geo = $latitude . ',' . $longitude;
+  // Use the generated geo in your code
+  $q->bindValue(':partner_geo', $geo);
   $q->bindValue(':partner_name', $_POST['partner_name']);
 
   $q->execute();

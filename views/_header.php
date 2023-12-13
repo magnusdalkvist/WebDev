@@ -93,12 +93,12 @@ require_once __DIR__ . '/../_.php';
       </a> -->
           <!-- TODO: Orders made for related partner store to employee -->
         <?php endif ?>
-        <a href="/browse">Browse</a>
-        <a href="/contact">Contact</a>
-        <a href="/about-us">About us</a>
         <?php if (_is_customer()) : ?>
           <a href="/user_orders">Your orders</a>
         <?php endif ?>
+        <a href="/browse">Browse</a>
+        <a href="/contact">Contact</a>
+        <a href="/about-us">About us</a>
       </div>
       <?php
       if (!isset($_SESSION['user']) || !$_SESSION['user']) : ?>

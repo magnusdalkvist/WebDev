@@ -20,11 +20,11 @@ $items = $q->fetchAll();
           <h2>Add a new product</h2>
         </div>
         <form onsubmit="validate(add_item); return false" class="flex flex-col gap-6 w-full h-full pt-4">
-          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="add_item_name">
-            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="text" name="add_item_name" placeholder="Item Name" required data-validate="str" data-min="2" data-max="60">
+          <label for="add_item_name">
+            <input type="text" name="add_item_name" placeholder="Item Name" required data-validate="str" data-min="2" data-max="60">
           </label>
-          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="add_item_price">
-            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="number" name="add_item_price" placeholder="Item Price" required data-validate="str" data-min="1" data-max="10">
+          <label for="add_item_price">
+            <input type="number" name="add_item_price" placeholder="Item Price" required data-validate="str" data-min="1" data-max="10">
           </label>
           <button class="w-full px-4 py-3 bg-sexyred text-white font-bold rounded-2xl">Add Item</button>
         </form>
@@ -39,19 +39,19 @@ $items = $q->fetchAll();
             <input class="" type="text" name="item_id" value="">
           </label>
           <!-- ... -->
-          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_id">
-            <select id="itemSelect" class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" name="item_id" required data-validate="str" data-min="1" data-max="60" onchange="load_item()">
+          <label for="item_id">
+            <select id="itemSelect" class="w-full" name="item_id" required data-validate="str" data-min="1" data-max="60" onchange="load_item()">
               <option hidden>Select a product</option>
               <?php foreach ($items as $item) : ?>
                 <option value="<?= $item['item_id'] ?>" data-name="<?= $item['item_name'] ?>"><?= $item['item_name'] ?></option>
               <?php endforeach ?>
             </select>
           </label>
-          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_name">
-            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="text" name="item_name" placeholder="Item name" required data-validate="str" data-min="1" data-max="50">
+          <label for="item_name">
+            <input type="text" name="item_name" placeholder="Item name" required data-validate="str" data-min="1" data-max="50">
           </label>
-          <label class="flex items-center gap-4 bg-soft-white px-4 py-3 rounded-2xl text-mr-grey" for="item_price">
-            <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full" type="number" name="item_price" placeholder="Item Price" required data-validate="str" data-min="1" data-max="10">
+          <label for="item_price">
+            <input type="number" name="item_price" placeholder="Item Price" required data-validate="str" data-min="1" data-max="10">
           </label>
           <button class="w-full px-4 py-3 bg-sexyred text-white font-bold rounded-2xl">Update Item</button>
         </form>

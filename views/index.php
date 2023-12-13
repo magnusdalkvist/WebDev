@@ -20,7 +20,7 @@ $items = $q->fetchAll(PDO::FETCH_ASSOC);
                         <path d="M11.6254 11.6185L17 17M13.4444 7.22222C13.4444 10.6587 10.6587 13.4444 7.22222 13.4444C3.78579 13.4444 1 10.6587 1 7.22222C1 3.78579 3.78579 1 7.22222 1C10.6587 1 13.4444 3.78579 13.4444 7.22222Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </label>
-                <input type="text" name="search" id="search" placeholder="Search for restaurants, cities & more" class="w-full bg-transparent placeholder:text-transparent-50 focus:outline-none !p-0">
+                <input type="text" name="search" id="search" placeholder="Search for restaurants, cities & more" class="w-full bg-transparent placeholder:text-transparent-50 focus:outline-none !rounded-none !p-0">
             </form>
             <a href="/browse" class="underline">See all restaurants</a>
         </div>

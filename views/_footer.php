@@ -21,11 +21,11 @@
         <div class="flex md:flex-col gap-8 md:gap-0">
             <div class="text-center md:text-left">
                 <p class="font-bold">Phone</p>
-                <a href="tel:2135557890">(213) 555-7890</a>
+                <a href="tel:2135557890" class="underline">(213) 555-7890</a>
             </div>
             <div class="text-center md:text-left">
                 <p class="font-bold">Email</p>
-                <a href="mailto:info@yumhub.com">info@yumhub.com</a>
+                <a href="mailto:info@yumhub.com" class="underline">info@yumhub.com</a>
             </div>
         </div>
     </div>

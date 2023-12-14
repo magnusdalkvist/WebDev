@@ -48,12 +48,12 @@ require_once __DIR__ . '/_header.php';
         <label for="user_name" class="flex">
           <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_PASSWORD_MIN ?> to <?= USER_PASSWORD_MAX ?> characters</span>
         </label>
-        <input name="user_password" type="text" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
+        <input name="user_password" type="password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
       </div>
 
       <div class="grid">
         <span class="ml-auto text-xs opacity-0">x</span>
-        <input name="user_confirm_password" type="text" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
+        <input name="user_confirm_password" type="password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
       </div>
 
       <div class="grid">

@@ -45,14 +45,14 @@ require_once __DIR__ . '/_header.php';
         <h2 class="text-base pb-2 pt-4">Restaurant password</h2>
         <span class="ml-auto pb-0.5 mr-2 text-xs"><?= USER_PASSWORD_MIN ?> to <?= USER_PASSWORD_MAX ?> characters</span>
         <label for="user_password">
-          <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full " name="user_password" type="text" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
+          <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full " name="user_password" type="password" placeholder="Password" data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>">
         </label>
       </div>
 
       <div class="grid">
         <span class="ml-auto text-xs opacity-0">x</span>
         <label for="user_confirm_password">
-          <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full " name="user_confirm_password" type="text" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
+          <input class="pl-2 bg-transparent placeholder:text-transparent-50 focus:outline-none w-full " name="user_confirm_password" type="password" placeholder="Confirm password" data-validate="match" data-match-name="user_password">
         </label>
       </div>
 

@@ -5,12 +5,12 @@ try {
   $search = $_POST['query'] ?? '';
   $db = _db();
   $q = $db->prepare('
-    SELECT items.*, partners.partner_name 
-    FROM items 
-    INNER JOIN users ON items.item_created_by_user_fk = users.user_id 
-    INNER JOIN partners ON users.user_id = partners.user_partner_id 
-    WHERE (items.item_name LIKE :item_name OR partners.partner_name LIKE :partner_name)
-    ORDER BY partners.partner_name
+  SELECT items.*, partners.partner_name, partners.user_partner_id
+  FROM items 
+  INNER JOIN users ON items.item_created_by_user_fk = users.user_id 
+  INNER JOIN partners ON users.user_id = partners.user_partner_id 
+  WHERE (items.item_name LIKE :item_name OR partners.partner_name LIKE :partner_name)
+  ORDER BY partners.partner_name, partners.user_partner_id
   ');
   $q->bindValue(':item_name', '%' . $search . '%');
   $q->bindValue(':partner_name', '%' . $search . '%');

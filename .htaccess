@@ -27,7 +27,7 @@ RewriteRule ^partner_orders$  views/partner_orders.php [NC,L]
 RewriteRule ^partner_items$   views/partner_items.php [NC,L]
 RewriteRule ^partner_signup$  views/partner_signup.php [NC,L]
 RewriteRule ^contact          views/contact.php [NC,L]
-RewriteRule ^about            views/about.php [NC,L]  
+RewriteRule ^about-us            views/about-us.php [NC,L]  
 
 RewriteRule ^order/([0-9]+)$  views/order.php?id=$1 [NC,L]
 RewriteRule ^user/([0-9]+)$  views/user.php?id=$1 [NC,L]

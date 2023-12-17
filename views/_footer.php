@@ -10,6 +10,9 @@
                 <?php if (_is_partner()) : ?>
                     (partner)
                 <?php endif ?>
+                <?php if (_is_employee()) : ?>
+                    (employee)
+                <?php endif ?>
             </p>
         </a>
     </div>

@@ -45,9 +45,9 @@ require_once __DIR__ . '/_header.php';
         <div class="flex flex-col gap-4">
             <h2 class="uppercase pl-2">Customer support hours</h2>
             <div class="rounded-2xl bg-50-shades flex flex-col gap-4 p-4 font-semibold">
-                <p>Monday - Friday: <span class="normal-case italic">9:00 AM - 6:00 PM</span></p>
-                <p>Saturday: <span class="normal-case italic">10:00 AM - 4:00 PM</span></p>
-                <p>Sunday: <span class="normal-case italic">Closed</span></p>
+                <p>Monday - Friday: <span class="font-normal italic">9:00 AM - 6:00 PM</span></p>
+                <p>Saturday: <span class="font-normal italic">10:00 AM - 4:00 PM</span></p>
+                <p>Sunday: <span class="font-normal italic">Closed</span></p>
                 <div class="flex flex-col">
                     <p>Feedback & inquiries:</p> <a href="mailto:info@yumhub.com" class="underline font-normal">info@yumhub.com</a>
                 </div>

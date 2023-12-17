@@ -1,11 +1,12 @@
 <?php
 require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/_header.php';
 
 if (!_is_admin()) {
   header('Location: /login');
   exit();
 };
+require_once __DIR__ . '/_header.php';
+
 ?>
 <section class="flex flex-col container mx-auto gap-8 p-6">
   <div class="flex justify-center">

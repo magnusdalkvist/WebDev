@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/_header.php';
 
 
 
@@ -22,6 +21,14 @@ if (isset($_GET['id']) && isset($_SESSION['user_id'])) {
         $q->bindValue(':partner_id',  $_SESSION['user_id']);
         $q->execute();
         $order = $q->fetch();
+    } elseif ($_SESSION['user']['user_role_name'] == 'employee') {
+        $db = _db();
+        $q = $db->prepare(' SELECT * 
+                        FROM orders WHERE order_id = :order_id AND order_delivered_by_user_fk = :employee_id');
+        $q->bindValue(':order_id', $order_id);
+        $q->bindValue(':employee_id',  $_SESSION['user_id']);
+        $q->execute();
+        $order = $q->fetch();
     } else {
         $db = _db();
         $q = $db->prepare(' SELECT * 
@@ -40,6 +47,12 @@ $q->bindValue(':order_id', $order['order_id']);
 $q->execute();
 $items = $q->fetchAll();
 
+if (!$order) {
+    header('Location: /');
+    exit();
+}
+
+require_once __DIR__ . '/_header.php';
 
 ?>
 

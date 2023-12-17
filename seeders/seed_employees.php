@@ -14,8 +14,7 @@ try {
   $user_role_name = 'employee';
   $q = $db->prepare("SELECT user_id FROM users WHERE user_role_name = '$user_role_name'");
   $q->execute();
-  $employees_ids = $q->fetchAll(PDO::FETCH_COLUMN); // ["a523cde0aa01318439aff66bf776d7e6","3ab2b29dbee4c17c843884647584ad4c"]
-  // echo json_encode($users_ids); exit();
+  $employees_ids = $q->fetchAll(PDO::FETCH_COLUMN);
 
   $q = $db->prepare('
     CREATE TABLE employees(

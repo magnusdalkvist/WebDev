@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/../_.php';
+if (!_is_partner()) {
+  header('Location: /login');
+  exit();
+};
 require_once __DIR__ . '/_header.php';
 
 $db = _db();

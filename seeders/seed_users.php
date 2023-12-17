@@ -62,6 +62,34 @@ try {
   $values .= "(null, 'Admin', 'Admin', 'admin@company.com', 
   '$admin_password', 'Admin address', 'admin', '#0ea5e9', $admin_created_at, $admin_updated_at, $admin_deleted_at, $user_is_blocked),";
 
+  //partner 
+
+  $partner_password = password_hash('password', PASSWORD_DEFAULT);
+  $partner_created_at = time();
+  $partner_updated_at = 0;
+  $partner_deleted_at = 0;
+  $partner_is_blocked = 0;
+  $values .= "(null, 'Partner', 'Partner', 'partner@company.com', 
+  '$partner_password', 'Partner address', 'partner', '#0ea5e9', $partner_created_at, $partner_updated_at, $partner_deleted_at, $user_is_blocked),";
+
+  //employee
+
+  $employee_password = password_hash('password', PASSWORD_DEFAULT);
+  $employee_created_at = time();
+  $employee_updated_at = 0;
+  $employee_deleted_at = 0;
+  $employee_is_blocked = 0;
+  $values .= "(null, 'Employee', 'Employee', 'employee@company.com', 
+  '$employee_password', 'employee address', 'employee', '#0ea5e9', $employee_created_at, $employee_updated_at, $employee_deleted_at, $user_is_blocked),";
+
+  $customer_password = password_hash('password', PASSWORD_DEFAULT);
+  $customer_created_at = time();
+  $customer_updated_at = 0;
+  $customer_deleted_at = 0;
+  $customer_is_blocked = 0;
+  $values .= "(null, 'Customer', 'Customer', 'customer@company.com', 
+  '$customer_password', 'customer address', 'customer', '#0ea5e9', $customer_created_at, $customer_updated_at, $customer_deleted_at, $user_is_blocked),";
+
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO users VALUES $values");
   $q->execute();

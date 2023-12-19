@@ -1,9 +1,11 @@
 <?php
-require_once __DIR__ . '/_header.php';
+require_once __DIR__ . '/../_.php';
 if (!_is_admin()) {
   header('Location: /login');
   exit();
 };
+require_once __DIR__ . '/_header.php';
+
 ?>
 
 <section class="flex flex-col container mx-auto gap-8 p-6">
@@ -23,7 +25,7 @@ if (!_is_admin()) {
 
     </div>
     <div class="grid grid-cols-[auto_1fr_1fr_1fr] md:grid-cols-[auto_1fr_1fr_1fr_2fr_1fr] items-center gap-4 border-b border-b-slate-200 py-2">
-      <div class="w-8"></div>
+      <div class="w-8 rounded-full"></div>
       <div class="cursor-pointer" id="sort_name">Name <span id="direction"></span></div>
       <div class="cursor-pointer" id="sort_last_name">Last name <span id="direction"></span></div>
       <div class="cursor-pointer" id="sort_role">Role <span id="direction"></span></div>

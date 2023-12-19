@@ -82,6 +82,14 @@ try {
   $values .= "(null, 'Employee', 'Employee', 'employee@company.com', 
   '$employee_password', 'employee address', 'employee', '#0ea5e9', $employee_created_at, $employee_updated_at, $employee_deleted_at, $user_is_blocked),";
 
+  $customer_password = password_hash('password', PASSWORD_DEFAULT);
+  $customer_created_at = time();
+  $customer_updated_at = 0;
+  $customer_deleted_at = 0;
+  $customer_is_blocked = 0;
+  $values .= "(null, 'Customer', 'Customer', 'customer@company.com', 
+  '$customer_password', 'customer address', 'customer', '#0ea5e9', $customer_created_at, $customer_updated_at, $customer_deleted_at, $user_is_blocked),";
+
   $values = rtrim($values, ',');
   $q = $db->prepare("INSERT INTO users VALUES $values");
   $q->execute();

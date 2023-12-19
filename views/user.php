@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../_.php';
-require_once __DIR__ . '/_header.php';
 
 
 if (isset($_GET['id']) && _is_admin()) {
@@ -15,6 +14,7 @@ if (isset($_GET['id']) && _is_admin()) {
   header('Location: /login');
   exit();
 }
+require_once __DIR__ . '/_header.php';
 
 ?>
 
